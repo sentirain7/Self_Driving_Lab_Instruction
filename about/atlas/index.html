@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Knowledge Map × Time Axis — Taeyoung Yun (3D)</title>
+<title>Knowledge Vortex — Taeyoung Yun (3D)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -85,53 +85,50 @@
 <body>
 <div class="wrap">
   <header>
-    <span class="kicker">Knowledge Map × Time Axis · 2D Map + Time Depth (3D)</span>
-    <h1>A map from the front,<br><em>time from the side.</em></h1>
-    <p class="lede">The 2D knowledge map keeps its x·y coordinates, and <b>time is raised as the depth (z) axis</b>. Head-on along the time axis it looks exactly like the familiar 2D radial map; rotate to the side and each topic spreads out along its <b>research period (2010 → 2026)</b>. Drag = rotate · wheel = zoom · right-drag / Shift+drag = pan.</p>
-    <div class="meta">x·y = 2D knowledge map · depth (z) = research period · size = effort · glow = recency · ring = verified publication</div>
+    <span class="kicker">Knowledge Vortex · A Helix Through Time (3D)</span>
+    <h1>What pierces the center<br><em>is time.</em></h1>
+    <p class="lede">Stand Taeyoung Yun up as a vertical axis — 2010s continuum computational mechanics at the bottom, 2020s molecular &amp; autonomous research at the top — and the eight domains wind around that time axis, widening as they rise into a <b>vortex</b>. Drag to rotate, wheel to zoom, right-drag (or Shift+drag) to pan.</p>
+    <div class="meta">Vertical axis = research period (2010 → 2026) · thickness = effort · glow = recency · dashed ring = verified publication</div>
   </header>
 
   <div class="patterns" id="patterns"></div>
 
   <div class="wbar">
     <span class="wlabel">View →</span>
-    <button class="wseg" id="b-front">▣ Front (2D)</button>
-    <button class="wseg" id="b-side">◧ Side (time)</button>
-    <button class="wseg" id="b-rot">⟳ Auto-rotate: off</button>
-    <button class="wseg" id="b-home">⌖ Reset</button>
+    <button class="wseg on" id="b-rot">⟳ Auto-rotate: on</button>
+    <button class="wseg" id="b-home">⌖ Reset view</button>
+    <span class="wcap">drag = rotate · wheel = zoom · right-drag / Shift+drag = pan</span>
   </div>
 
   <div class="stage">
     <div class="scene" id="scene">
       <div class="legend">
-        <div class="lrow"><span class="lk">x · y</span><span class="lv">2D knowledge map (domains · nodes)</span></div>
-        <div class="lrow"><span class="lk">depth z</span><span class="lv">Research period (back = past · front = now)</span></div>
+        <div class="lrow"><span class="lk">Axis</span><span class="lv">Research period (bottom = past · top = now)</span></div>
         <div class="lrow"><span class="lk">Size</span><span class="lv">Cumulative work time</span></div>
-        <div class="lrow"><span class="lk">Glow</span><span class="lv">Recency</span></div>
+        <div class="lrow"><span class="lk">Glow</span><span class="lv">Recency (brighter = more recent)</span></div>
         <div class="lrow"><span class="lk">Ring</span><span class="lv">Verified-publication topic</span></div>
       </div>
       <div id="labels"></div>
-      <div class="hint">Front (▣) = same as 2D<br>Side (◧) = time spread · hover a star for details</div>
+      <div class="hint">Hover a star for details<br>Patterns = stems across time</div>
       <div id="err">Could not load the 3D library.<br>Please check your network connection.</div>
     </div>
 
     <aside class="panel" id="panel">
-      <span class="eyebrow" id="p-eye">map + time axis</span>
-      <h2 id="p-title">The 2D map, stood up in time</h2>
+      <span class="eyebrow" id="p-eye">7 patterns · time axis</span>
+      <h2 id="p-title">The Vortex of Time</h2>
       <div class="body" id="p-body">
-        The same 2D map is kept and <b>time is raised as the depth axis</b>. Head-on it looks identical to the 2D figure; from the side each topic scatters back-to-front by its publication / research period.<br><br><b>Computational Mechanics</b> (2010–2013) sits farthest back; <b>Infrastructure · Autonomy</b> (2025–2026) sits closest to the front. Press pattern ⑦ <b>Two Computational Eras</b> and rotate to the side to see the stem that runs from past to present.
+        Stood up along time, the map becomes a funnel: the narrow base is <b>2010s continuum computational mechanics</b> (VEPCD·KICTPAVE·CFD·similitude); the widening swirl above is <b>2020s molecular &amp; autonomous research</b>.<br><br>Press a pattern to light up its stem <b>across time</b>. In particular, ⑦ <b>Two Computational Eras</b> rises straight up the vortex from base to crown.
       </div>
       <div class="crosslist" id="p-chips"></div>
     </aside>
   </div>
 
-  <footer>2D map + time depth axis · 8 domains / 45 nodes / 7 cross-cutting patterns — front = 2D · side = time spread · drag to rotate · wheel to zoom</footer>
+  <footer>Time-axis vortex · 8 domains / 45 nodes / 7 cross-cutting patterns — drag to rotate · wheel to zoom · right-drag to pan</footer>
 </div>
 
 <div id="tip"><span class="tl"></span><span class="tt"></span></div>
 
 <script>
-// r = recency (1-5) · e = effort (1-5) · year = confirmed/estimated publication-research year (preferred when present)
 const clusters=[
   {id:'mat', name:'Materials · Chemistry', sub:'Materials', angle:-90, color:'#e0a53b', nodes:[
     {id:'sara', label:'Asphalt Binder (SARA)', desc:'SARA fractions — saturates, aromatics, resins, asphaltenes (KSRE topic)', r:4, e:5, pub:true, year:2022},
@@ -220,136 +217,106 @@ const patterns=[
    body:'A single stem runs through <b>two computational eras</b>. <b>2010s</b>: continuum multiphysics — VEPCD, KICTPAVE FEM, TTSP, CFD heat/flow, similitude. <b>2020s</b>: molecular & data — MD, ReaxFF, ML surrogates. Only the method (FEM·CFD→MD·ML) and scale (continuum→molecular) changed; the <b>same question</b> is being chased.'},
 ];
 
-// ---------- positions: 2D map (x,y) + time (z) ----------
+// ---------- vortex positions (twist + widening funnel) ----------
 const DEG=Math.PI/180;
-const HUB=252, SCALE=0.82;
-const YMIN=2009, YMAX=2026;
+const HEIGHT=360, YB=-180, RMIN=46, RMAX=172, TWIST=0.92*Math.PI*2;
 const lerp=(v,a,b,oa,ob)=>oa+(Math.min(Math.max(v,a),b)-a)/(b-a)*(ob-oa);
 const yearOf=r=>2010+Math.round((r-1)*4);
-const zOf=y=>lerp(y,YMIN,YMAX,-330,55);   // past (back,-) → present (front,+)
-const ZMID=(zOf(YMIN)+zOf(YMAX))/2;
 const nodeById={}, nodeList=[];
 clusters.forEach(c=>{
-  const a=c.angle*DEG, n=c.nodes.length;
-  const spread=(n>6?172:n>5?160:152)*DEG, nodeR=(n>6?112:n>5?96:n>4?84:64);
-  const hubx=HUB*Math.cos(a), huby=HUB*Math.sin(a);
+  const baseA=c.angle*DEG, n=c.nodes.length;
   c.nodes.forEach((nd,i)=>{
-    const na=a - spread/2 + (n>1?spread*i/(n-1):0);
-    const x2=hubx+nodeR*Math.cos(na), y2=huby+nodeR*Math.sin(na);
-    const yr=nd.year||yearOf(nd.r);
-    const o={...nd, cluster:c.id, color:c.color, year:yr,
-      x:x2*SCALE, y:-y2*SCALE, z:zOf(yr), size:lerp(nd.e,1,5,2.4,7.2)};
+    const off=(i-(n-1)/2)*0.16;
+    let y=lerp(nd.r,1,5,YB,YB+HEIGHT)+(nd.e-3)*8+(i-(n-1)/2)*5;
+    y=Math.max(YB-18,Math.min(YB+HEIGHT+18,y));
+    const normY=(y-YB)/HEIGHT, rho=RMIN+normY*(RMAX-RMIN), th=baseA+off+TWIST*normY;
+    const o={...nd, cluster:c.id, color:c.color, year:nd.year||yearOf(nd.r),
+      x:rho*Math.cos(th), y:y, z:rho*Math.sin(th), size:lerp(nd.e,1,5,2.4,7.2)};
     nodeById[nd.id]=o; nodeList.push(o);
   });
 });
 
-// ---------- three.js ----------
 let renderer,scene,camera,raycaster,W,H;
 const sceneEl=document.getElementById('scene'), labelsEl=document.getElementById('labels'), tip=document.getElementById('tip');
 const nodeMeshes=[]; let patternTube=null, active=null, dimSet=null, hovered=null;
-const labelObjs=[]; const yearRings=[];
-const HOME={th:Math.PI/2-0.34, ph:Math.PI/2-0.26, rad:780, tgt:new THREE.Vector3(0,0,ZMID)};
-const cam={th:HOME.th, ph:HOME.ph, rad:HOME.rad, tgt:HOME.tgt.clone()};
-const camT={th:HOME.th, ph:HOME.ph, rad:HOME.rad, tgt:HOME.tgt.clone()};
-let autoRotate=false;
-
+const labelObjs=[];
+const cam={th:0.72, ph:1.12, rad:640, tgt:new THREE.Vector3(0,6,0)};
+const camT={th:0.72, ph:1.12, rad:640, tgt:new THREE.Vector3(0,6,0)};
+let autoRotate=true;
 function v3(x,y,z){return new THREE.Vector3(x,y,z);}
+
 function init(){
   if(typeof THREE==='undefined'){ document.getElementById('err').style.display='flex'; return; }
   W=sceneEl.clientWidth; H=sceneEl.clientHeight;
-  renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
+  renderer=new THREE.WebGLRenderer({antialias:true,alpha:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
   sceneEl.insertBefore(renderer.domElement, labelsEl);
-  scene=new THREE.Scene();
-  camera=new THREE.PerspectiveCamera(47,W/H,1,7000);
-  raycaster=new THREE.Raycaster();
-  buildAxis(); buildSpokes(); buildNodes(); buildLabels(); bindControls();
+  scene=new THREE.Scene(); camera=new THREE.PerspectiveCamera(48,W/H,1,7000); raycaster=new THREE.Raycaster();
+  buildAxis(); buildArms(); buildNodes(); buildLabels(); bindControls();
   window.addEventListener('resize',onResize); animate();
 }
-
 function buildAxis(){
-  const z0=zOf(YMIN), z1=zOf(YMAX), len=z1-z0;
-  const core=new THREE.Mesh(new THREE.CylinderGeometry(0.7,0.7,len,12),
-    new THREE.MeshBasicMaterial({color:0xe0a53b,transparent:true,opacity:0.85}));
-  core.rotation.x=Math.PI/2; core.position.z=(z0+z1)/2; scene.add(core);
-  const glow=new THREE.Mesh(new THREE.CylinderGeometry(3.2,3.2,len,16),
-    new THREE.MeshBasicMaterial({color:0xe0a53b,transparent:true,opacity:0.09,blending:THREE.AdditiveBlending,depthWrite:false}));
-  glow.rotation.x=Math.PI/2; glow.position.z=(z0+z1)/2; scene.add(glow);
-  // time-plane rings at each labelled year
-  [2010,2014,2018,2022,2026].forEach(yr=>{
-    const ring=new THREE.Mesh(new THREE.RingGeometry(300,302,72),
-      new THREE.MeshBasicMaterial({color:0x32415c,transparent:true,opacity:0.0,side:THREE.DoubleSide,depthWrite:false}));
-    ring.position.z=zOf(yr); scene.add(ring); yearRings.push(ring);
+  const h=HEIGHT+90;
+  const core=new THREE.Mesh(new THREE.CylinderGeometry(0.7,0.7,h,12), new THREE.MeshBasicMaterial({color:0xe0a53b,transparent:true,opacity:0.85}));
+  core.position.y=YB+HEIGHT/2; scene.add(core);
+  const glow=new THREE.Mesh(new THREE.CylinderGeometry(3.4,3.4,h,16), new THREE.MeshBasicMaterial({color:0xe0a53b,transparent:true,opacity:0.10,blending:THREE.AdditiveBlending,depthWrite:false}));
+  glow.position.y=YB+HEIGHT/2; scene.add(glow);
+  for(let r=1;r<=5;r++){
+    const y=lerp(r,1,5,YB,YB+HEIGHT), rad=RMIN+(y-YB)/HEIGHT*(RMAX-RMIN);
+    const ring=new THREE.Mesh(new THREE.RingGeometry(rad-1,rad+0.4,64), new THREE.MeshBasicMaterial({color:0x32415c,transparent:true,opacity:0.30,side:THREE.DoubleSide,depthWrite:false}));
+    ring.rotation.x=Math.PI/2; ring.position.y=y; scene.add(ring);
+  }
+}
+function buildArms(){
+  clusters.forEach(c=>{
+    const ns=nodeList.filter(o=>o.cluster===c.id).sort((a,b)=>a.y-b.y);
+    if(ns.length>=2){
+      const curve=new THREE.CatmullRomCurve3(ns.map(o=>v3(o.x,o.y,o.z)));
+      const g=new THREE.BufferGeometry().setFromPoints(curve.getPoints(60));
+      scene.add(new THREE.Line(g,new THREE.LineBasicMaterial({color:new THREE.Color(c.color),transparent:true,opacity:0.28})));
+    }
+    ns.forEach(o=>{ const g=new THREE.BufferGeometry().setFromPoints([v3(o.x,o.y,o.z),v3(0,o.y,0)]); scene.add(new THREE.Line(g,new THREE.LineBasicMaterial({color:new THREE.Color(c.color),transparent:true,opacity:0.12}))); });
   });
 }
-
-function buildSpokes(){
-  // radial spoke from each node to the time-axis point at its own z (looks like 2D radial map head-on)
-  nodeList.forEach(o=>{
-    const g=new THREE.BufferGeometry().setFromPoints([v3(o.x,o.y,o.z),v3(0,0,o.z)]);
-    scene.add(new THREE.Line(g,new THREE.LineBasicMaterial({color:new THREE.Color(o.color),transparent:true,opacity:0.16})));
-  });
-}
-
 function buildNodes(){
   nodeList.forEach(o=>{
     const col=new THREE.Color(o.color);
     const mesh=new THREE.Mesh(new THREE.SphereGeometry(o.size,18,18), new THREE.MeshBasicMaterial({color:col}));
     mesh.position.set(o.x,o.y,o.z); mesh.userData.id=o.id; scene.add(mesh);
-    const halo=new THREE.Mesh(new THREE.SphereGeometry(o.size+lerp(o.r,1,5,1.4,5.5),16,16),
-      new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:lerp(o.r,1,5,0.10,0.42),blending:THREE.AdditiveBlending,depthWrite:false}));
+    const halo=new THREE.Mesh(new THREE.SphereGeometry(o.size+lerp(o.r,1,5,1.4,5.5),16,16), new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:lerp(o.r,1,5,0.10,0.42),blending:THREE.AdditiveBlending,depthWrite:false}));
     halo.position.copy(mesh.position); scene.add(halo);
     let ring=null;
-    if(o.pub){
-      ring=new THREE.Mesh(new THREE.TorusGeometry(o.size+3.2,0.45,8,40),
-        new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0.75}));
-      ring.position.copy(mesh.position); scene.add(ring);
-    }
+    if(o.pub){ ring=new THREE.Mesh(new THREE.TorusGeometry(o.size+3.2,0.45,8,40), new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0.75})); ring.position.copy(mesh.position); scene.add(ring); }
     o.mesh=mesh; o.halo=halo; o.ring=ring; o.baseHalo=halo.material.opacity; nodeMeshes.push(mesh);
   });
 }
-
 function mkLabel(cls,html){const d=document.createElement('div');d.className='lab '+cls;d.innerHTML=html;labelsEl.appendChild(d);return d;}
 function buildLabels(){
-  const c=mkLabel('clab','<span class="cn">Taeyoung Yun</span><span class="cs">TIME AXIS · 2010 → 2026</span>');
-  labelObjs.push({el:c,pos:v3(0,18,zOf(YMAX)),kind:'center'});
-  [2010,2014,2018,2022,2026].forEach(yr=>{
-    const el=mkLabel('ylab',yr+''); labelObjs.push({el,pos:v3(0,-300,zOf(yr)),kind:'year'});
-  });
+  const c=mkLabel('clab','<span class="cn">Taeyoung Yun</span><span class="cs">AUTONOMOUS · INVERSE DESIGN</span>');
+  labelObjs.push({el:c,pos:v3(0,2,0),kind:'center'});
+  for(let r=1;r<=5;r++){ const y=lerp(r,1,5,YB,YB+HEIGHT); labelObjs.push({el:mkLabel('ylab',yearOf(r)+''),pos:v3(0,y,0),kind:'year'}); }
   clusters.forEach(cl=>{
     const ns=nodeList.filter(o=>o.cluster===cl.id);
     const mx=ns.reduce((s,o)=>s+o.x,0)/ns.length, my=ns.reduce((s,o)=>s+o.y,0)/ns.length, mz=ns.reduce((s,o)=>s+o.z,0)/ns.length;
-    const el=mkLabel('dlab',cl.name); el.style.color=cl.color;
-    labelObjs.push({el,pos:v3(mx*1.16,my*1.16+ (my>0?16:-16),mz),kind:'domain',id:cl.id});
+    const el=mkLabel('dlab',cl.name); el.style.color=cl.color; labelObjs.push({el,pos:v3(mx*1.18,my+18,mz*1.18),kind:'domain',id:cl.id});
   });
   nodeList.forEach(o=>{ const el=mkLabel('nlab',o.label); el.style.color=o.color; labelObjs.push({el,pos:v3(o.x,o.y,o.z),kind:'node',id:o.id}); });
 }
-
-const _p=new THREE.Vector3(), _dir=new THREE.Vector3();
-let alignZ=1;
+const _p=new THREE.Vector3();
 function updateLabels(){
-  // alignZ ~ 1 when looking straight down the time axis (front 2D view)
-  _dir.copy(camT.tgt).sub(camera.position).normalize(); alignZ=Math.abs(_dir.z);
   const camPos=camera.position;
   for(const L of labelObjs){
     _p.copy(L.pos); _p.project(camera);
     if(_p.z>1){ L.el.style.opacity=0; continue; }
     const sx=(_p.x*0.5+0.5)*W, sy=(-_p.y*0.5+0.5)*H;
     if(sx<-90||sx>W+90||sy<-40||sy>H+40){ L.el.style.opacity=0; continue; }
-    const dist=camPos.distanceTo(L.pos);
-    let op=lerp(dist,camT.rad-260,camT.rad+280,1.0,0.10);
-    if(L.kind==='center'){op=1;}
-    else if(L.kind==='year'){op=Math.min(op+0.2,0.9)*(1-alignZ);}      // fade in side view only
-    else if(L.kind==='domain'){op=Math.min(op+0.2,1);}
+    const dist=camPos.distanceTo(L.pos); let op=lerp(dist,camT.rad-200,camT.rad+220,1.0,0.10);
+    if(L.kind==='center'){op=1;} else if(L.kind==='year'){op=Math.min(op+0.25,0.9);} else if(L.kind==='domain'){op=Math.min(op+0.18,1);}
     else { if(active){ op=(dimSet&&dimSet.has(L.id))?Math.min(op+0.15,1):op*0.12; } if(hovered===L.id) op=1; }
     L.el.style.opacity=op.toFixed(3);
     L.el.style.transform=`translate(-50%,-50%) translate(${sx.toFixed(1)}px,${sy.toFixed(1)}px)`;
     L.el.style.zIndex=(L.kind==='center')?20:(hovered===L.id?15:Math.round((1-_p.z)*8));
   }
-  // year-plane rings: visible only off-axis
-  yearRings.forEach(r=>{ r.material.opacity=0.22*(1-alignZ); });
 }
-
 function animate(){
   requestAnimationFrame(animate);
   if(autoRotate && !dragging) camT.th+=0.0016;
@@ -362,45 +329,30 @@ function animate(){
 }
 function onResize(){ W=sceneEl.clientWidth; H=sceneEl.clientHeight; camera.aspect=W/H; camera.updateProjectionMatrix(); renderer.setSize(W,H); }
 
-// ---------- controls ----------
 let dragging=false, mode='rot', lastX=0, lastY=0; const pointers=new Map(); let pinchDist=0;
 function bindControls(){
-  const el=renderer.domElement;
-  el.addEventListener('contextmenu',e=>e.preventDefault());
-  el.addEventListener('pointerdown',e=>{
-    el.setPointerCapture(e.pointerId); pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  const el=renderer.domElement; el.addEventListener('contextmenu',e=>e.preventDefault());
+  el.addEventListener('pointerdown',e=>{ el.setPointerCapture(e.pointerId); pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
     if(pointers.size===1){ dragging=true; mode=(e.button===2||e.button===1||e.shiftKey)?'pan':'rot'; lastX=e.clientX; lastY=e.clientY; }
-    else if(pointers.size===2){ dragging=true; mode='pinch'; const p=[...pointers.values()]; pinchDist=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y); }
-  });
-  el.addEventListener('pointermove',e=>{
-    if(pointers.has(e.pointerId)) pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    else if(pointers.size===2){ dragging=true; mode='pinch'; const p=[...pointers.values()]; pinchDist=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y); } });
+  el.addEventListener('pointermove',e=>{ if(pointers.has(e.pointerId)) pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
     if(!dragging){ hoverTest(e); return; }
-    if(mode==='pinch'&&pointers.size>=2){ const p=[...pointers.values()]; const d=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y); camT.rad*=Math.max(0.5,Math.min(1.5,pinchDist/Math.max(1,d))); camT.rad=Math.max(220,Math.min(1600,camT.rad)); pinchDist=d; return; }
+    if(mode==='pinch'&&pointers.size>=2){ const p=[...pointers.values()]; const d=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y); camT.rad*=Math.max(0.5,Math.min(1.5,pinchDist/Math.max(1,d))); camT.rad=Math.max(180,Math.min(1400,camT.rad)); pinchDist=d; return; }
     const dx=e.clientX-lastX, dy=e.clientY-lastY; lastX=e.clientX; lastY=e.clientY;
-    if(mode==='pan') doPan(dx,dy); else { camT.th-=dx*0.005; camT.ph-=dy*0.005; camT.ph=Math.max(0.12,Math.min(Math.PI-0.12,camT.ph)); }
-  });
+    if(mode==='pan') doPan(dx,dy); else { camT.th-=dx*0.005; camT.ph-=dy*0.005; camT.ph=Math.max(0.16,Math.min(Math.PI-0.16,camT.ph)); } });
   const up=e=>{ pointers.delete(e.pointerId); if(pointers.size===0) dragging=false; else if(pointers.size===1){mode='rot'; const p=[...pointers.values()][0]; lastX=p.x; lastY=p.y;} };
   el.addEventListener('pointerup',up); el.addEventListener('pointercancel',up);
-  el.addEventListener('wheel',e=>{ e.preventDefault(); camT.rad*=(1+e.deltaY*0.0009); camT.rad=Math.max(220,Math.min(1600,camT.rad)); },{passive:false});
+  el.addEventListener('wheel',e=>{ e.preventDefault(); camT.rad*=(1+e.deltaY*0.0009); camT.rad=Math.max(180,Math.min(1400,camT.rad)); },{passive:false});
 }
 function doPan(dx,dy){ const f=camT.rad*0.0016; const right=new THREE.Vector3(), up=new THREE.Vector3(); camera.getWorldDirection(right); right.cross(camera.up).normalize(); up.copy(camera.up).normalize(); camT.tgt.addScaledVector(right,-dx*f); camT.tgt.addScaledVector(up,dy*f); }
-
 const mouse=new THREE.Vector2();
 function hoverTest(e){
-  const rect=renderer.domElement.getBoundingClientRect();
-  mouse.x=((e.clientX-rect.left)/rect.width)*2-1; mouse.y=-((e.clientY-rect.top)/rect.height)*2+1;
-  raycaster.setFromCamera(mouse,camera);
-  const hit=raycaster.intersectObjects(nodeMeshes,false);
-  if(hit.length){
-    const o=nodeById[hit[0].object.userData.id]; hovered=o.id;
-    tip.querySelector('.tl').textContent=o.label;
-    tip.querySelector('.tt').textContent=o.desc+'  ·  '+o.year;
-    let x=e.clientX+16,y=e.clientY+16; if(x>innerWidth-270)x=e.clientX-260;
-    tip.style.left=x+'px'; tip.style.top=y+'px'; tip.style.opacity=1;
+  const rect=renderer.domElement.getBoundingClientRect(); mouse.x=((e.clientX-rect.left)/rect.width)*2-1; mouse.y=-((e.clientY-rect.top)/rect.height)*2+1;
+  raycaster.setFromCamera(mouse,camera); const hit=raycaster.intersectObjects(nodeMeshes,false);
+  if(hit.length){ const o=nodeById[hit[0].object.userData.id]; hovered=o.id; tip.querySelector('.tl').textContent=o.label; tip.querySelector('.tt').textContent=o.desc+'  ·  '+o.year;
+    let x=e.clientX+16,y=e.clientY+16; if(x>innerWidth-270)x=e.clientX-260; tip.style.left=x+'px'; tip.style.top=y+'px'; tip.style.opacity=1;
   } else { hovered=null; tip.style.opacity=0; }
 }
-
-// ---------- patterns ----------
 function buildButtons(){
   const box=document.getElementById('patterns');
   patterns.forEach(p=>{ const b=document.createElement('button'); b.className='ptn'; b.dataset.id=p.id; b.style.setProperty('--pc',p.color); b.innerHTML=`<span class="pn">${p.n}</span><span class="pt">${p.t}</span>`; b.onclick=()=>select(p.id); box.appendChild(b); });
@@ -411,9 +363,9 @@ function clearSel(){
   active=null; dimSet=null; disposeTube();
   document.querySelectorAll('.ptn').forEach(e=>e.classList.remove('on'));
   nodeList.forEach(o=>{ o.mesh.material.opacity=1; o.mesh.material.transparent=false; o.halo.material.opacity=o.baseHalo; if(o.ring)o.ring.material.opacity=0.75; });
-  document.getElementById('p-eye').textContent='map + time axis';
-  document.getElementById('p-title').textContent='The 2D map, stood up in time';
-  document.getElementById('p-body').innerHTML='The same 2D map is kept and <b>time is raised as the depth axis</b>. Head-on it looks identical to the 2D figure; from the side each topic scatters back-to-front by its publication / research period.<br><br><b>Computational Mechanics</b> (2010–2013) sits farthest back; <b>Infrastructure · Autonomy</b> (2025–2026) sits closest to the front. Press pattern ⑦ <b>Two Computational Eras</b> and rotate to the side.';
+  document.getElementById('p-eye').textContent='7 patterns · time axis';
+  document.getElementById('p-title').textContent='The Vortex of Time';
+  document.getElementById('p-body').innerHTML='Stood up along time, the map becomes a funnel: the narrow base is <b>2010s continuum computational mechanics</b> (VEPCD·KICTPAVE·CFD·similitude); the widening swirl above is <b>2020s molecular &amp; autonomous research</b>.<br><br>Press a pattern to light up its stem <b>across time</b>. In particular, ⑦ <b>Two Computational Eras</b> rises straight up the vortex from base to crown.';
   document.getElementById('p-chips').innerHTML='';
 }
 function select(id){
@@ -421,10 +373,8 @@ function select(id){
   const p=patterns.find(x=>x.id===id); active=id; dimSet=new Set(p.seq);
   document.querySelectorAll('.ptn').forEach(e=>e.classList.toggle('on',e.dataset.id===id));
   disposeTube();
-  const pts=p.seq.map(nid=>{const o=nodeById[nid];return v3(o.x,o.y,o.z);});
-  const curve=new THREE.CatmullRomCurve3(pts,false,'catmullrom',0.25); const col=new THREE.Color(p.color);
-  patternTube=new THREE.Mesh(new THREE.TubeGeometry(curve,140,1.7,10,false),
-    new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0.85,blending:THREE.AdditiveBlending,depthWrite:false}));
+  const curve=new THREE.CatmullRomCurve3(p.seq.map(nid=>{const o=nodeById[nid];return v3(o.x,o.y,o.z);}),false,'catmullrom',0.25);
+  patternTube=new THREE.Mesh(new THREE.TubeGeometry(curve,140,1.7,10,false), new THREE.MeshBasicMaterial({color:new THREE.Color(p.color),transparent:true,opacity:0.85,blending:THREE.AdditiveBlending,depthWrite:false}));
   scene.add(patternTube);
   nodeList.forEach(o=>{ const on=dimSet.has(o.id); o.mesh.material.transparent=true; o.mesh.material.opacity=on?1:0.12; o.halo.material.opacity=on?Math.min(o.baseHalo+0.2,0.7):0.03; if(o.ring)o.ring.material.opacity=on?0.9:0.12; });
   document.getElementById('p-eye').textContent=p.n.replace('pattern','Pattern');
@@ -432,13 +382,9 @@ function select(id){
   document.getElementById('p-body').innerHTML=p.body;
   document.getElementById('p-chips').innerHTML=p.crosses.map(c=>`<span class="chip">↔ ${c}</span>`).join('');
 }
-
-// ---------- view buttons ----------
-document.getElementById('b-front').onclick=()=>{ camT.th=Math.PI/2; camT.ph=Math.PI/2; camT.rad=760; camT.tgt.set(0,0,ZMID); autoRotate=false; setRot(); };
-document.getElementById('b-side').onclick=()=>{ camT.th=Math.PI/2-0.72; camT.ph=1.0; camT.rad=820; camT.tgt.set(0,0,ZMID); autoRotate=false; setRot(); };
-document.getElementById('b-home').onclick=()=>{ camT.th=HOME.th; camT.ph=HOME.ph; camT.rad=HOME.rad; camT.tgt.copy(HOME.tgt); };
 function setRot(){ const b=document.getElementById('b-rot'); b.textContent='⟳ Auto-rotate: '+(autoRotate?'on':'off'); b.classList.toggle('on',autoRotate); }
 document.getElementById('b-rot').onclick=()=>{ autoRotate=!autoRotate; setRot(); };
+document.getElementById('b-home').onclick=()=>{ camT.th=0.72; camT.ph=1.12; camT.rad=640; camT.tgt.set(0,6,0); };
 
 init(); buildButtons();
 </script>
