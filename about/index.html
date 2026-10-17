@@ -1,17 +1,31 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en" data-ui="en" data-title-en="Taeyoung Yun · About | KICT" data-title-ko="윤태영 소개 · 경력 · 논문 | 한국건설기술연구원">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>윤태영 소개 · 경력 · 논문 | 한국건설기술연구원</title>
+<title>Taeyoung Yun · About | KICT</title>
 <meta name="description" content="한국건설기술연구원 윤태영 연구위원 — 재료역학 · 다중물리 시뮬레이션, 경력 · 학력 · 주요 연구 · 논문 · 수상">
 <meta name="color-scheme" content="light">
+<script>
+/* 언어: 기본 영문, ?lang=ko|en 또는 저장된 선택(같은 사이트 모든 쪽 공통) */
+(function(){var k="sdl-lang",d=document.documentElement,l="en";
+try{l=new URLSearchParams(location.search).get("lang")||localStorage.getItem(k)||"en";}catch(e){}
+if(l!=="ko")l="en";d.setAttribute("data-ui",l);d.lang=l;
+window.setLang=function(v){d.setAttribute("data-ui",v);d.lang=v;document.title=d.getAttribute("data-title-"+v)||document.title;
+try{localStorage.setItem(k,v);}catch(e){}
+document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.v===v));});};})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 :root{--cream:#F8F5F0;--paper:#fff;--ink:#231F20;--ink2:#4A4440;--mute:#7A716A;--line:#E6E0D8;--or:#C8610C;--or-bg:#FEF0DC;
   --f:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;--m:"JetBrains Mono",ui-monospace,monospace}
+html[data-ui="en"] [data-l="ko"],html[data-ui="ko"] [data-l="en"]{display:none!important}
+.lang{margin-left:auto;display:inline-flex;border:1.4px solid var(--or);border-radius:6px;overflow:hidden;flex:none}
+@media (min-width:860px){.lang{margin-left:8px}}
+.lang button{font:600 13px/1 var(--f);padding:7px 11px;border:0;background:var(--paper);color:var(--or);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--or);color:#fff}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:break-word}
@@ -48,7 +62,7 @@ ul.b li b{color:var(--ink)}
 .pubs i{color:var(--ink)}
 .pubs a{color:var(--or)}
 .box{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
-.box dl{margin:0;display:grid;grid-template-columns:72px 1fr;row-gap:8px;font-size:15px}
+.box dl{margin:0;display:grid;grid-template-columns:90px 1fr;row-gap:8px;font-size:15px}
 .box dt{color:var(--or);font-weight:700}
 .box dd{margin:0}
 .mono{font-family:var(--m);font-size:14px}
@@ -58,14 +72,161 @@ footer{padding:22px 0 36px;font-size:13px;color:var(--mute)}
 <body>
 <header>
   <div class="wrap">
-    <a href="../">← 첫 화면</a>
-    <nav aria-label="쪽 안 이동">
-      <a href="#expertise">전문 분야</a><a href="#career">경력 · 학력</a><a href="#work">주요 연구</a><a href="#pubs">논문</a><a href="#awards">수상</a>
+    <a href="../"><span data-l="en">← Home</span><span data-l="ko">← 첫 화면</span></a>
+    <nav aria-label="Sections" data-l="en">
+      <a href="#en-expertise">Expertise</a><a href="#en-career">Experience</a><a href="#en-work">Contributions</a><a href="#en-pubs">Publications</a><a href="#en-awards">Recognition</a>
     </nav>
+    <nav aria-label="쪽 안 이동" data-l="ko">
+      <a href="#ko-expertise">전문 분야</a><a href="#ko-career">경력 · 학력</a><a href="#ko-work">주요 연구</a><a href="#ko-pubs">논문</a><a href="#ko-awards">수상</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-v="en" aria-pressed="true" onclick="setLang('en')">EN</button>
+      <button type="button" data-v="ko" aria-pressed="false" onclick="setLang('ko')">한글</button>
+    </div>
   </div>
 </header>
 
-<main>
+<main data-l="en">
+  <div class="top">
+    <div class="wrap">
+      <div class="eyebrow">MATERIALS MECHANICS AND MULTIPHYSICS SIMULATION</div>
+      <h1>Taeyoung Yun <span>윤태영</span></h1>
+      <ul class="roles">
+        <li>Research Fellow, Korea Institute of Civil Engineering and Building Technology (KICT), 2009–present</li>
+        <li>Full Professor (concurrent appointment), University of Science and Technology (UST), 2025–present</li>
+      </ul>
+      <p class="lead">Research Fellow in computational materials mechanics, with research spanning viscoelasticity, viscoplasticity, continuum damage, and molecular interactions. Develops constitutive models and scientific software, verifies numerical implementations, and evaluates simulations against experiments. Experience includes finite element software development, molecular simulation of asphalt binders and polymer units, and simulation-based support for industrial equipment design.</p>
+    </div>
+  </div>
+
+  <section id="en-expertise">
+    <div class="wrap">
+      <h2>Core Expertise</h2>
+      <ul class="b">
+        <li><b>Deformable body mechanics</b> — time-dependent deformation, rate-dependent hardening and softening, cohesive viscoelastic contact, and continuum damage modeling.</li>
+        <li><b>Finite element and multiphysics analysis</b> — in-house FEA development, Abaqus, coupled CFD–DEM, heat and mass transfer, and Ansys Fluent user-defined functions.</li>
+        <li><b>Molecular structure and properties</b> — MD of organic–inorganic systems, polymer units in asphalt binder, tensile response, and moisture- and salt-water-induced degradation; LAMMPS and Materials Studio/Forcite.</li>
+        <li><b>Scientific programming and materials informatics</b> — Python, C++, Fortran, GNN-based supergraph models (Graphormer3D), tabular models (Random Forest and XGBoost), automated simulation workflows, and validation of predictive models.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="en-career">
+    <div class="wrap">
+      <h2>Professional Experience</h2>
+      <dl class="tl">
+        <dt>2009–present</dt>
+        <dd><b>Korea Institute of Civil Engineering and Building Technology</b> · Research Fellow
+          <ul class="b" style="margin-top:6px">
+            <li>Develop physics-based models and scientific software for material behavior, construction processes, and equipment design, combining continuum, particle, and molecular simulation methods.</li>
+            <li>Provide simulation-based industry support, including aggregate dryer-drum analysis for a Korean plant equipment company using engineering design drawings.</li>
+            <li>Architect and develop COMID, a Python-based environment for automated molecular simulation and materials informatics, including model preparation, remote execution, and analysis workflows.</li>
+          </ul></dd>
+        <dt>2025–present</dt>
+        <dd><b>University of Science and Technology (UST)</b> · Full Professor, concurrent appointment</dd>
+        <dt>2014–2022</dt>
+        <dd><b>Chung-Ang University</b> · Adjunct Professor</dd>
+        <dt>2009–2012</dt>
+        <dd><b>Chung-Ang University</b> · Lecturer</dd>
+      </dl>
+      <h3>Education</h3>
+      <dl class="tl">
+        <dt>2008</dt><dd><b>Ph.D.</b> · North Carolina State University, USA<small>Civil and Environmental Engineering</small></dd>
+        <dt>2003</dt><dd><b>M.S.</b> · Chung-Ang University, South Korea<small>Civil and Environmental Engineering</small></dd>
+        <dt>2001</dt><dd><b>B.S.</b> · Chung-Ang University, South Korea<small>Civil and Environmental Engineering</small></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="en-work">
+    <div class="wrap">
+      <h2>Selected Research and Engineering Contributions</h2>
+      <h3>Constitutive Modeling and Finite Element Analysis</h3>
+      <ul class="b">
+        <li>Contributed to VEPCD-FEP++, a multiaxial viscoelastoplastic continuum damage finite element program, within a US Federal Highway Administration research program (2005–2008). Related work addressed performance specifications based on viscoelastoplastic continuum damage models (2008).</li>
+        <li>Modeled rate-dependent viscoplastic hardening and softening of asphalt mixtures in compression, addressing time-dependent mechanical behavior under loading.</li>
+        <li>Developed in-house finite element analysis code in Fortran for structural simulation, including a load discretization algorithm for jointed concrete pavement.</li>
+        <li>Implemented a linear cohesive viscoelastic contact model in C++ for DEM and verified its response against analytical solutions. Extended EDEM contact models for particle–solid interactions and evaluated models through experimental validation.</li>
+        <li>Evaluated similarity principles and exact scaling in DEM using analytical solutions, examining the effects of particle dynamics, contact models, and geometry on the validity of scaled simulations.</li>
+      </ul>
+      <h3>Molecular Simulation of Binder Materials and Interfaces</h3>
+      <ul class="b">
+        <li>Investigated material properties of polymer units in asphalt binder using molecular dynamics and machine learning.</li>
+        <li>Simulated amorphous–crystalline interactions and tensile response in organic–inorganic material systems. Related published research examined moisture- and salt-water-induced degradation of asphalt concrete mixtures.</li>
+        <li>Prepared a 5,346-case Materials Studio/Forcite MD dataset for density and energy-density prediction. Developed a GNN-based supergraph model using an adapted Graphormer3D architecture, integrating molecular, interaction, and system features.</li>
+        <li>Evaluated supergraph model generalization on 891 held-out cases, benchmarked against tabular models (Random Forest and XGBoost), and performed feature-ablation studies. Assessed representative molecular-system size using density and radial distribution functions.</li>
+        <li>Co-authored a study using large-scale ReaxFF reactive molecular dynamics to investigate early-stage hydration of four cement clinker phases under temperature-accelerated conditions, relating crystal structure to phase-specific reaction mechanisms (Construction and Building Materials, 2026).</li>
+      </ul>
+      <h3>Multiphysics Analysis and Industrial Design Support</h3>
+      <ul class="b">
+        <li>Coupled DEM and CFD to investigate particle transport, clogging, and pavement permeability with experimental validation. Also modeled airflow-driven cooling of asphalt mixtures during transport.</li>
+        <li>Modeled aggregate transport in rotating and double-drum equipment using engineering design drawings. Evaluated residence time and velocity to inform design decisions for a Korean plant equipment company.</li>
+        <li>Developed a cohesive shrinking particle model for soil drying in DEM, incorporating moisture-dependent cohesion and particle size. Compared changes in specimen radius and thickness with published experiments and assessed limitations in curling and crack development.</li>
+      </ul>
+      <h3>Simulation Automation and Digital Research Workflows</h3>
+      <ul class="b">
+        <li>Developed COMID to automate molecular bulk-system preparation and equilibration, crystalline and multilayer structure generation, and tensile simulations under varied conditions. The frontend and backend contain over 140,000 lines of Python code.</li>
+        <li>Designed local queueing and an SSH remote-compute bridge. Executed over 2,000 LAMMPS conditions on six H200 GPUs using automated queueing and CUDA MPS.</li>
+        <li>Developed early-stage self-driving laboratory workflows and reusable MD analysis procedures, providing a basis for linking physics-based models, experimental validation, and automated analysis in future digital-twin applications.</li>
+      </ul>
+      <h3>Selected Research Programs</h3>
+      <dl class="tl">
+        <dt>2024–2026</dt><dd>Molecular Dynamics and Materials Informatics-Based Mix Design of Road Construction Materials<small>KICT</small></dd>
+        <dt>2022–2023</dt><dd>Development of a Computational Science-Based Data Generation and Machine Learning-Integrated Data Platform for Construction Material Design Innovation<small>KICT</small></dd>
+        <dt>2016–2018</dt><dd>Study on Simulation Technology of Rheological Materials for 3D Printing Construction<small>National Research Foundation of Korea</small></dd>
+        <dt>2005–2008</dt><dd>VEPCD-FEP++: Development of a Multiaxial Viscoelastoplastic Continuum Damage Finite Element Program<small>Federal Highway Administration, USA</small></dd>
+      </dl>
+      <h3>International Collaboration and Teaching</h3>
+      <p style="margin:0;color:var(--ink2)">Maintains research collaborations with universities in the United States, Canada, and Türkiye. Teaches simulation methods and research workflows, supported by technical documentation and instructional materials.</p>
+    </div>
+  </section>
+
+  <section id="en-pubs">
+    <div class="wrap">
+      <h2>Selected Publications</h2>
+      <ol class="pubs">
+        <li>Shimelis, E.; Yang, B.; Haider, T.; Yun, T.; Bae, J.-H. (2026). Molecular-level insights into early-stage hydration of cement clinkers via temperature-accelerated large-scale reactive molecular dynamics. <i>Construction and Building Materials</i>, 537, 147150. <a href="https://doi.org/10.1016/j.conbuildmat.2026.147150">doi</a></li>
+        <li>Yun, T. (2025). Property Evaluation of Polymer Units in Asphalt Binder (II): Prediction of Properties Using Molecular Dynamics and Machine Learning. <i>International Journal of Highway Engineering</i>, 27(4), 31–41.</li>
+        <li>Jeon, I.; Lee, J.; Lee, T.; Yun, T.; Yang, S. (2024). In silico simulation study on moisture- and salt water-induced degradation of asphalt concrete mixture. <i>Construction and Building Materials</i>, 417, 135229.</li>
+        <li>Yun, T. (2024). Assessment of the Representative-Molecular-Structure Size in Molecular Dynamics through the Analysis of Asphalt-Binder Density and Radial Distribution Functions. <i>International Journal of Highway Engineering</i>, 26(6), 13–21.</li>
+        <li>Yun, T. (2019). Numerical Simulation of Soil Shrinkage by Using Cohesive Shrinking Particle Model. <i>International Journal of Highway Engineering</i>, 21(6), 13–21.</li>
+        <li>Yun, T.; Cho, Y. H. (2019). Fundamental Permeability Test and CFD-DEM System Coupling for Clogging Analysis in Block Pavement (II). <i>International Journal of Highway Engineering</i>, 21(3), 37–47.</li>
+        <li>Yun, T.; Park, H. M. (2016). Feasibility Study on Similarity Principle in Discrete Element Analysis. <i>International Journal of Highway Engineering</i>, 18(2), 51–60. <a href="https://doi.org/10.7855/IJHE.2016.18.2.051">doi</a></li>
+        <li>Yun, T.; Yoo, P. (2015). Implementation and Verification of Linear Cohesive Viscoelastic Contact Model for DEM. <i>International Journal of Highway Engineering</i>, 17(4), 25–32.</li>
+        <li>Yun, T.; Kim, Y. R. (2011). Modeling of Viscoplastic Rate-dependent Hardening-softening Behavior of Hot Mix Asphalt in Compression. <i>Mechanics of Time-Dependent Materials</i>, 15, 89–103.</li>
+        <li>Yun, T.; Kim, J.; Cho, Y. H. (2003). Development of Structure Analysis Program for Jointed Concrete Pavement Applying Load Discretization Algorithm. <i>Journal of Korean Society of Pavement Engineers</i>, 5(4), 1–11.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="en-awards">
+    <div class="wrap">
+      <h2>Selected Recognition</h2>
+      <dl class="tl">
+        <dt>2020</dt><dd>Outstanding Researcher<small>Korean Society of Road Engineers</small></dd>
+        <dt>2016</dt><dd>Outstanding Researcher of the Institute<small>National Research Council of Science &amp; Technology</small></dd>
+        <dt>2013</dt><dd>Young Researcher of the Year<small>KICT</small></dd>
+        <dt>2012</dt><dd>Young Researcher of the Year<small>Korean Society of Civil Engineers</small></dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="en-contact" style="border-bottom:none">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <div class="box">
+        <dl>
+          <dt>Email</dt><dd><a class="mono" href="mailto:tyun@kict.re.kr">tyun@kict.re.kr</a></dd>
+          <dt>Affiliation</dt><dd>Korea Institute of Civil Engineering and Building Technology (KICT)</dd>
+          <dt>Address</dt><dd>283 Goyangdae-ro, Goyang-si 10223, Republic of Korea</dd>
+          <dt>ORCID</dt><dd><a class="mono" href="https://orcid.org/0000-0003-1917-4126">0000-0003-1917-4126</a></dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<main data-l="ko">
   <div class="top">
     <div class="wrap">
       <div class="eyebrow">MATERIALS MECHANICS AND MULTIPHYSICS SIMULATION</div>
@@ -78,7 +239,7 @@ footer{padding:22px 0 36px;font-size:13px;color:var(--mute)}
     </div>
   </div>
 
-  <section id="expertise">
+  <section id="ko-expertise">
     <div class="wrap">
       <h2>전문 분야</h2>
       <ul class="b">
@@ -90,7 +251,7 @@ footer{padding:22px 0 36px;font-size:13px;color:var(--mute)}
     </div>
   </section>
 
-  <section id="career">
+  <section id="ko-career">
     <div class="wrap">
       <h2>경력</h2>
       <dl class="tl">
@@ -117,7 +278,7 @@ footer{padding:22px 0 36px;font-size:13px;color:var(--mute)}
     </div>
   </section>
 
-  <section id="work">
+  <section id="ko-work">
     <div class="wrap">
       <h2>주요 연구 · 개발</h2>
       <h3>구성 모델 · 유한요소 해석</h3>
@@ -160,7 +321,7 @@ footer{padding:22px 0 36px;font-size:13px;color:var(--mute)}
     </div>
   </section>
 
-  <section id="pubs">
+  <section id="ko-pubs">
     <div class="wrap">
       <h2>주요 논문</h2>
       <ol class="pubs">
@@ -178,7 +339,7 @@ footer{padding:22px 0 36px;font-size:13px;color:var(--mute)}
     </div>
   </section>
 
-  <section id="awards">
+  <section id="ko-awards">
     <div class="wrap">
       <h2>수상</h2>
       <dl class="tl">
@@ -190,7 +351,7 @@ footer{padding:22px 0 36px;font-size:13px;color:var(--mute)}
     </div>
   </section>
 
-  <section id="contact" style="border-bottom:none">
+  <section id="ko-contact" style="border-bottom:none">
     <div class="wrap">
       <h2>연락처</h2>
       <div class="box">
@@ -204,6 +365,7 @@ footer{padding:22px 0 36px;font-size:13px;color:var(--mute)}
     </div>
   </section>
 </main>
-<footer><div class="wrap">최종 갱신 2026. 10. 17.</div></footer>
+<footer><div class="wrap"><span data-l="en">Last updated Oct 17, 2026</span><span data-l="ko">최종 갱신 2026. 10. 17.</span></div></footer>
+<script>setLang(document.documentElement.getAttribute("data-ui"));</script>
 </body>
 </html>

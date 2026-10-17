@@ -1,16 +1,25 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en" data-ui="en" data-title-en="Taeyoung Yun · KICT | Presentations" data-title-ko="윤태영 · 한국건설기술연구원 | 발표 자료">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>윤태영 · 한국건설기술연구원 | 발표 자료</title>
-<meta name="description" content="한국건설기술연구원 도로교통연구본부 윤태영 연구위원 — 소개 · 발표 자료(KSCE 2026 구두 발표 · 포스터 · 플랫폼 소개) · 연락처">
+<title>Taeyoung Yun · KICT | Presentations</title>
+<meta name="description" content="Taeyoung Yun, Research Fellow, Korea Institute of Civil Engineering and Building Technology (KICT) — presentations and contact.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="윤태영 · 한국건설기술연구원 | 발표 자료">
-<meta property="og:description" content="KSCE 2026 구두 발표 · 포스터 · 플랫폼 소개 문서">
+<meta property="og:title" content="Taeyoung Yun · KICT | Presentations">
+<meta property="og:description" content="KSCE 2026 oral presentation · poster · platform overview">
 <meta property="og:image" content="https://sentirain7.github.io/Self_Driving_Lab_Instruction/assets/talk_cover.jpg">
 <meta property="og:url" content="https://sentirain7.github.io/Self_Driving_Lab_Instruction/">
 <meta name="color-scheme" content="light">
+<script>
+/* 언어: 기본 영문, ?lang=ko|en 또는 저장된 선택(같은 사이트 모든 쪽 공통) */
+(function(){var k="sdl-lang",d=document.documentElement,l="en";
+try{l=new URLSearchParams(location.search).get("lang")||localStorage.getItem(k)||"en";}catch(e){}
+if(l!=="ko")l="en";d.setAttribute("data-ui",l);d.lang=l;
+window.setLang=function(v){d.setAttribute("data-ui",v);d.lang=v;document.title=d.getAttribute("data-title-"+v)||document.title;
+try{localStorage.setItem(k,v);}catch(e){}
+document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.v===v));});};})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
@@ -22,6 +31,7 @@
   --m:"JetBrains Mono",ui-monospace,monospace;
   --w:1120px;
 }
+html[data-ui="en"] [data-l="ko"],html[data-ui="ko"] [data-l="en"]{display:none!important}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.65;word-break:keep-all;overflow-wrap:break-word}
@@ -33,29 +43,29 @@ img{max-width:100%;display:block}
 header{position:sticky;top:0;z-index:10;background:rgba(248,245,240,.94);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid var(--line)}
 .hd{display:flex;align-items:center;gap:14px;min-height:58px}
 .hd img{height:26px;width:auto}
-.hd nav{margin-left:auto;display:flex;gap:16px;font-size:14.5px}
+.hd nav{margin-left:auto;display:none;gap:22px;font-size:14.5px}
 .hd nav a{text-decoration:none;color:var(--ink2)}
 .hd nav a:hover{color:var(--or)}
-@media (min-width:720px){.hd nav{gap:24px}}
+@media (min-width:640px){.hd nav{display:flex}}
+.lang{margin-left:auto;display:inline-flex;border:1.4px solid var(--or);border-radius:6px;overflow:hidden;flex:none}
+@media (min-width:640px){.lang{margin-left:8px}}
+.lang button{font:600 13px/1 var(--f);padding:7px 11px;border:0;background:var(--paper);color:var(--or);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--or);color:#fff}
 
-/* 소개 */
-.intro{padding:44px 0 40px;border-bottom:1px solid var(--line);background:radial-gradient(900px 420px at 100% 0%,rgba(249,157,28,.12),transparent 60%)}
+.intro{padding:52px 0 46px;border-bottom:1px solid var(--line);background:radial-gradient(900px 420px at 100% 0%,rgba(249,157,28,.12),transparent 60%)}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--or)}
-h1{margin:10px 0 0;font-size:clamp(30px,5vw,44px);line-height:1.25;letter-spacing:-.02em;font-weight:700}
-h1 small{display:block;margin-top:6px;font-size:clamp(17px,2.4vw,20px);font-weight:500;color:var(--ink2);letter-spacing:0}
-.lead{margin:20px 0 0;max-width:780px;font-size:clamp(16px,2.1vw,18px);color:var(--ink2)}
-.topics{margin:22px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
-.more{display:inline-flex;margin-top:22px;text-decoration:none;font-weight:700;font-size:15px;padding:10px 18px;border-radius:6px;background:var(--or);color:#fff}
+h1{margin:10px 0 0;font-size:clamp(32px,5.4vw,48px);line-height:1.2;letter-spacing:-.02em;font-weight:700}
+h1 .alt{font-size:.5em;font-weight:500;color:var(--mute);letter-spacing:0}
+.roles{margin:14px 0 0;padding:0;list-style:none;font-size:clamp(16px,2.2vw,19px);color:var(--ink2)}
+.roles li{margin:3px 0}
+.more{display:inline-flex;margin-top:26px;text-decoration:none;font-weight:700;font-size:15.5px;padding:11px 20px;border-radius:6px;background:var(--or);color:#fff}
 .more:hover{filter:brightness(.95)}
-.topics li{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--or);border-radius:4px;padding:6px 12px;font-size:14.5px}
 
-/* 절 */
 section{padding:48px 0}
 section+section{border-top:1px solid var(--line)}
 h2{margin:0;font-size:clamp(22px,3vw,28px);letter-spacing:-.01em}
 h2::after{content:"";display:block;width:44px;height:3px;background:var(--or);margin-top:10px}
 
-/* 발표 자료 목록 */
 .cards{margin-top:24px;display:grid;grid-template-columns:1fr;gap:18px}
 @media (min-width:720px){.cards{grid-template-columns:repeat(2,1fr)}}
 .card{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:8px;overflow:hidden;text-decoration:none;transition:box-shadow .2s,transform .2s}
@@ -68,9 +78,8 @@ h2::after{content:"";display:block;width:44px;height:3px;background:var(--or);ma
 .card p{margin:0;font-size:14.5px;color:var(--ink2)}
 .card .go{margin-top:auto;padding-top:8px;font-size:14.5px;font-weight:700;color:var(--or)}
 
-/* 연락처 */
 .box{margin-top:24px;max-width:720px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px}
-.box dl{margin:0;display:grid;grid-template-columns:72px 1fr;row-gap:8px;font-size:15px}
+.box dl{margin:0;display:grid;grid-template-columns:84px 1fr;row-gap:8px;font-size:15px}
 .box dt{color:var(--or);font-weight:700}
 .box dd{margin:0}
 .mono{font-family:var(--m);font-size:14px}
@@ -81,12 +90,16 @@ footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color
 
 <header>
   <div class="wrap hd">
-    <img src="assets/kict_logo.png" alt="KICT 한국건설기술연구원" width="112" height="26">
-    <nav aria-label="쪽 안 이동">
-      <a href="#about">소개</a>
-      <a href="#materials">발표 자료</a>
-      <a href="#contact">연락처</a>
+    <img src="assets/kict_logo.png" alt="KICT" width="112" height="26">
+    <nav aria-label="Sections">
+      <a href="#about"><span data-l="en">About</span><span data-l="ko">소개</span></a>
+      <a href="#materials"><span data-l="en">Presentations</span><span data-l="ko">발표 자료</span></a>
+      <a href="#contact"><span data-l="en">Contact</span><span data-l="ko">연락처</span></a>
     </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-v="en" aria-pressed="true" onclick="setLang('en')">EN</button>
+      <button type="button" data-v="ko" aria-pressed="false" onclick="setLang('ko')">한글</button>
+    </div>
   </div>
 </header>
 
@@ -94,57 +107,66 @@ footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color
   <div class="intro" id="about">
     <div class="wrap">
       <div class="eyebrow">KOREA INSTITUTE OF CIVIL ENGINEERING AND BUILDING TECHNOLOGY</div>
-      <h1>윤태영 <span style="font-size:.55em;font-weight:500;color:var(--mute)">Taeyoung Yun</span>
-        <small>한국건설기술연구원 도로교통연구본부 연구위원 · 과학기술연합대학원대학교(UST) 교수(겸임)</small></h1>
-      <p class="lead">아스팔트 바인더와 도로 건설재료를 분자 수준에서 계산하고, 그 결과로 재료 조성을 설계하는 연구를 하고 있습니다. 분자동역학(MD) 계산을 자동으로 실행 · 판정하는 계산 체계를 만들고, 계산 결과로 학습한 기계학습 모델로 목표 물성을 갖는 바인더 조성을 찾습니다.</p>
-      <ul class="topics" aria-label="연구 분야">
-        <li>아스팔트 바인더 분자동역학</li>
-        <li>골재–바인더 계면 인장 · 전단 · 수분 영향</li>
-        <li>기계학습 기반 조성 역설계</li>
-        <li>계산 · 로봇 실험 연계 자율실험실</li>
+      <h1 data-l="en">Taeyoung Yun <span class="alt">윤태영</span></h1>
+      <h1 data-l="ko">윤태영 <span class="alt">Taeyoung Yun</span></h1>
+      <ul class="roles" data-l="en">
+        <li>Research Fellow, Korea Institute of Civil Engineering and Building Technology (KICT)</li>
+        <li>Full Professor (concurrent appointment), University of Science and Technology (UST)</li>
       </ul>
-      <a class="more" href="about/">경력 · 학력 · 논문 · 수상 보기 →</a>
+      <ul class="roles" data-l="ko">
+        <li>한국건설기술연구원 도로교통연구본부 연구위원</li>
+        <li>과학기술연합대학원대학교(UST) 교수(겸임)</li>
+      </ul>
+      <a class="more" href="about/"><span data-l="en">About Taeyoung Yun →</span><span data-l="ko">윤태영 소개 →</span></a>
     </div>
   </div>
 
   <section id="materials">
     <div class="wrap">
-      <h2>발표 자료</h2>
+      <h2><span data-l="en">Presentations</span><span data-l="ko">발표 자료</span></h2>
       <div class="cards">
         <a class="card" href="ksce2026/talk/">
-          <div class="th"><img src="assets/talk_cover.jpg" alt="KSCE 2026 구두 발표 표지" loading="lazy" width="800" height="450"></div>
+          <div class="th"><img src="assets/talk_cover.jpg" alt="KSCE 2026 oral presentation cover" loading="lazy" width="800" height="450"></div>
           <div class="bd">
-            <span class="tag">KSCE 2026 CONVENTION · 2026. 10. 23. 구두 발표</span>
-            <h3>기계학습과 분자동역학을 이용한 목표 물성 아스팔트 바인더 조성의 AI 기반 역설계</h3>
-            <p>슬라이드 13장. 키보드 ← → 또는 화면을 옆으로 밀어 넘깁니다.</p>
-            <span class="go">슬라이드 보기 →</span>
+            <span class="tag"><span data-l="en">KSCE 2026 CONVENTION · OCT 23, 2026 · ORAL</span><span data-l="ko">KSCE 2026 CONVENTION · 2026. 10. 23. 구두 발표</span></span>
+            <h3 data-l="en">AI-Driven Inverse Design of Asphalt Binder Compositions with Target Properties Using Machine Learning and Molecular Dynamics</h3>
+            <h3 data-l="ko">기계학습과 분자동역학을 이용한 목표 물성 아스팔트 바인더 조성의 AI 기반 역설계</h3>
+            <p data-l="en">13 slides (in Korean). Use ← → keys or swipe to move between slides.</p>
+            <p data-l="ko">슬라이드 13장. 키보드 ← → 또는 화면을 옆으로 밀어 넘깁니다.</p>
+            <span class="go"><span data-l="en">View slides →</span><span data-l="ko">슬라이드 보기 →</span></span>
           </div>
         </a>
         <a class="card" href="ksce2026/poster.pdf">
-          <div class="th"><img src="assets/poster_thumb.jpg" alt="KSCE 2026 포스터 윗부분" loading="lazy" width="800" height="500"></div>
+          <div class="th"><img src="assets/poster_thumb.jpg" alt="KSCE 2026 poster (top)" loading="lazy" width="800" height="500"></div>
           <div class="bd">
-            <span class="tag">KSCE 2026 CONVENTION · 포스터</span>
-            <h3>고충실도 기계학습–분자동역학 프레임워크를 이용한 아스팔트 바인더 조성의 고처리량 설계</h3>
-            <p>A0 포스터 PDF (3.6 MB)</p>
-            <span class="go">PDF 보기 →</span>
+            <span class="tag"><span data-l="en">KSCE 2026 CONVENTION · POSTER</span><span data-l="ko">KSCE 2026 CONVENTION · 포스터</span></span>
+            <h3 data-l="en">A High-Fidelity Machine Learning–Molecular Dynamics Framework for High-Throughput Asphalt Binder Composition Design</h3>
+            <h3 data-l="ko">고충실도 기계학습–분자동역학 프레임워크를 이용한 아스팔트 바인더 조성의 고처리량 설계</h3>
+            <p data-l="en">A0 poster, PDF (3.6 MB, in Korean)</p>
+            <p data-l="ko">A0 포스터 PDF (3.6 MB)</p>
+            <span class="go"><span data-l="en">View PDF →</span><span data-l="ko">PDF 보기 →</span></span>
           </div>
         </a>
         <a class="card" href="kict2028/">
-          <div class="th"><img src="assets/budget_thumb.jpg" alt="’28년도 기본사업 예산요구 발표 표지" loading="lazy" width="800" height="450"></div>
+          <div class="th"><img src="assets/budget_thumb.jpg" alt="KICT FY2028 budget request presentation cover" loading="lazy" width="800" height="450"></div>
           <div class="bd">
-            <span class="tag">2026. 10. 29. · ’28년도 KICT 기본사업 예산요구 발표</span>
-            <h3>물리정보융합 AI 기반 건설소재 실물·가상 하이브리드 자율실험실 핵심기술 개발</h3>
-            <p>신규과제 기획 중간점검. 23장 중 표지 · 배경 · 목적 · 마무리 4장만 공개하며 발표 파일은 제공하지 않습니다.</p>
-            <span class="go">공개 4장 보기 →</span>
+            <span class="tag"><span data-l="en">OCT 29, 2026 · KICT FY2028 BASIC RESEARCH BUDGET REQUEST</span><span data-l="ko">2026. 10. 29. · ’28년도 KICT 기본사업 예산요구 발표</span></span>
+            <h3 data-l="en">Core Technologies for a Physics-Informed AI Hybrid Physical–Virtual Self-Driving Laboratory for Construction Materials</h3>
+            <h3 data-l="ko">물리정보융합 AI 기반 건설소재 실물·가상 하이브리드 자율실험실 핵심기술 개발</h3>
+            <p data-l="en">Interim review of a new project plan. Only 4 of 23 slides are shown; the presentation file is not provided.</p>
+            <p data-l="ko">신규과제 기획 중간점검. 23장 중 표지 · 배경 · 목적 · 마무리 4장만 공개하며 발표 파일은 제공하지 않습니다.</p>
+            <span class="go"><span data-l="en">View 4 slides →</span><span data-l="ko">공개 4장 보기 →</span></span>
           </div>
         </a>
         <a class="card" href="platform.html">
-          <div class="th"><img src="assets/platform_thumb.jpg" alt="플랫폼 소개 문서 첫 쪽" loading="lazy" width="800" height="500"></div>
+          <div class="th"><img src="assets/platform_thumb.jpg" alt="Platform overview, first page" loading="lazy" width="800" height="500"></div>
           <div class="bd">
-            <span class="tag">2026. 08. 26. · 플랫폼 소개</span>
-            <h3>아스팔트 바인더를 컴퓨터가 먼저 설계하는 자동화 플랫폼</h3>
-            <p>7쪽 문서. 처음 열 때 약 10 MB를 내려받습니다.</p>
-            <span class="go">문서 보기 →</span>
+            <span class="tag"><span data-l="en">AUG 26, 2026 · PLATFORM OVERVIEW</span><span data-l="ko">2026. 08. 26. · 플랫폼 소개</span></span>
+            <h3 data-l="en">Closed-Loop MD Automation Platform for Asphalt Binder Design</h3>
+            <h3 data-l="ko">아스팔트 바인더를 컴퓨터가 먼저 설계하는 자동화 플랫폼</h3>
+            <p data-l="en">7-page document (in Korean). About 10 MB is downloaded on first opening.</p>
+            <p data-l="ko">7쪽 문서. 처음 열 때 약 10 MB를 내려받습니다.</p>
+            <span class="go"><span data-l="en">View document →</span><span data-l="ko">문서 보기 →</span></span>
           </div>
         </a>
       </div>
@@ -153,9 +175,15 @@ footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color
 
   <section id="contact">
     <div class="wrap">
-      <h2>연락처</h2>
+      <h2><span data-l="en">Contact</span><span data-l="ko">연락처</span></h2>
       <div class="box">
-        <dl>
+        <dl data-l="en">
+          <dt>Email</dt><dd><a class="mono" href="mailto:tyun@kict.re.kr">tyun@kict.re.kr</a></dd>
+          <dt>Affiliation</dt><dd>Korea Institute of Civil Engineering and Building Technology (KICT)</dd>
+          <dt>Address</dt><dd>283 Goyangdae-ro, Goyang-si 10223, Republic of Korea</dd>
+          <dt>ORCID</dt><dd><a class="mono" href="https://orcid.org/0000-0003-1917-4126">0000-0003-1917-4126</a></dd>
+        </dl>
+        <dl data-l="ko">
           <dt>이메일</dt><dd><a class="mono" href="mailto:tyun@kict.re.kr">tyun@kict.re.kr</a></dd>
           <dt>소속</dt><dd>한국건설기술연구원 도로교통연구본부</dd>
           <dt>주소</dt><dd>10223 경기도 고양시 일산서구 고양대로 283</dd>
@@ -167,8 +195,8 @@ footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color
 </main>
 
 <footer>
-  <div class="wrap">최종 갱신 2026. 10. 17.</div>
+  <div class="wrap"><span data-l="en">Last updated Oct 17, 2026</span><span data-l="ko">최종 갱신 2026. 10. 17.</span></div>
 </footer>
-
+<script>setLang(document.documentElement.getAttribute("data-ui"));</script>
 </body>
 </html>

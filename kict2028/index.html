@@ -1,16 +1,29 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en" data-ui="en" data-title-en="KICT FY2028 Budget Request (excerpt) | Taeyoung Yun" data-title-ko="’28년도 KICT 기본사업 예산요구 발표 (일부) | 윤태영">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>’28년도 KICT 기본사업 예산요구 발표 (일부) | 윤태영</title>
+<title>KICT FY2028 Budget Request (excerpt) | Taeyoung Yun</title>
 <meta name="color-scheme" content="light">
+<script>
+/* 언어: 기본 영문, ?lang=ko|en 또는 저장된 선택(같은 사이트 모든 쪽 공통) */
+(function(){var k="sdl-lang",d=document.documentElement,l="en";
+try{l=new URLSearchParams(location.search).get("lang")||localStorage.getItem(k)||"en";}catch(e){}
+if(l!=="ko")l="en";d.setAttribute("data-ui",l);d.lang=l;
+window.setLang=function(v){d.setAttribute("data-ui",v);d.lang=v;document.title=d.getAttribute("data-title-"+v)||document.title;
+try{localStorage.setItem(k,v);}catch(e){}
+document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.v===v));});};})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
 <style>
 :root{--cream:#F8F5F0;--paper:#fff;--ink:#231F20;--ink2:#4A4440;--mute:#7A716A;--line:#E6E0D8;--or:#C8610C;
   --f:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+html[data-ui="en"] [data-l="ko"],html[data-ui="ko"] [data-l="en"]{display:none!important}
+.lang{margin-left:auto;display:inline-flex;border:1.4px solid var(--or);border-radius:6px;overflow:hidden}
+.lang button{font:600 13px/1 var(--f);padding:7px 11px;border:0;background:var(--paper);color:var(--or);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--or);color:#fff}
 *{box-sizing:border-box}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--f);line-height:1.6;word-break:keep-all;overflow-wrap:break-word}
 .wrap{max-width:1000px;margin:0 auto;padding:0 16px}
@@ -30,18 +43,21 @@ footer{margin-top:36px;padding:20px 0 36px;border-top:1px solid var(--line);font
 </style>
 </head>
 <body>
-<header><div class="wrap"><a href="../">← 첫 화면</a></div></header>
+<header><div class="wrap"><a href="../"><span data-l="en">← Home</span><span data-l="ko">← 첫 화면</span></a><div class="lang" role="group" aria-label="Language"><button type="button" data-v="en" aria-pressed="true" onclick="setLang('en')">EN</button><button type="button" data-v="ko" aria-pressed="false" onclick="setLang('ko')">한글</button></div></div></header>
 <main class="wrap">
   <div class="top">
-    <div class="tag">2026. 10. 29. · ’28년도 KICT 기본사업 예산요구 · 신규과제 기획 중간점검</div>
-    <h1>물리정보융합 AI 기반 건설소재 실물·가상 하이브리드 자율실험실 핵심기술 개발</h1>
-    <p class="note">전체 23장 중 표지 · 추진 배경 · 연구 목적 · 마무리 4장만 공개합니다. 발표 파일은 제공하지 않습니다.</p>
+    <div class="tag"><span data-l="en">OCT 29, 2026 · KICT FY2028 BASIC RESEARCH BUDGET REQUEST · INTERIM REVIEW OF A NEW PROJECT PLAN</span><span data-l="ko">2026. 10. 29. · ’28년도 KICT 기본사업 예산요구 · 신규과제 기획 중간점검</span></div>
+    <h1 data-l="en">Core Technologies for a Physics-Informed AI Hybrid Physical–Virtual Self-Driving Laboratory for Construction Materials</h1>
+    <h1 data-l="ko">물리정보융합 AI 기반 건설소재 실물·가상 하이브리드 자율실험실 핵심기술 개발</h1>
+    <p class="note" data-l="en">Only 4 of the 23 slides are shown: cover, background, objectives, and closing. The slides are in Korean, and the presentation file is not provided.</p>
+    <p class="note" data-l="ko">전체 23장 중 표지 · 추진 배경 · 연구 목적 · 마무리 4장만 공개합니다. 발표 파일은 제공하지 않습니다.</p>
   </div>
-  <figure><img src="img/slide01.jpg" alt="1쪽 표지" width="1600" height="900"><figcaption>1 · 표지</figcaption></figure>
-  <figure><img src="img/slide02.jpg" alt="2쪽 추진 배경" width="1600" height="900" loading="lazy"><figcaption>2 · 추진 배경</figcaption></figure>
-  <figure><img src="img/slide03.jpg" alt="3쪽 연구 목적" width="1600" height="900" loading="lazy"><figcaption>3 · 연구 목적</figcaption></figure>
-  <figure><img src="img/slide17.jpg" alt="마무리 쪽" width="1600" height="900" loading="lazy"><figcaption>17 · 마무리</figcaption></figure>
+  <figure><img src="img/slide01.jpg" alt="1쪽 표지" width="1600" height="900"><figcaption><span data-l="en">1 · Cover</span><span data-l="ko">1 · 표지</span></figcaption></figure>
+  <figure><img src="img/slide02.jpg" alt="2쪽 추진 배경" width="1600" height="900" loading="lazy"><figcaption><span data-l="en">2 · Background</span><span data-l="ko">2 · 추진 배경</span></figcaption></figure>
+  <figure><img src="img/slide03.jpg" alt="3쪽 연구 목적" width="1600" height="900" loading="lazy"><figcaption><span data-l="en">3 · Objectives</span><span data-l="ko">3 · 연구 목적</span></figcaption></figure>
+  <figure><img src="img/slide17.jpg" alt="마무리 쪽" width="1600" height="900" loading="lazy"><figcaption><span data-l="en">17 · Closing</span><span data-l="ko">17 · 마무리</span></figcaption></figure>
 </main>
-<footer><div class="wrap">한국건설기술연구원 도로교통연구본부 · 문의 tyun@kict.re.kr</div></footer>
+<footer><div class="wrap"><span data-l="en">Korea Institute of Civil Engineering and Building Technology · Contact tyun@kict.re.kr</span><span data-l="ko">한국건설기술연구원 도로교통연구본부 · 문의 tyun@kict.re.kr</span></div></footer>
+<script>setLang(document.documentElement.getAttribute("data-ui"));</script>
 </body>
 </html>
