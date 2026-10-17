@@ -82,13 +82,15 @@ h2::after{content:"";display:block;width:44px;height:3px;background:var(--or);ma
 .card p{margin:0;font-size:14.5px;color:var(--ink2)}
 .card .go{margin-top:auto;padding-top:8px;font-size:14.5px;font-weight:700;color:var(--or)}
 
-.course{margin-top:24px;background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--or);border-radius:8px;padding:20px 22px}
-.course h3{margin:6px 0 0;font-size:18px;line-height:1.4}
-.lec{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:9px}
-.lec li{display:grid;grid-template-columns:76px 1fr;gap:10px;font-size:15px;line-height:1.55}
-.lec .wk{font-family:var(--m);font-size:13px;font-weight:600;color:var(--or);padding-top:2px}
-@media (max-width:480px){.course{padding:18px 16px}.lec li{grid-template-columns:58px 1fr;gap:8px}}
-.course .note{margin:16px 0 0;font-size:14px;color:var(--mute)}
+.courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:18px;margin-top:24px}
+.course{display:flex;flex-direction:column;gap:6px;background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--or);border-radius:8px;padding:18px 20px;color:inherit;text-decoration:none}
+a.course{transition:box-shadow .2s,transform .2s}
+a.course:hover{box-shadow:0 8px 24px rgba(35,31,32,.12);transform:translateY(-2px)}
+.course h3{margin:0;font-size:17.5px;line-height:1.4}
+.course .brief{margin:0;font-size:14.5px;color:var(--ink2)}
+.course .go{margin-top:auto;padding-top:6px;font-size:14.5px;font-weight:700;color:var(--or)}
+.course .soon{margin-top:auto;padding-top:6px;font-size:14px;color:var(--mute)}
+@media (max-width:480px){.course{padding:16px}}
 
 .box{margin-top:24px;max-width:720px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px}
 .box dl{margin:0;display:grid;grid-template-columns:84px 1fr;row-gap:8px;font-size:15px}
@@ -222,55 +224,41 @@ footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color
   <section id="lectures">
     <div class="wrap">
       <h2><span data-l="en">Lectures</span><span data-l="ko">강의 자료</span></h2>
-      <div class="course">
-        <span class="tag"><span data-l="en">MOOC · 13 WEEKS · 2026</span><span data-l="ko">MOOC · 13주 강좌 · 2026</span></span>
-        <h3 data-l="en">AI and Molecular Dynamics for Developing Inverse-Design Tools for Construction Materials</h3>
-        <h3 data-l="ko">건설소재 역설계 도구 개발을 위한 AI와 분자동역학 활용</h3>
-        <ol class="lec" data-l="en">
-          <li><span class="wk">Week 1</span><span>Course Overview — Multiscale Modeling, Digital Twins, and the Inverse-Design Paradigm for Construction Materials</span></li>
-          <li><span class="wk">Week 2</span><span>Fundamentals of Molecular Dynamics (1) — Principles and Numerical Integration</span></li>
-          <li><span class="wk">Week 4</span><span>Using LAMMPS (1) — Setup, Input Scripts, and Building Initial and Layered Structures</span></li>
-          <li><span class="wk">Week 7</span><span>Asphalt Materials — Mixture Applications and Properties, and Binder MD (SARA, Additives, Multiple Force Fields)</span></li>
-          <li><span class="wk">Week 8</span><span>Cement Materials — Concrete Applications and Properties, and Hydration MD (C-S-H, ReaxFF, ML Force Fields)</span></li>
-          <li><span class="wk">Week 9</span><span>Machine Learning (1) — Molecular Descriptors and Surrogate Models (XGBoost + SHAP)</span></li>
-          <li><span class="wk">Week 13</span><span>Autonomous Exploration Pipeline (2) — Multi-Objective Optimization, LLM Agents, Integrated Case Studies, and Validation</span></li>
-        </ol>
-        <ol class="lec" data-l="ko">
-          <li><span class="wk">1주차</span><span>강의 개요 — 멀티스케일 모델링 · 디지털 트윈과 건설소재 역설계 패러다임</span></li>
-          <li><span class="wk">2주차</span><span>분자동역학 기초이론 (1) — 원리와 수치적분</span></li>
-          <li><span class="wk">4주차</span><span>LAMMPS 활용 (1) — 환경 구축 · 입력 스크립트 · 초기 및 다층구조 생성</span></li>
-          <li><span class="wk">7주차</span><span>아스팔트 소재 — 혼합물 활용 · 특성과 바인더 MD(SARA · 첨가제 · 다중 힘장)</span></li>
-          <li><span class="wk">8주차</span><span>시멘트 소재 — 콘크리트 활용 · 특성과 수화 MD(C-S-H · ReaxFF · ML 힘장)</span></li>
-          <li><span class="wk">9주차</span><span>기계학습 (1) — 분자 표현자와 대리모델(XGBoost + SHAP)</span></li>
-          <li><span class="wk">13주차</span><span>자율 탐색 파이프라인 (2) — 다목적 최적화 · LLM 에이전트와 통합 사례 · 검증</span></li>
-        </ol>
-        <p class="note" data-l="en">Selected lectures from the 13-week course (in Korean, 50 minutes each).</p>
-        <p class="note" data-l="ko">13주 강좌 중 일부 강의입니다(주당 50분).</p>
-      </div>
-      <div class="course">
-        <span class="tag"><span data-l="en">COURSE · 21 WEEKS · 6 PARTS</span><span data-l="ko">21주 강좌 · 6부 구성</span></span>
-        <h3 data-l="en">Viscoelastic Materials</h3>
-        <h3 data-l="ko">점탄성 재료</h3>
-        <ol class="lec" data-l="en">
-          <li><span class="wk">Week 1</span><span>Introduction to Viscoelasticity</span></li>
-          <li><span class="wk">Week 6</span><span>Prony Series &amp; Relaxation Spectrum</span></li>
-          <li><span class="wk">Week 9</span><span>Time-Temperature Superposition</span></li>
-          <li><span class="wk">Week 13</span><span>Elastic-Viscoelastic Correspondence</span></li>
-          <li><span class="wk">Week 14</span><span>Multi-Layered Elastic Theory I</span></li>
-          <li><span class="wk">Week 17</span><span>PINN Fundamentals &amp; Viscoelastic ODE</span></li>
-          <li><span class="wk">Week 21</span><span>PINN for Viscoelastic Constitutive Models</span></li>
-        </ol>
-        <ol class="lec" data-l="ko">
-          <li><span class="wk">1주차</span><span>점탄성 개론</span></li>
-          <li><span class="wk">6주차</span><span>Prony 급수와 이완 스펙트럼</span></li>
-          <li><span class="wk">9주차</span><span>시간-온도 중첩</span></li>
-          <li><span class="wk">13주차</span><span>탄성-점탄성 대응 원리</span></li>
-          <li><span class="wk">14주차</span><span>다층 탄성 이론 (1)</span></li>
-          <li><span class="wk">17주차</span><span>PINN(물리 정보 신경망) 기초와 점탄성 상미분방정식</span></li>
-          <li><span class="wk">21주차</span><span>점탄성 구성 모델을 위한 PINN</span></li>
-        </ol>
-        <p class="note" data-l="en">Selected lectures from the 21-week course, which runs from viscoelastic fundamentals through material functions, advanced theory, and structural and pavement applications to PINN methods. Each week comes with lecture slides and interactive visualizations; most weeks also include a Python app.</p>
-        <p class="note" data-l="ko">21주 강좌 중 일부 강의입니다. 점탄성 기초에서 재료 함수, 심화 이론, 구조·포장 응용을 거쳐 PINN 기법까지 다룹니다. 주차마다 강의 슬라이드와 대화형 시각화가 있고, 대부분의 주차에는 Python 앱도 있습니다.</p>
+      <div class="courses">
+        <a class="course" href="lectures/mooc/">
+          <span class="tag"><span data-l="en">MOOC · 13 WEEKS · 2026</span><span data-l="ko">MOOC · 13주 강좌 · 2026</span></span>
+          <h3 data-l="en">AI and Molecular Dynamics for Developing Inverse-Design Tools for Construction Materials</h3>
+          <h3 data-l="ko">건설소재 역설계 도구 개발을 위한 AI와 분자동역학 활용</h3>
+          <p class="brief" data-l="en">13 lectures and 4 supplements (in Korean, 50 minutes per week). Lecture slides can be downloaded as PDF files with a password.</p>
+          <p class="brief" data-l="ko">강의 13개와 보충 4개(주당 50분). 강의 슬라이드 PDF를 비밀번호로 내려받을 수 있습니다.</p>
+          <span class="go"><span data-l="en">Lecture list · download →</span><span data-l="ko">강의 목록 · 내려받기 →</span></span>
+        </a>
+        <a class="course" href="lectures/viscoelastic/">
+          <span class="tag"><span data-l="en">COURSE · 21 WEEKS · 6 PARTS</span><span data-l="ko">21주 강좌 · 6부 구성</span></span>
+          <h3 data-l="en">Viscoelastic Materials</h3>
+          <h3 data-l="ko">점탄성 재료</h3>
+          <p class="brief" data-l="en">From viscoelastic fundamentals through material functions, advanced theory, and pavement applications to PINN methods. Lecture files will be added.</p>
+          <p class="brief" data-l="ko">점탄성 기초에서 재료 함수, 심화 이론, 포장 응용을 거쳐 PINN 기법까지 다룹니다. 강의 파일은 추후 올립니다.</p>
+          <span class="go"><span data-l="en">Lecture list →</span><span data-l="ko">강의 목록 →</span></span>
+        </a>
+        <div class="course">
+          <span class="tag"><span data-l="en">COURSE · 16 WEEKS</span><span data-l="ko">16주 강좌</span></span>
+          <h3 data-l="en">Pavement Design Methods</h3>
+          <h3 data-l="ko">도로 포장 설계법</h3>
+          <span class="soon"><span data-l="en">Lecture list and files will be added.</span><span data-l="ko">강의 목록과 파일은 추후 올립니다.</span></span>
+        </div>
+        <div class="course">
+          <span class="tag"><span data-l="en">COURSE · 16 WEEKS</span><span data-l="ko">16주 강좌</span></span>
+          <h3 data-l="en">Road Maintenance</h3>
+          <h3 data-l="ko">도로 유지관리</h3>
+          <span class="soon"><span data-l="en">Lecture list and files will be added.</span><span data-l="ko">강의 목록과 파일은 추후 올립니다.</span></span>
+        </div>
+        <div class="course">
+          <span class="tag"><span data-l="en">COURSE · 16 WEEKS</span><span data-l="ko">16주 강좌</span></span>
+          <h3 data-l="en">Mix Design of Asphalt Paving Materials</h3>
+          <h3 data-l="ko">아스팔트 포장 재료의 배합설계</h3>
+          <span class="soon"><span data-l="en">Lecture list and files will be added.</span><span data-l="ko">강의 목록과 파일은 추후 올립니다.</span></span>
+        </div>
       </div>
     </div>
   </section>

@@ -3,9 +3,15 @@
    키 = PBKDF2-SHA256(비밀번호 NFC). 만드는 쪽 = 리포 docs/presentations/2026_KSCE/site_tools/encrypt_protected.py */
 (function () {
   var MSG = {
-    en: { busy: "Decrypting… (a few seconds)", bad: "Wrong password.", ok: "Downloaded: ", err: "Could not load the file.", ctx: "This browser cannot decrypt here (secure connection required)." },
-    ko: { busy: "푸는 중… (몇 초 걸립니다)", bad: "비밀번호가 맞지 않습니다.", ok: "내려받았습니다: ", err: "파일을 불러오지 못했습니다.", ctx: "이 브라우저에서는 풀 수 없습니다(보안 연결 필요)." }
+    en: { busy: "Decrypting… (a few seconds)", bad: "Wrong password.", ok: "Downloaded: ", err: "Could not load the file.", ctx: "This browser cannot decrypt here (secure connection required).", need: "Enter the password at the top first." },
+    ko: { busy: "푸는 중… (몇 초 걸립니다)", bad: "비밀번호가 맞지 않습니다.", ok: "내려받았습니다: ", err: "파일을 불러오지 못했습니다.", ctx: "이 브라우저에서는 풀 수 없습니다(보안 연결 필요).", need: "위쪽 칸에 비밀번호를 먼저 넣어 주세요." }
   };
+  function save(pt, name) {
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([pt], { type: "application/octet-stream" }));
+    a.download = name; document.body.appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+  }
   function lang() { return document.documentElement.getAttribute("data-ui") === "ko" ? "ko" : "en"; }
 
   async function decrypt(url, pw) {
@@ -32,14 +38,31 @@
       btn.disabled = true; st.className = "st"; st.textContent = m.busy;
       try {
         var pt = await decrypt(f.dataset.src, inp.value);
-        var a = document.createElement("a");
-        a.href = URL.createObjectURL(new Blob([pt], { type: "application/octet-stream" }));
-        a.download = f.dataset.name; document.body.appendChild(a); a.click();
-        setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+        save(pt, f.dataset.name);
         st.className = "st ok"; st.textContent = m.ok + f.dataset.name; inp.value = "";
       } catch (e) {
         st.className = "st bad"; st.textContent = e.bad ? m.bad : (e.ctx ? m.ctx : m.err);
       } finally { btn.disabled = false; }
+    });
+  });
+
+  /* 한 비밀번호로 여러 파일(강의 목록): .plist 안의 비밀번호 칸 하나 + button.dl[data-src][data-name] 여러 개.
+     비밀번호는 쪽을 떠날 때까지 칸에 남아 다음 파일에도 쓰인다(저장하지 않음). */
+  document.querySelectorAll(".plist").forEach(function (box) {
+    var inp = box.querySelector("input[type=password]");
+    box.querySelectorAll("button.dl").forEach(function (btn) {
+      var st = btn.parentNode.querySelector(".st");
+      btn.addEventListener("click", async function () {
+        var m = MSG[lang()];
+        if (!inp.value) { st.className = "st bad"; st.textContent = m.need; inp.focus(); return; }
+        btn.disabled = true; st.className = "st"; st.textContent = m.busy;
+        try {
+          save(await decrypt(btn.dataset.src, inp.value), btn.dataset.name);
+          st.className = "st ok"; st.textContent = m.ok + btn.dataset.name;
+        } catch (e) {
+          st.className = "st bad"; st.textContent = e.bad ? m.bad : (e.ctx ? m.ctx : m.err);
+        } finally { btn.disabled = false; }
+      });
     });
   });
 })();
