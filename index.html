@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>아스팔트 바인더 MD 자동 계산 · 기계학습 역설계 | KICT 윤태영</title>
-<meta name="description" content="목표 물성을 정하면 분자동역학(MD) 계산 · 판정 · 물성 추출 · 예측 모델 갱신을 자동으로 반복해 아스팔트 바인더 조성을 제안하는 연구. 한국건설기술연구원 윤태영.">
+<title>윤태영 · 한국건설기술연구원 | 발표 자료</title>
+<meta name="description" content="한국건설기술연구원 도로교통연구본부 윤태영 연구위원 — 소개 · 발표 자료(KSCE 2026 구두 발표 · 포스터 · 플랫폼 소개) · 연락처">
 <meta property="og:type" content="website">
-<meta property="og:title" content="아스팔트 바인더 MD 자동 계산 · 기계학습 역설계">
-<meta property="og:description" content="KSCE 2026 구두 발표 · 포스터 · 플랫폼 소개 문서 | 한국건설기술연구원 윤태영">
+<meta property="og:title" content="윤태영 · 한국건설기술연구원 | 발표 자료">
+<meta property="og:description" content="KSCE 2026 구두 발표 · 포스터 · 플랫폼 소개 문서">
 <meta property="og:image" content="https://sentirain7.github.io/Self_Driving_Lab_Instruction/assets/talk_cover.jpg">
 <meta property="og:url" content="https://sentirain7.github.io/Self_Driving_Lab_Instruction/">
 <meta name="color-scheme" content="light">
@@ -17,9 +17,7 @@
 <style>
 :root{
   --cream:#F8F5F0; --paper:#FFFFFF; --ink:#231F20; --ink2:#4A4440; --mute:#7A716A; --line:#E6E0D8;
-  --or:#C8610C; --or-bg:#FEF0DC; --or-line:#F3C58A; --gold:#FBB44E;
-  --bl:#156082; --bl-bg:#E6F0F5; --bl-line:#B9D3E0;
-  --gr:#4E6B3A; --gr-bg:#EEF3E8; --gr-line:#C9D8BC;
+  --or:#C8610C; --or-bg:#FEF0DC;
   --f:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --m:"JetBrains Mono",ui-monospace,monospace;
   --w:1120px;
@@ -32,43 +30,30 @@ img{max-width:100%;display:block}
 .wrap{max-width:var(--w);margin:0 auto;padding:0 16px}
 @media (min-width:720px){.wrap{padding:0 28px}}
 
-/* 머리 */
 header{position:sticky;top:0;z-index:10;background:rgba(248,245,240,.94);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid var(--line)}
 .hd{display:flex;align-items:center;gap:14px;min-height:58px}
 .hd img{height:26px;width:auto}
-.hd .who{font-size:13.5px;color:var(--ink2);line-height:1.3}
-.hd nav{margin-left:auto;display:none;gap:22px;font-size:14.5px}
+.hd nav{margin-left:auto;display:flex;gap:16px;font-size:14.5px}
 .hd nav a{text-decoration:none;color:var(--ink2)}
 .hd nav a:hover{color:var(--or)}
-@media (min-width:860px){.hd nav{display:flex}}
+@media (min-width:720px){.hd nav{gap:24px}}
 
-/* 첫 화면 */
-.hero{padding:44px 0 36px;border-bottom:1px solid var(--line);background:
-  radial-gradient(900px 420px at 100% 0%,rgba(249,157,28,.12),transparent 60%)}
+/* 소개 */
+.intro{padding:44px 0 40px;border-bottom:1px solid var(--line);background:radial-gradient(900px 420px at 100% 0%,rgba(249,157,28,.12),transparent 60%)}
 .eyebrow{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--or)}
-h1{margin:10px 0 0;font-size:clamp(26px,4.6vw,40px);line-height:1.3;letter-spacing:-.02em;font-weight:700}
-h1 .u{box-shadow:inset 0 -.32em 0 var(--or-bg)}
-.lead{margin:18px 0 0;max-width:780px;font-size:clamp(16px,2.1vw,18px);color:var(--ink2)}
-.stats{margin-top:26px;display:grid;grid-template-columns:1fr;gap:10px}
-@media (min-width:720px){.stats{grid-template-columns:repeat(3,1fr);gap:14px}}
-.stat{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--or);border-radius:6px;padding:12px 16px}
-.stat b{display:block;font-size:26px;line-height:1.2;font-variant-numeric:tabular-nums}
-.stat span{font-size:14px;color:var(--ink2)}
-.cta{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px}
-.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:15px;padding:11px 18px;border-radius:6px;border:1.6px solid var(--or);color:var(--or);background:var(--paper)}
-.btn.pri{background:var(--or);color:#fff}
-.btn:hover{filter:brightness(.95)}
-.btn svg{width:16px;height:16px}
+h1{margin:10px 0 0;font-size:clamp(30px,5vw,44px);line-height:1.25;letter-spacing:-.02em;font-weight:700}
+h1 small{display:block;margin-top:6px;font-size:clamp(17px,2.4vw,20px);font-weight:500;color:var(--ink2);letter-spacing:0}
+.lead{margin:20px 0 0;max-width:780px;font-size:clamp(16px,2.1vw,18px);color:var(--ink2)}
+.topics{margin:22px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.topics li{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--or);border-radius:4px;padding:6px 12px;font-size:14.5px}
 
 /* 절 */
 section{padding:48px 0}
 section+section{border-top:1px solid var(--line)}
-.sh{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
 h2{margin:0;font-size:clamp(22px,3vw,28px);letter-spacing:-.01em}
 h2::after{content:"";display:block;width:44px;height:3px;background:var(--or);margin-top:10px}
-.sh p{margin:0;color:var(--mute);font-size:14.5px}
 
-/* 자료 카드 */
+/* 발표 자료 목록 */
 .cards{margin-top:24px;display:grid;grid-template-columns:1fr;gap:18px}
 @media (min-width:720px){.cards{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:1000px){.cards{grid-template-columns:repeat(3,1fr)}}
@@ -82,44 +67,13 @@ h2::after{content:"";display:block;width:44px;height:3px;background:var(--or);ma
 .card p{margin:0;font-size:14.5px;color:var(--ink2)}
 .card .go{margin-top:auto;padding-top:8px;font-size:14.5px;font-weight:700;color:var(--or)}
 
-/* 연구 체계 */
-.steps{margin:24px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:1fr;gap:10px;counter-reset:st}
-@media (min-width:640px){.steps{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:1000px){.steps{grid-template-columns:repeat(4,1fr)}}
-.steps li{counter-increment:st;position:relative;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px 14px 14px 52px;min-height:76px}
-.steps li::before{content:counter(st);position:absolute;left:14px;top:14px;width:26px;height:26px;border-radius:4px;background:var(--or);color:#fff;font:600 13px/26px var(--m);text-align:center}
-.steps li.j::before{background:var(--bl)}
-.steps li.u0::before{background:var(--ink)}
-.steps b{display:block;font-size:15.5px;line-height:1.35}
-.steps span{font-size:13.5px;color:var(--mute)}
-.note{margin-top:14px;font-size:14.5px;color:var(--ink2)}
-.legend{margin-top:10px;display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--mute)}
-.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
-
-/* 향후 연구 */
-.tech{margin-top:24px;display:grid;grid-template-columns:1fr;gap:14px}
-@media (min-width:860px){.tech{grid-template-columns:repeat(3,1fr)}}
-.tk{border-radius:8px;padding:18px;border:1.5px solid}
-.tk.t1{background:var(--or-bg);border-color:var(--or-line)}
-.tk.t2{background:var(--gr-bg);border-color:var(--gr-line)}
-.tk.t3{background:var(--bl-bg);border-color:var(--bl-line)}
-.tk .no{font-size:12.5px;font-weight:700;letter-spacing:.04em}
-.tk.t1 .no{color:var(--or)}.tk.t2 .no{color:var(--gr)}.tk.t3 .no{color:var(--bl)}
-.tk h3{margin:4px 0 8px;font-size:17.5px}
-.tk p{margin:0;font-size:14.5px;color:var(--ink2)}
-.tk ul{margin:10px 0 0;padding-left:18px;font-size:14px;color:var(--ink2)}
-
 /* 연락처 */
-.contact{margin-top:24px;display:grid;grid-template-columns:1fr;gap:18px}
-@media (min-width:860px){.contact{grid-template-columns:1.2fr 1fr}}
-.box{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px}
+.box{margin-top:24px;max-width:720px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px}
 .box dl{margin:0;display:grid;grid-template-columns:72px 1fr;row-gap:8px;font-size:15px}
 .box dt{color:var(--or);font-weight:700}
 .box dd{margin:0}
 .mono{font-family:var(--m);font-size:14px}
-.ack{font-size:14px;color:var(--ink2)}
-footer{padding:26px 0 40px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
-footer .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
+footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
 </style>
 </head>
 <body>
@@ -127,45 +81,40 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-betw
 <header>
   <div class="wrap hd">
     <img src="assets/kict_logo.png" alt="KICT 한국건설기술연구원" width="112" height="26">
-    <div class="who">윤태영 연구위원<br>도로교통연구본부</div>
     <nav aria-label="쪽 안 이동">
-      <a href="#materials">발표 · 자료</a>
-      <a href="#method">연구 체계</a>
-      <a href="#future">향후 연구</a>
+      <a href="#about">소개</a>
+      <a href="#materials">발표 자료</a>
       <a href="#contact">연락처</a>
     </nav>
   </div>
 </header>
 
 <main>
-  <div class="hero">
+  <div class="intro" id="about">
     <div class="wrap">
-      <div class="eyebrow">ASPHALT BINDER · MOLECULAR DYNAMICS · MACHINE LEARNING</div>
-      <h1>아스팔트 바인더 조성 설계를 위한<br><span class="u">분자동역학 자동 계산</span>과 기계학습</h1>
-      <p class="lead">목표 물성을 정하면 후보 분자와 첨가제를 만들고, 분자동역학(MD) 계산, 결과 판정, 물성 추출, 예측 모델 갱신을 자동으로 반복해 바인더 조성을 제안합니다. 모든 계산 기록은 데이터베이스에 저장되어 다음 후보를 고르는 학습 자료로 쓰입니다.</p>
-      <div class="stats">
-        <div class="stat"><b>4,020건</b><span>자동 MD 계산 · 2026. 10. 17. 기준</span></div>
-        <div class="stat"><b>3종</b><span>계산 구조 · 벌크 · 층상 인장 · 샌드위치 전단</span></div>
-        <div class="stat"><b>3종</b><span>역설계 목표 · 고강성 · 고응집 · 저밀도 유연</span></div>
-      </div>
-      <div class="cta">
-        <a class="btn pri" href="ksce2026/talk/">KSCE 2026 발표 슬라이드
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn" href="platform.html">플랫폼 소개 문서</a>
-      </div>
+      <div class="eyebrow">KOREA INSTITUTE OF CIVIL ENGINEERING AND BUILDING TECHNOLOGY</div>
+      <h1>윤태영 <span style="font-size:.55em;font-weight:500;color:var(--mute)">Taeyoung Yun</span>
+        <small>한국건설기술연구원 도로교통연구본부 연구위원</small></h1>
+      <p class="lead">아스팔트 바인더와 도로 건설재료를 분자 수준에서 계산하고, 그 결과로 재료 조성을 설계하는 연구를 하고 있습니다. 분자동역학(MD) 계산을 자동으로 실행 · 판정하는 계산 체계를 만들고, 계산 결과로 학습한 기계학습 모델로 목표 물성을 갖는 바인더 조성을 찾습니다.</p>
+      <ul class="topics" aria-label="연구 분야">
+        <li>아스팔트 바인더 분자동역학</li>
+        <li>골재–바인더 계면 인장 · 전단 · 수분 영향</li>
+        <li>기계학습 기반 조성 역설계</li>
+        <li>계산 · 로봇 실험 연계 자율실험실</li>
+      </ul>
     </div>
   </div>
 
   <section id="materials">
     <div class="wrap">
-      <div class="sh"><h2>발표 · 자료</h2><p>제목을 누르면 열립니다</p></div>
+      <h2>발표 자료</h2>
       <div class="cards">
         <a class="card" href="ksce2026/talk/">
           <div class="th"><img src="assets/talk_cover.jpg" alt="KSCE 2026 구두 발표 표지" loading="lazy" width="800" height="450"></div>
           <div class="bd">
             <span class="tag">KSCE 2026 CONVENTION · 2026. 10. 23. 구두 발표</span>
             <h3>기계학습과 분자동역학을 이용한 목표 물성 아스팔트 바인더 조성의 AI 기반 역설계</h3>
-            <p>슬라이드 13장. 계산 영상과 그래프가 들어 있습니다. 키보드 ← → 또는 화면을 옆으로 밀어 넘깁니다.</p>
+            <p>슬라이드 13장. 키보드 ← → 또는 화면을 옆으로 밀어 넘깁니다.</p>
             <span class="go">슬라이드 보기 →</span>
           </div>
         </a>
@@ -183,7 +132,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-betw
           <div class="bd">
             <span class="tag">2026. 08. 26. · 플랫폼 소개</span>
             <h3>아스팔트 바인더를 컴퓨터가 먼저 설계하는 자동화 플랫폼</h3>
-            <p>플랫폼 구조, 계산 대상, 실험실 연계 방안을 정리한 7쪽 문서. 처음 열 때 약 10 MB를 내려받습니다.</p>
+            <p>7쪽 문서. 처음 열 때 약 10 MB를 내려받습니다.</p>
             <span class="go">문서 보기 →</span>
           </div>
         </a>
@@ -191,78 +140,23 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-betw
     </div>
   </section>
 
-  <section id="method">
-    <div class="wrap">
-      <div class="sh"><h2>연구 체계</h2><p>8단계 자동 계산 Closed loop</p></div>
-      <ol class="steps">
-        <li class="u0"><b>목표 물성 정의</b><span>연구자가 목표 물성과 조성 범위 입력</span></li>
-        <li><b>후보 분자 · 첨가제</b><span>분자 라이브러리에서 후보 생성</span></li>
-        <li><b>분자 모델 · 구조 생성</b><span>벌크 · 층상 · 샌드위치 구조</span></li>
-        <li><b>GPU 분자동역학 계산</b><span>고성능 GPU에서 자동 실행</span></li>
-        <li class="j"><b>실패 판정 · 재시도</b><span>평형 · 오류 자동 판정 후 재실행</span></li>
-        <li class="j"><b>물성 · 에너지 추출</b><span>밀도 · 강도 · 계면 에너지</span></li>
-        <li class="j"><b>DB 축적</b><span>계산 기록 · 원자료 보존</span></li>
-        <li class="j"><b>예측 모델 갱신</b><span>다음 계산 후보 선택 → 2단계로</span></li>
-      </ol>
-      <p class="note">목표를 입력한 뒤 2~8단계는 사람 개입 없이 반복됩니다. 예측 모델은 가우스 과정 대리모형이고, 예측 개선 기대가 가장 큰 점을 다음 계산 후보로 고릅니다.</p>
-      <div class="legend"><span><i style="background:var(--ink)"></i>연구자 입력</span><span><i style="background:var(--or)"></i>MD 계산</span><span><i style="background:var(--bl)"></i>판정 · 학습</span></div>
-    </div>
-  </section>
-
-  <section id="future">
-    <div class="wrap">
-      <div class="sh"><h2>향후 연구 · 자율실험실</h2><p>과제 기획 내용</p></div>
-      <p class="lead" style="margin-top:18px">지금의 계산 Closed loop에 로봇 실험과 분석 장비를 더해, 실험 결과로 예측 모델을 다시 학습하고 다음 실험 후보를 고르는 자율실험실을 준비하고 있습니다.</p>
-      <div class="tech">
-        <div class="tk t1">
-          <div class="no">핵심기술 1</div>
-          <h3>가상실험 자동화 에이전트</h3>
-          <p>MD · 기계학습 계산 자동화. 본 연구의 성과를 그대로 사용합니다.</p>
-          <ul><li>자동 문헌조사 · 후보 도출</li><li>첨가제 후보 가상 스크리닝(GPU · MD · AI)</li><li>대리모형 재학습 · 후보 재선별</li></ul>
-        </div>
-        <div class="tk t2">
-          <div class="no">핵심기술 2</div>
-          <h3>로봇 실물실험 워크플로우</h3>
-          <p>가상 스크리닝으로 고른 후보를 로봇이 직접 만들고 측정해 검증합니다.</p>
-          <ul><li>배합 · 시편 제작 · 측정 자동화</li><li>로봇 셀 · BBR · DSR</li></ul>
-        </div>
-        <div class="tk t3">
-          <div class="no">핵심기술 3</div>
-          <h3>오케스트레이션</h3>
-          <p>가상 · 실물 결과를 함께 보고 검증 대상과 우선순위를 정합니다.</p>
-          <ul><li>화학 분석 자동화(FTIR · XRD 등)</li><li>결과 자동 분석 · 온실가스 평가 · DB 축적</li></ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="contact">
     <div class="wrap">
-      <div class="sh"><h2>연락처</h2></div>
-      <div class="contact">
-        <div class="box">
-          <dl>
-            <dt>이름</dt><dd>윤태영 연구위원 (Taeyoung Yun)</dd>
-            <dt>소속</dt><dd>한국건설기술연구원 도로교통연구본부</dd>
-            <dt>주소</dt><dd>10223 경기도 고양시 일산서구 고양대로 283</dd>
-            <dt>이메일</dt><dd><a class="mono" href="mailto:tyun@kict.re.kr">tyun@kict.re.kr</a></dd>
-            <dt>ORCID</dt><dd><a class="mono" href="https://orcid.org/0000-0003-1917-4126">0000-0003-1917-4126</a></dd>
-          </dl>
-        </div>
-        <div class="box ack">
-          <b style="display:block;color:var(--ink);margin-bottom:6px">사사</b>
-          과학기술정보통신부 재원 한국건설기술연구원 주요사업(과제번호 20260120–001) 지원
-        </div>
+      <h2>연락처</h2>
+      <div class="box">
+        <dl>
+          <dt>이메일</dt><dd><a class="mono" href="mailto:tyun@kict.re.kr">tyun@kict.re.kr</a></dd>
+          <dt>소속</dt><dd>한국건설기술연구원 도로교통연구본부</dd>
+          <dt>주소</dt><dd>10223 경기도 고양시 일산서구 고양대로 283</dd>
+          <dt>ORCID</dt><dd><a class="mono" href="https://orcid.org/0000-0003-1917-4126">0000-0003-1917-4126</a></dd>
+        </dl>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">
-    <span>© 2026 윤태영 · 한국건설기술연구원</span>
-    <span>최종 갱신 2026. 10. 17. · 발표 자료 속 사진 출처는 각 장에 표기</span>
-  </div>
+  <div class="wrap">최종 갱신 2026. 10. 17.</div>
 </footer>
 
 </body>
