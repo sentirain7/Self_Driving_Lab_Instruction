@@ -82,6 +82,14 @@ h2::after{content:"";display:block;width:44px;height:3px;background:var(--or);ma
 .card p{margin:0;font-size:14.5px;color:var(--ink2)}
 .card .go{margin-top:auto;padding-top:8px;font-size:14.5px;font-weight:700;color:var(--or)}
 
+.course{margin-top:24px;background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--or);border-radius:8px;padding:20px 22px}
+.course h3{margin:6px 0 0;font-size:18px;line-height:1.4}
+.lec{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:9px}
+.lec li{display:grid;grid-template-columns:76px 1fr;gap:10px;font-size:15px;line-height:1.55}
+.lec .wk{font-family:var(--m);font-size:13px;font-weight:600;color:var(--or);padding-top:2px}
+@media (max-width:480px){.course{padding:18px 16px}.lec li{grid-template-columns:58px 1fr;gap:8px}}
+.course .note{margin:16px 0 0;font-size:14px;color:var(--mute)}
+
 .box{margin-top:24px;max-width:720px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px}
 .box dl{margin:0;display:grid;grid-template-columns:84px 1fr;row-gap:8px;font-size:15px}
 .box dt{color:var(--or);font-weight:700}
@@ -98,6 +106,7 @@ footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color
     <nav aria-label="Sections">
       <a href="#about"><span data-l="en">About</span><span data-l="ko">소개</span></a>
       <a href="#materials"><span data-l="en">Presentations</span><span data-l="ko">발표 자료</span></a>
+      <a href="#lectures"><span data-l="en">Lectures</span><span data-l="ko">강의 자료</span></a>
       <a href="#contact"><span data-l="en">Contact</span><span data-l="ko">연락처</span></a>
     </nav>
     <div class="lang" role="group" aria-label="Language">
@@ -206,6 +215,37 @@ footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color
             <span class="go"><span data-l="en">Preview · download →</span><span data-l="ko">미리보기 · 내려받기 →</span></span>
           </div>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="lectures">
+    <div class="wrap">
+      <h2><span data-l="en">Lectures</span><span data-l="ko">강의 자료</span></h2>
+      <div class="course">
+        <span class="tag"><span data-l="en">MOOC · 13 WEEKS · 2026</span><span data-l="ko">MOOC · 13주 강좌 · 2026</span></span>
+        <h3 data-l="en">AI and Molecular Dynamics for Developing Inverse-Design Tools for Construction Materials</h3>
+        <h3 data-l="ko">건설소재 역설계 도구 개발을 위한 AI와 분자동역학 활용</h3>
+        <ol class="lec" data-l="en">
+          <li><span class="wk">Week 1</span><span>Course Overview — Multiscale Modeling, Digital Twins, and the Inverse-Design Paradigm for Construction Materials</span></li>
+          <li><span class="wk">Week 2</span><span>Fundamentals of Molecular Dynamics (1) — Principles and Numerical Integration</span></li>
+          <li><span class="wk">Week 4</span><span>Using LAMMPS (1) — Setup, Input Scripts, and Building Initial and Layered Structures</span></li>
+          <li><span class="wk">Week 7</span><span>Asphalt Materials — Mixture Applications and Properties, and Binder MD (SARA, Additives, Multiple Force Fields)</span></li>
+          <li><span class="wk">Week 8</span><span>Cement Materials — Concrete Applications and Properties, and Hydration MD (C-S-H, ReaxFF, ML Force Fields)</span></li>
+          <li><span class="wk">Week 9</span><span>Machine Learning (1) — Molecular Descriptors and Surrogate Models (XGBoost + SHAP)</span></li>
+          <li><span class="wk">Week 13</span><span>Autonomous Exploration Pipeline (2) — Multi-Objective Optimization, LLM Agents, Integrated Case Studies, and Validation</span></li>
+        </ol>
+        <ol class="lec" data-l="ko">
+          <li><span class="wk">1주차</span><span>강의 개요 — 멀티스케일 모델링 · 디지털 트윈과 건설소재 역설계 패러다임</span></li>
+          <li><span class="wk">2주차</span><span>분자동역학 기초이론 (1) — 원리와 수치적분</span></li>
+          <li><span class="wk">4주차</span><span>LAMMPS 활용 (1) — 환경 구축 · 입력 스크립트 · 초기 및 다층구조 생성</span></li>
+          <li><span class="wk">7주차</span><span>아스팔트 소재 — 혼합물 활용 · 특성과 바인더 MD(SARA · 첨가제 · 다중 힘장)</span></li>
+          <li><span class="wk">8주차</span><span>시멘트 소재 — 콘크리트 활용 · 특성과 수화 MD(C-S-H · ReaxFF · ML 힘장)</span></li>
+          <li><span class="wk">9주차</span><span>기계학습 (1) — 분자 표현자와 대리모델(XGBoost + SHAP)</span></li>
+          <li><span class="wk">13주차</span><span>자율 탐색 파이프라인 (2) — 다목적 최적화 · LLM 에이전트와 통합 사례 · 검증</span></li>
+        </ol>
+        <p class="note" data-l="en">Selected lectures from the 13-week course (in Korean, 50 minutes each).</p>
+        <p class="note" data-l="ko">13주 강좌 중 일부 강의입니다(주당 50분).</p>
       </div>
     </div>
   </section>
