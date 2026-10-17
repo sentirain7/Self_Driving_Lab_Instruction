@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" data-ui="en" data-title-en="Using Molecular Dynamics (MD) to Develop Modified Asphalt Binders | Taeyoung Yun" data-title-ko="개질 아스팔트 바인더 개발을 위한 분자동역학(MD) 활용 | 윤태영">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Using Molecular Dynamics (MD) to Develop Modified Asphalt Binders | Taeyoung Yun</title>
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex">
+<script>
+/* 언어: 기본 영문, ?lang=ko|en 또는 저장된 선택(같은 사이트 모든 쪽 공통) */
+(function(){var k="sdl-lang",d=document.documentElement,l="en";
+try{l=new URLSearchParams(location.search).get("lang")||localStorage.getItem(k)||"en";}catch(e){}
+if(l!=="ko")l="en";d.setAttribute("data-ui",l);d.lang=l;
+window.setLang=function(v){d.setAttribute("data-ui",v);d.lang=v;document.title=d.getAttribute("data-title-"+v)||document.title;
+try{localStorage.setItem(k,v);}catch(e){}
+document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.v===v));});};})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{--cream:#F8F5F0;--paper:#fff;--ink:#231F20;--ink2:#4A4440;--mute:#7A716A;--line:#E6E0D8;--or:#C8610C;--or-bg:#FEF0DC;
+  --f:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;--m:"JetBrains Mono",ui-monospace,monospace}
+html[data-ui="en"] [data-l="ko"],html[data-ui="ko"] [data-l="en"]{display:none!important}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--f);line-height:1.6;word-break:keep-all;overflow-wrap:break-word}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+@media (min-width:720px){.wrap{padding:0 28px}}
+header{border-bottom:1px solid var(--line);background:rgba(248,245,240,.94)}
+header .wrap{display:flex;align-items:center;min-height:56px}
+header a{color:var(--ink2);text-decoration:none;font-size:14.5px}
+header a:hover{color:var(--or)}
+.lang{margin-left:auto;display:inline-flex;border:1.4px solid var(--or);border-radius:6px;overflow:hidden}
+.lang button{font:600 13px/1 var(--f);padding:7px 11px;border:0;background:var(--paper);color:var(--or);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--or);color:#fff}
+.top{padding:32px 0 8px}
+.tag{font-size:13px;font-weight:700;color:var(--or)}
+h1{margin:8px 0 0;font-size:clamp(22px,3.6vw,30px);line-height:1.35;letter-spacing:-.01em}
+.note{margin:12px 0 0;font-size:14.5px;color:var(--ink2)}
+form.protect{margin:22px 0 0;background:var(--paper);border:1.6px solid var(--or);border-radius:8px;padding:16px 18px}
+form.protect .ph{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px}
+form.protect .ph b{font-size:16px}
+form.protect .sz{font-family:var(--m);font-size:13px;color:var(--mute)}
+form.protect .row{display:flex;gap:8px;margin-top:10px}
+form.protect input{flex:1;min-width:0;font:15px var(--f);padding:10px 12px;border:1.4px solid var(--line);border-radius:6px;background:#fff}
+form.protect input:focus{outline:2px solid var(--or);outline-offset:1px}
+form.protect button{font:700 15px var(--f);padding:10px 18px;border:0;border-radius:6px;background:var(--or);color:#fff;cursor:pointer;flex:none}
+form.protect button:disabled{opacity:.6;cursor:wait}
+form.protect .st{margin:8px 0 0;font-size:14px;color:var(--ink2);min-height:1.4em}
+form.protect .st.ok{color:#2E7D32}
+form.protect .st.bad{color:#B3261E}
+.grid{display:grid;grid-template-columns:1fr;gap:22px;margin-top:22px}
+.grid.tall{grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))}
+figure{margin:0}
+figure img{display:block;width:100%;height:auto;border:1.6px solid #6A645D;border-radius:6px;background:#fff}
+figcaption{margin-top:6px;font-size:13.5px;color:var(--mute)}
+footer{margin-top:36px;padding:20px 0 36px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a href="../"><span data-l="en">← Home</span><span data-l="ko">← 첫 화면</span></a>
+<div class="lang" role="group" aria-label="Language"><button type="button" data-v="en" aria-pressed="true" onclick="setLang('en')">EN</button><button type="button" data-v="ko" aria-pressed="false" onclick="setLang('ko')">한글</button></div></div></header>
+<main class="wrap">
+  <div class="top">
+    <div class="tag"><span data-l="en">SEP 28, 2026 · PROJECT PROPOSAL TO GS CALTEX</span><span data-l="ko">2026. 09. 28. · GS칼텍스 과제 제안</span></div>
+    <h1 data-l="en">Using Molecular Dynamics (MD) to Develop Modified Asphalt Binders</h1>
+    <h1 data-l="ko">개질 아스팔트 바인더 개발을 위한 분자동역학(MD) 활용</h1>
+    <p class="note" data-l="en">Molecular-level calculation of field distress causes and its application to binder development. Slides 1–3 and the last slide (37 of 37) are shown; the slides are in Korean. The full presentation requires a password.</p>
+    <p class="note" data-l="ko">현장 파손 원인의 분자 수준 계산과 바인더 개발 적용 방안. 37장 중 1~3쪽과 마지막 쪽만 공개합니다. 전체 발표 파일은 비밀번호를 넣어야 내려받을 수 있습니다.</p>
+  </div>
+  <form class="protect" data-src="../protected/gscaltex_proposal.enc" data-name="GSCaltex_MD_proposal_20260928.pptx">
+    <div class="ph"><b><span data-l="en">Full file (password required)</span><span data-l="ko">전체 파일 (비밀번호 필요)</span></b><span class="sz">PPTX · 15.3 MB</span></div>
+    <div class="row"><input type="password" autocomplete="current-password" aria-label="Password · 비밀번호" placeholder="Password · 비밀번호"><button type="submit"><span data-l="en">Download</span><span data-l="ko">내려받기</span></button></div>
+    <p class="st" aria-live="polite"></p>
+  </form>
+  <div class="grid">
+  <figure><img src="pv/slide01.jpg" alt="1 · Cover" loading="eager"><figcaption><span data-l="en">1 · Cover</span><span data-l="ko">1 · 표지</span></figcaption></figure>
+  <figure><img src="pv/slide02.jpg" alt="2 · Outline" loading="lazy"><figcaption><span data-l="en">2 · Outline</span><span data-l="ko">2 · 발표 구성</span></figcaption></figure>
+  <figure><img src="pv/slide03.jpg" alt="3 · Major pavement distresses and where they start" loading="lazy"><figcaption><span data-l="en">3 · Major pavement distresses and where they start</span><span data-l="ko">3 · 아스팔트 포장의 주요 파손과 발생 위치</span></figcaption></figure>
+  <figure><img src="pv/slide37.jpg" alt="37 · Summary" loading="lazy"><figcaption><span data-l="en">37 · Summary</span><span data-l="ko">37 · 요약</span></figcaption></figure>
+  </div>
+</main>
+<footer><div class="wrap"><span data-l="en">Korea Institute of Civil Engineering and Building Technology · Contact tyun@kict.re.kr</span><span data-l="ko">한국건설기술연구원 도로교통연구본부 · 문의 tyun@kict.re.kr</span></div></footer>
+<script src="../assets/protect.js"></script>
+<script>setLang(document.documentElement.getAttribute("data-ui"));</script>
+</body>
+</html>
