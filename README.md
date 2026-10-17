@@ -5,9 +5,7 @@
 - 첫 화면: https://sentirain7.github.io/Self_Driving_Lab_Instruction/
 - `index.html` — 첫 화면(소개 · 발표 자료 · 연락처)
 - `about/` — 개인 소개(전문 분야 · 경력 · 학력 · 주요 연구 · 논문 · 수상)
-- `ksce2026/talk/` — KSCE 2026 구두 발표 슬라이드(2026. 10. 23.)
-- `ksce2026/poster.pdf` — KSCE 2026 포스터
-- `kict2028/` — ’28년도 KICT 기본사업 예산요구 발표(2026. 10. 29.) 공개 4장 그림만, 발표 파일 없음
-- `platform.html` — 플랫폼 소개 문서(2026. 08. 26.)
+- `ksce2026/talk/` · `ksce2026/poster/` · `kict2028/` · `platform/` — 자료별 미리보기(처음 3쪽 + 마지막 쪽) · 비밀번호 내려받기
+- `protected/` — 전체 파일 암호문(AES-256-GCM, 비밀번호는 저장소에 없음) · `assets/protect.js` — 브라우저에서 풀어 내려받기
 
 연락처: tyun@kict.re.kr
