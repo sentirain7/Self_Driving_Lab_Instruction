@@ -60,6 +60,10 @@ h1 .alt{font-size:.5em;font-weight:500;color:var(--mute);letter-spacing:0}
 .roles li{margin:3px 0}
 .more{display:inline-flex;margin-top:26px;text-decoration:none;font-weight:700;font-size:15.5px;padding:11px 20px;border-radius:6px;background:var(--or);color:#fff}
 .more:hover{filter:brightness(.95)}
+.irow{display:flex;align-items:center;justify-content:space-between;gap:32px}
+.itxt{min-width:0}
+.qr{flex:none;width:176px;height:176px;display:none}
+@media (min-width:720px){.qr{display:block}}
 
 section{padding:48px 0}
 section+section{border-top:1px solid var(--line)}
@@ -105,7 +109,7 @@ footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color
 
 <main>
   <div class="intro" id="about">
-    <div class="wrap">
+    <div class="wrap irow"><div class="itxt">
       <div class="eyebrow">KOREA INSTITUTE OF CIVIL ENGINEERING AND BUILDING TECHNOLOGY</div>
       <h1 data-l="en">Taeyoung Yun <span class="alt">윤태영</span></h1>
       <h1 data-l="ko">윤태영 <span class="alt">Taeyoung Yun</span></h1>
@@ -118,7 +122,7 @@ footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color
         <li>과학기술연합대학원대학교(UST) 교수</li>
       </ul>
       <a class="more" href="about/"><span data-l="en">About Taeyoung Yun →</span><span data-l="ko">윤태영 소개 →</span></a>
-    </div>
+    </div><img class="qr" src="assets/qr_home.svg" alt="QR code for this website" width="176" height="176"></div>
   </div>
 
   <section id="materials">
