@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge Map × Time Axis — Taeyoung Yun (3D)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  :root{
+    --ink:#0a0f1c; --ink2:#0f1626; --paper:#f4ecd8; --gold:#e0a53b; --dim:#5a6a86; --line:#26344e;
+    --serif:'Newsreader',serif; --mono:'IBM Plex Mono',monospace; --sans:'IBM Plex Sans KR','IBM Plex Mono',sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--ink);color:#cdd7e6;font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  body{background:radial-gradient(120% 90% at 50% -10%, #16203a 0%, var(--ink2) 38%, var(--ink) 78%);min-height:100vh}
+  .wrap{max-width:1180px;margin:0 auto;padding:46px 28px 72px}
+
+  header{position:relative;border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:22px}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);opacity:.85}
+  h1{font-family:var(--serif);font-weight:300;font-size:clamp(34px,6vw,60px);line-height:1.02;margin:14px 0 0;color:var(--paper);letter-spacing:-.01em}
+  h1 em{font-style:italic;color:var(--gold)}
+  .lede{font-family:var(--serif);font-size:clamp(15px,2vw,19px);font-weight:300;line-height:1.6;color:#aebbcf;max-width:64ch;margin:18px 0 0}
+  .meta{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:18px;letter-spacing:.08em}
+
+  .patterns{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 8px;align-items:stretch}
+  .ptn{appearance:none;cursor:pointer;text-align:left;background:rgba(255,255,255,.015);border:1px solid var(--line);border-radius:3px;color:#c2cde0;padding:10px 13px 11px;min-width:138px;flex:1 1 140px;max-width:200px;transition:.22s ease;position:relative;overflow:hidden}
+  .ptn .pn{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--dim);text-transform:uppercase;display:block}
+  .ptn .pt{font-family:var(--serif);font-size:15px;line-height:1.25;margin-top:5px;color:#dde6f2;display:block}
+  .ptn::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--pc,var(--gold));opacity:.55;transition:.22s}
+  .ptn:hover{border-color:var(--pc,var(--gold));background:rgba(255,255,255,.04);transform:translateY(-2px)}
+  .ptn:hover::before{opacity:1;width:5px}
+  .ptn.on{background:rgba(255,255,255,.06);border-color:var(--pc);box-shadow:0 0 0 1px var(--pc) inset,0 8px 30px rgba(0,0,0,.4)}
+  .ptn.on .pt{color:var(--pc)}
+  .ptn.on::before{opacity:1;width:6px}
+  .reset{flex:0 0 auto;min-width:auto;max-width:none;display:flex;align-items:center;justify-content:center}
+  .reset .pt{font-family:var(--mono);font-size:12px}
+
+  .wbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0 2px;padding-top:14px;border-top:1px solid var(--line)}
+  .wlabel{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .wseg{appearance:none;cursor:pointer;font-family:var(--mono);font-size:12px;letter-spacing:.05em;background:rgba(255,255,255,.02);border:1px solid var(--line);color:#aebbcf;padding:6px 13px;border-radius:3px;transition:.18s}
+  .wseg:hover{border-color:var(--gold);color:#e6edf6}
+  .wseg.on{background:var(--gold);border-color:var(--gold);color:#0a0f1c;font-weight:500}
+  .wcap{font-family:var(--mono);font-size:11px;color:var(--dim);margin-left:6px;letter-spacing:.03em}
+
+  .stage{display:grid;grid-template-columns:1fr 312px;gap:24px;margin-top:18px}
+  @media(max-width:880px){.stage{grid-template-columns:1fr}}
+  .scene{position:relative;border:1px solid var(--line);border-radius:5px;overflow:hidden;height:min(74vh,780px);min-height:520px;
+    background:radial-gradient(70% 60% at 50% 46%, rgba(224,165,59,.05), transparent 60%),linear-gradient(180deg,#0c1322,#090e1a);
+    touch-action:none;cursor:grab}
+  .scene:active{cursor:grabbing}
+  .scene canvas{display:block}
+  #labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .lab{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;will-change:transform,opacity}
+  .nlab{font-family:var(--sans);font-size:10.5px;letter-spacing:.01em}
+  .dlab{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+  .ylab{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.2em}
+  .clab{text-align:center}
+  .clab .cn{font-family:var(--sans);font-weight:600;font-size:18px;color:var(--paper);display:block;letter-spacing:.04em;text-shadow:0 0 12px rgba(224,165,59,.45)}
+  .clab .cs{font-family:var(--mono);font-size:8.5px;letter-spacing:.22em;color:var(--gold);display:block;margin-top:3px}
+
+  .legend{position:absolute;left:14px;top:12px;z-index:5;display:flex;flex-direction:column;gap:6px;background:rgba(7,11,20,.62);border:1px solid var(--line);border-radius:4px;padding:9px 12px;backdrop-filter:blur(3px)}
+  .lrow{display:flex;align-items:center;gap:6px}
+  .lk{font-family:var(--mono);font-size:9.5px;color:var(--gold);width:64px;display:inline-block;letter-spacing:.04em}
+  .lv{font-family:var(--mono);font-size:9.5px;color:#9fb0cc;letter-spacing:.02em}
+  .hint{position:absolute;right:14px;bottom:12px;z-index:5;font-family:var(--mono);font-size:9.5px;color:var(--dim);letter-spacing:.04em;text-align:right;line-height:1.7;background:rgba(7,11,20,.5);padding:7px 10px;border-radius:4px;border:1px solid var(--line)}
+
+  .panel{border:1px solid var(--line);border-radius:5px;padding:22px 22px 26px;background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);align-self:start;position:sticky;top:20px}
+  .panel .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .panel h2{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.15;margin:10px 0 0;color:var(--paper)}
+  .panel .body{font-size:13.5px;line-height:1.72;color:#aab6ca;margin-top:14px}
+  .panel .body b{color:#e6edf6;font-weight:500}
+  .crosslist{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-family:var(--mono);font-size:10px;border:1px solid var(--line);border-radius:20px;padding:4px 11px;color:#9fb0cc}
+
+  footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px;font-family:var(--mono);font-size:10.5px;color:var(--dim);letter-spacing:.06em;line-height:1.7}
+
+  #tip{position:fixed;pointer-events:none;z-index:50;opacity:0;transition:opacity .14s;background:#070b14;border:1px solid var(--gold);border-left-width:3px;padding:8px 12px;max-width:250px;font-size:12px;line-height:1.5;color:#e6edf6;box-shadow:0 12px 40px rgba(0,0,0,.6);border-radius:3px}
+  #tip .tl{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:3px}
+  #err{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;font-family:var(--mono);font-size:13px;color:var(--dim);padding:30px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="kicker">Knowledge Map × Time Axis · 2D Map + Time Depth (3D)</span>
+    <h1>A map from the front,<br><em>time from the side.</em></h1>
+    <p class="lede">The 2D knowledge map keeps its x·y coordinates, and <b>time is raised as the depth (z) axis</b>. Head-on along the time axis it looks exactly like the familiar 2D radial map; rotate to the side and each topic spreads out along its <b>research period (2010 → 2026)</b>. Drag = rotate · wheel = zoom · right-drag / Shift+drag = pan.</p>
+    <div class="meta">x·y = 2D knowledge map · depth (z) = research period · size = effort · glow = recency · ring = verified publication</div>
+  </header>
+
+  <div class="patterns" id="patterns"></div>
+
+  <div class="wbar">
+    <span class="wlabel">View →</span>
+    <button class="wseg" id="b-front">▣ Front (2D)</button>
+    <button class="wseg" id="b-side">◧ Side (time)</button>
+    <button class="wseg" id="b-rot">⟳ Auto-rotate: off</button>
+    <button class="wseg" id="b-home">⌖ Reset</button>
+  </div>
+
+  <div class="stage">
+    <div class="scene" id="scene">
+      <div class="legend">
+        <div class="lrow"><span class="lk">x · y</span><span class="lv">2D knowledge map (domains · nodes)</span></div>
+        <div class="lrow"><span class="lk">depth z</span><span class="lv">Research period (back = past · front = now)</span></div>
+        <div class="lrow"><span class="lk">Size</span><span class="lv">Cumulative work time</span></div>
+        <div class="lrow"><span class="lk">Glow</span><span class="lv">Recency</span></div>
+        <div class="lrow"><span class="lk">Ring</span><span class="lv">Verified-publication topic</span></div>
+      </div>
+      <div id="labels"></div>
+      <div class="hint">Front (▣) = same as 2D<br>Side (◧) = time spread · hover a star for details</div>
+      <div id="err">Could not load the 3D library.<br>Please check your network connection.</div>
+    </div>
+
+    <aside class="panel" id="panel">
+      <span class="eyebrow" id="p-eye">map + time axis</span>
+      <h2 id="p-title">The 2D map, stood up in time</h2>
+      <div class="body" id="p-body">
+        The same 2D map is kept and <b>time is raised as the depth axis</b>. Head-on it looks identical to the 2D figure; from the side each topic scatters back-to-front by its publication / research period.<br><br><b>Computational Mechanics</b> (2010–2013) sits farthest back; <b>Infrastructure · Autonomy</b> (2025–2026) sits closest to the front. Press pattern ⑦ <b>Two Computational Eras</b> and rotate to the side to see the stem that runs from past to present.
+      </div>
+      <div class="crosslist" id="p-chips"></div>
+    </aside>
+  </div>
+
+  <footer>2D map + time depth axis · 8 domains / 45 nodes / 7 cross-cutting patterns — front = 2D · side = time spread · drag to rotate · wheel to zoom</footer>
+</div>
+
+<div id="tip"><span class="tl"></span><span class="tt"></span></div>
+
+<script>
+// r = recency (1-5) · e = effort (1-5) · year = confirmed/estimated publication-research year (preferred when present)
+const clusters=[
+  {id:'mat', name:'Materials · Chemistry', sub:'Materials', angle:-90, color:'#e0a53b', nodes:[
+    {id:'sara', label:'Asphalt Binder (SARA)', desc:'SARA fractions — saturates, aromatics, resins, asphaltenes (KSRE topic)', r:4, e:5, pub:true, year:2022},
+    {id:'ligf', label:'Li–Greenfield 12-component', desc:'12-component molecular asphalt model', r:2, e:3, year:2022},
+    {id:'cem', label:'Cement Hydration', desc:'C₃S·C₂S·C₃A·C₄AF hydration chemistry', r:2, e:3, year:2021},
+    {id:'aging', label:'Oxidative Aging', desc:'ReaxFF oxidative aging — large multi-replica ensemble (Q1 candidate)', r:5, e:3, year:2026},
+    {id:'ced', label:'Cohesive Energy Density (CED)', desc:'Nine CED calculation methods, 44 references', r:2, e:3, year:2023},
+    {id:'photocat', label:'Photocatalytic Concrete', desc:'Photocatalytic (NOx-reducing/self-cleaning) concrete — published in KSRE journal', r:2, e:3, pub:true, year:2012},
+  ]},
+  {id:'sim', name:'Simulation · Physics', sub:'Atomistic', angle:-45, color:'#5fb6c4', nodes:[
+    {id:'md', label:'LAMMPS MD', desc:'Molecular dynamics — production engine', r:5, e:5, year:2024},
+    {id:'reaxff', label:'ReaxFF', desc:'Reactive force field — bond formation/breaking', r:5, e:4, year:2025},
+    {id:'compass', label:'COMPASS III', desc:'Materials Studio force field', r:1, e:2, year:2019},
+    {id:'dft', label:'DFT / VASP', desc:'VASP PBE — quantum-mechanical reference data', r:2, e:2, year:2022},
+    {id:'ff', label:'4-Lane Force-Field Stack', desc:'GAFF2 · INTERFACE · TIP3P · ReaxFF (v9.x paper)', r:4, e:4, year:2024},
+    {id:'dem', label:'DEM (Discrete Element)', desc:'Mesoscale pavement behavior, 5-volume report', r:3, e:4, year:2023},
+  ]},
+  {id:'ml', name:'Machine Learning', sub:'ML', angle:0, color:'#e8745e', nodes:[
+    {id:'xgb', label:'XGBoost + SHAP', desc:'Interpretable prediction — feature attribution', r:4, e:4, year:2023},
+    {id:'graphormer', label:'SG-Graphormer3D', desc:'Surrogate trained on 5,346 MD runs', r:4, e:4, year:2025},
+    {id:'active', label:'Active Learning', desc:'The model chooses the next simulation to run', r:4, e:3, year:2024},
+    {id:'surrogate', label:'Surrogate Model', desc:'Cheap approximation of expensive computation', r:3, e:2, year:2023},
+    {id:'pareto', label:'Pareto Optimization', desc:'Multi-objective candidate selection', r:3, e:2, year:2024},
+    {id:'unitpoly', label:'Unit-Polymer Property Prediction', desc:'Asphalt binder unit-polymer property — Part I (measured + MD), Part II (machine learning); published in KSRE journal', r:4, e:4, pub:true, year:2024},
+  ]},
+  {id:'auto', name:'Autonomous Systems', sub:'Autonomy', angle:45, color:'#7fd1ae', nodes:[
+    {id:'srrl', label:'SRRL Self-Reinforcing Loop', desc:'7-stage self-reinforcing research loop (~129K lines)', r:5, e:5, year:2025},
+    {id:'openclaw', label:'OpenClaw', desc:'Orchestration framework', r:5, e:5, year:2025},
+    {id:'procritic', label:'Proposer/Critic', desc:'Dual-agent proposer–critic debate', r:4, e:3, year:2025},
+    {id:'db', label:'PostgreSQL · DuckDB', desc:'Data curation & analysis', r:3, e:3, year:2024},
+    {id:'hermes', label:'Hermes Agent', desc:'A6000 gateway (v0.14.0)', r:3, e:2, year:2025},
+  ]},
+  {id:'infra', name:'Infrastructure', sub:'Compute', angle:90, color:'#9b8cf0', nodes:[
+    {id:'h200', label:'6×H200 Cluster', desc:'Production LAMMPS GPU cluster', r:5, e:4, year:2026},
+    {id:'vllm', label:'vLLM / SGLang', desc:'Fast interactive LLM serving', r:5, e:3, year:2026},
+    {id:'ktrans', label:'KTransformers', desc:'DeepSeek-V4 overnight autonomous inference (planned)', r:5, e:2, year:2026},
+    {id:'tailscale', label:'Tailscale Mesh', desc:'Mesh VPN linking all nodes', r:3, e:2, year:2025},
+    {id:'mac', label:'MacBook M5 Max', desc:'Researcher console · MLX inference', r:4, e:2, year:2025},
+  ]},
+  {id:'pave', name:'Pavement Engineering', sub:'Pavement', angle:180, color:'#c98a4b', nodes:[
+    {id:'marshall', label:'Marshall Stability', desc:'Asphalt mixture testing — long-standing expertise', r:1, e:4, year:2009},
+    {id:'idt', label:'IDT Fatigue · VECD', desc:'Fatigue curves · viscoelastic continuum damage', r:1, e:4, year:2010},
+    {id:'fwd', label:'FWD Backcalculation', desc:'Pavement structural evaluation by backcalculation', r:1, e:4, year:2011},
+    {id:'lca', label:'Life-Cycle Assessment (LCA)', desc:'Maintenance-scenario environmental impact (recent deck)', r:3, e:4, year:2024},
+    {id:'qto', label:'Quantity Take-off (QTO)', desc:'Road quantity-sheet parsing automation', r:2, e:3, year:2019},
+    {id:'apt', label:'Accelerated Pavement Testing (APT)', desc:'APT-based rutting resistance of warm-mix asphalt (WMA) — presented at KSRE', r:3, e:4, pub:true, year:2016},
+    {id:'compact', label:'Compaction-Density · Air Voids', desc:'Asphalt compaction-density model · voids/spacing factor — published in KSRE journal', r:2, e:3, pub:true, year:2011},
+  ]},
+  {id:'phil', name:'Philosophy · Ethics', sub:'Ethics', angle:225, color:'#c9c2b0', nodes:[
+    {id:'justice', label:'Distributive Justice', desc:'Fair distribution of resources & opportunity', r:3, e:2, year:2025},
+    {id:'ethics', label:'Research Ethics', desc:'Responsibility in the age of autonomous research', r:3, e:2, year:2025},
+    {id:'dialectic', label:'Dialectical Structure', desc:'Thesis → antithesis → synthesis', r:2, e:2, year:2024},
+  ]},
+  {id:'cmech', name:'Computational Mechanics', sub:'Continuum', angle:135, color:'#d98b9e', nodes:[
+    {id:'vepcd', label:'VEPCD Viscoelastoplastic Model', desc:'Viscoelastoplastic continuum damage — HMA compression hardening-softening / overstress (Mech. Time-Dep. Mater. 2011 / KSCE 2013)', r:2, e:5, pub:true, year:2011},
+    {id:'kictpave', label:'KICTPAVE Finite-Element Code', desc:'Viscoelastic axisymmetric FEM pavement stress analysis — generalized Maxwell · isoparametric elements (2012)', r:2, e:4, pub:true, year:2012},
+    {id:'numconv', label:'Convolution-Integral Numerics', desc:'Generalized numerical convolution integral for rate-dependent asphalt (KSCE J. Civ. Eng. 2011)', r:2, e:3, pub:true, year:2011},
+    {id:'ttsp', label:'Time-Temperature Superposition (TTSP)', desc:'TTSP for HMA with growing damage (ASCE J. Mater. Civ. Eng. 2010)', r:2, e:3, pub:true, year:2010},
+    {id:'cfd', label:'CFD Heat · Flow Analysis', desc:'Computational fluid dynamics · heat transfer — pavement temperature/cooling (cool pavement); published in KSRE', r:2, e:3, pub:true, year:2014},
+    {id:'cemflow', label:'Cement Flow · Heat Transfer', desc:'Cement/concrete flow & heat transfer (hydration heat · temperature field) numerics — published in KSRE', r:2, e:3, pub:true, year:2014},
+    {id:'similitude', label:'Similitude Theory', desc:'Dimensional analysis · similitude laws — model to full-scale, linking behavior across scales (published in KSRE)', r:2, e:4, pub:true, year:2013},
+  ]},
+];
+
+const patterns=[
+  {id:'loop', n:'pattern 01', t:'The Feedback-Loop Obsession', color:'#7fd1ae',
+   seq:['srrl','active','procritic','pareto','openclaw','srrl'], crosses:['Autonomy','Machine Learning'],
+   body:'You do not build pipelines — you build pipelines that <b>improve themselves</b>. The SRRL self-reinforcing loop, active-learning retraining, Proposer/Critic debate, Pareto re-selection. At every level, <b>the output becomes the input again</b>.'},
+  {id:'scale', n:'pattern 02', t:'Scale-Spanning', color:'#5fb6c4',
+   seq:['similitude','dft','md','dem','kictpave','apt','fwd','lca'], crosses:['Computational Mechanics','Simulation','Pavement'],
+   body:'A single chain pierces <b>~10 orders of length scale</b>: DFT (Å) → MD (nm) → DEM (mm) → FEM·APT·FWD (m) → LCA (km). And <b>similitude theory</b> is the formal language that ties these scales together.'},
+  {id:'surr', n:'pattern 03', t:'Surrogate Thinking', color:'#e8745e',
+   seq:['similitude','md','surrogate','graphormer','unitpoly','xgb','procritic'], crosses:['Computational Mechanics','Machine Learning','Autonomy'],
+   body:'A habit of swapping expensive truth for a cheap approximation. <b>Similitude theory</b> is the classical original; Graphormer3D, ML and Proposer/Critic are the modern forms. The published <b>unit-polymer property prediction</b> is a documented instance.'},
+  {id:'tempo', n:'pattern 04', t:'Two-Speed Architecture', color:'#9b8cf0',
+   seq:['vllm','h200','ktrans','srrl'], crosses:['Infrastructure','Autonomy'],
+   body:'Almost every architecture splits into <b>two tempos</b>: fast interactive (vLLM) vs. overnight autonomous (KTransformers). The same instinct that <b>separates the quick reply from slow deliberation</b>.'},
+  {id:'dia', n:'pattern 05', t:'The Dialectical Engine', color:'#c9c2b0',
+   seq:['dialectic','procritic','ethics'], crosses:['Philosophy','Autonomy'],
+   body:'The interest in philosophy is not decoration — it is the <b>engine of knowledge generation</b> itself. Proposer/Critic; thesis–antithesis–synthesis. Colliding two opposing stances to forge a better conclusion.'},
+  {id:'bridge', n:'pattern 06', t:'The Improbable Bridge', color:'#e0a53b',
+   seq:['marshall','fwd','unitpoly','srrl','h200','ktrans'], crosses:['Pavement','Infrastructure','Autonomy'],
+   body:'<b>Civil & pavement engineering</b> and <b>frontier AI</b>, held by one person. The published <b>unit-polymer property prediction (MD+ML)</b> paper actually built that bridge. This bridge is the moat.'},
+  {id:'eras', n:'pattern 07', t:'Two Computational Eras', color:'#d98b9e',
+   seq:['vepcd','kictpave','ttsp','cfd','similitude','md','reaxff','unitpoly','graphormer'], crosses:['Computational Mechanics','Simulation','Machine Learning'],
+   body:'A single stem runs through <b>two computational eras</b>. <b>2010s</b>: continuum multiphysics — VEPCD, KICTPAVE FEM, TTSP, CFD heat/flow, similitude. <b>2020s</b>: molecular & data — MD, ReaxFF, ML surrogates. Only the method (FEM·CFD→MD·ML) and scale (continuum→molecular) changed; the <b>same question</b> is being chased.'},
+];
+
+// ---------- positions: 2D map (x,y) + time (z) ----------
+const DEG=Math.PI/180;
+const HUB=252, SCALE=0.82;
+const YMIN=2009, YMAX=2026;
+const lerp=(v,a,b,oa,ob)=>oa+(Math.min(Math.max(v,a),b)-a)/(b-a)*(ob-oa);
+const yearOf=r=>2010+Math.round((r-1)*4);
+const zOf=y=>lerp(y,YMIN,YMAX,-330,55);   // past (back,-) → present (front,+)
+const ZMID=(zOf(YMIN)+zOf(YMAX))/2;
+const nodeById={}, nodeList=[];
+clusters.forEach(c=>{
+  const a=c.angle*DEG, n=c.nodes.length;
+  const spread=(n>6?172:n>5?160:152)*DEG, nodeR=(n>6?112:n>5?96:n>4?84:64);
+  const hubx=HUB*Math.cos(a), huby=HUB*Math.sin(a);
+  c.nodes.forEach((nd,i)=>{
+    const na=a - spread/2 + (n>1?spread*i/(n-1):0);
+    const x2=hubx+nodeR*Math.cos(na), y2=huby+nodeR*Math.sin(na);
+    const yr=nd.year||yearOf(nd.r);
+    const o={...nd, cluster:c.id, color:c.color, year:yr,
+      x:x2*SCALE, y:-y2*SCALE, z:zOf(yr), size:lerp(nd.e,1,5,2.4,7.2)};
+    nodeById[nd.id]=o; nodeList.push(o);
+  });
+});
+
+// ---------- three.js ----------
+let renderer,scene,camera,raycaster,W,H;
+const sceneEl=document.getElementById('scene'), labelsEl=document.getElementById('labels'), tip=document.getElementById('tip');
+const nodeMeshes=[]; let patternTube=null, active=null, dimSet=null, hovered=null;
+const labelObjs=[]; const yearRings=[];
+const HOME={th:Math.PI/2-0.34, ph:Math.PI/2-0.26, rad:780, tgt:new THREE.Vector3(0,0,ZMID)};
+const cam={th:HOME.th, ph:HOME.ph, rad:HOME.rad, tgt:HOME.tgt.clone()};
+const camT={th:HOME.th, ph:HOME.ph, rad:HOME.rad, tgt:HOME.tgt.clone()};
+let autoRotate=false;
+
+function v3(x,y,z){return new THREE.Vector3(x,y,z);}
+function init(){
+  if(typeof THREE==='undefined'){ document.getElementById('err').style.display='flex'; return; }
+  W=sceneEl.clientWidth; H=sceneEl.clientHeight;
+  renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
+  sceneEl.insertBefore(renderer.domElement, labelsEl);
+  scene=new THREE.Scene();
+  camera=new THREE.PerspectiveCamera(47,W/H,1,7000);
+  raycaster=new THREE.Raycaster();
+  buildAxis(); buildSpokes(); buildNodes(); buildLabels(); bindControls();
+  window.addEventListener('resize',onResize); animate();
+}
+
+function buildAxis(){
+  const z0=zOf(YMIN), z1=zOf(YMAX), len=z1-z0;
+  const core=new THREE.Mesh(new THREE.CylinderGeometry(0.7,0.7,len,12),
+    new THREE.MeshBasicMaterial({color:0xe0a53b,transparent:true,opacity:0.85}));
+  core.rotation.x=Math.PI/2; core.position.z=(z0+z1)/2; scene.add(core);
+  const glow=new THREE.Mesh(new THREE.CylinderGeometry(3.2,3.2,len,16),
+    new THREE.MeshBasicMaterial({color:0xe0a53b,transparent:true,opacity:0.09,blending:THREE.AdditiveBlending,depthWrite:false}));
+  glow.rotation.x=Math.PI/2; glow.position.z=(z0+z1)/2; scene.add(glow);
+  // time-plane rings at each labelled year
+  [2010,2014,2018,2022,2026].forEach(yr=>{
+    const ring=new THREE.Mesh(new THREE.RingGeometry(300,302,72),
+      new THREE.MeshBasicMaterial({color:0x32415c,transparent:true,opacity:0.0,side:THREE.DoubleSide,depthWrite:false}));
+    ring.position.z=zOf(yr); scene.add(ring); yearRings.push(ring);
+  });
+}
+
+function buildSpokes(){
+  // radial spoke from each node to the time-axis point at its own z (looks like 2D radial map head-on)
+  nodeList.forEach(o=>{
+    const g=new THREE.BufferGeometry().setFromPoints([v3(o.x,o.y,o.z),v3(0,0,o.z)]);
+    scene.add(new THREE.Line(g,new THREE.LineBasicMaterial({color:new THREE.Color(o.color),transparent:true,opacity:0.16})));
+  });
+}
+
+function buildNodes(){
+  nodeList.forEach(o=>{
+    const col=new THREE.Color(o.color);
+    const mesh=new THREE.Mesh(new THREE.SphereGeometry(o.size,18,18), new THREE.MeshBasicMaterial({color:col}));
+    mesh.position.set(o.x,o.y,o.z); mesh.userData.id=o.id; scene.add(mesh);
+    const halo=new THREE.Mesh(new THREE.SphereGeometry(o.size+lerp(o.r,1,5,1.4,5.5),16,16),
+      new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:lerp(o.r,1,5,0.10,0.42),blending:THREE.AdditiveBlending,depthWrite:false}));
+    halo.position.copy(mesh.position); scene.add(halo);
+    let ring=null;
+    if(o.pub){
+      ring=new THREE.Mesh(new THREE.TorusGeometry(o.size+3.2,0.45,8,40),
+        new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0.75}));
+      ring.position.copy(mesh.position); scene.add(ring);
+    }
+    o.mesh=mesh; o.halo=halo; o.ring=ring; o.baseHalo=halo.material.opacity; nodeMeshes.push(mesh);
+  });
+}
+
+function mkLabel(cls,html){const d=document.createElement('div');d.className='lab '+cls;d.innerHTML=html;labelsEl.appendChild(d);return d;}
+function buildLabels(){
+  const c=mkLabel('clab','<span class="cn">Taeyoung Yun</span><span class="cs">TIME AXIS · 2010 → 2026</span>');
+  labelObjs.push({el:c,pos:v3(0,18,zOf(YMAX)),kind:'center'});
+  [2010,2014,2018,2022,2026].forEach(yr=>{
+    const el=mkLabel('ylab',yr+''); labelObjs.push({el,pos:v3(0,-300,zOf(yr)),kind:'year'});
+  });
+  clusters.forEach(cl=>{
+    const ns=nodeList.filter(o=>o.cluster===cl.id);
+    const mx=ns.reduce((s,o)=>s+o.x,0)/ns.length, my=ns.reduce((s,o)=>s+o.y,0)/ns.length, mz=ns.reduce((s,o)=>s+o.z,0)/ns.length;
+    const el=mkLabel('dlab',cl.name); el.style.color=cl.color;
+    labelObjs.push({el,pos:v3(mx*1.16,my*1.16+ (my>0?16:-16),mz),kind:'domain',id:cl.id});
+  });
+  nodeList.forEach(o=>{ const el=mkLabel('nlab',o.label); el.style.color=o.color; labelObjs.push({el,pos:v3(o.x,o.y,o.z),kind:'node',id:o.id}); });
+}
+
+const _p=new THREE.Vector3(), _dir=new THREE.Vector3();
+let alignZ=1;
+function updateLabels(){
+  // alignZ ~ 1 when looking straight down the time axis (front 2D view)
+  _dir.copy(camT.tgt).sub(camera.position).normalize(); alignZ=Math.abs(_dir.z);
+  const camPos=camera.position;
+  for(const L of labelObjs){
+    _p.copy(L.pos); _p.project(camera);
+    if(_p.z>1){ L.el.style.opacity=0; continue; }
+    const sx=(_p.x*0.5+0.5)*W, sy=(-_p.y*0.5+0.5)*H;
+    if(sx<-90||sx>W+90||sy<-40||sy>H+40){ L.el.style.opacity=0; continue; }
+    const dist=camPos.distanceTo(L.pos);
+    let op=lerp(dist,camT.rad-260,camT.rad+280,1.0,0.10);
+    if(L.kind==='center'){op=1;}
+    else if(L.kind==='year'){op=Math.min(op+0.2,0.9)*(1-alignZ);}      // fade in side view only
+    else if(L.kind==='domain'){op=Math.min(op+0.2,1);}
+    else { if(active){ op=(dimSet&&dimSet.has(L.id))?Math.min(op+0.15,1):op*0.12; } if(hovered===L.id) op=1; }
+    L.el.style.opacity=op.toFixed(3);
+    L.el.style.transform=`translate(-50%,-50%) translate(${sx.toFixed(1)}px,${sy.toFixed(1)}px)`;
+    L.el.style.zIndex=(L.kind==='center')?20:(hovered===L.id?15:Math.round((1-_p.z)*8));
+  }
+  // year-plane rings: visible only off-axis
+  yearRings.forEach(r=>{ r.material.opacity=0.22*(1-alignZ); });
+}
+
+function animate(){
+  requestAnimationFrame(animate);
+  if(autoRotate && !dragging) camT.th+=0.0016;
+  cam.th+=(camT.th-cam.th)*0.12; cam.ph+=(camT.ph-cam.ph)*0.12; cam.rad+=(camT.rad-cam.rad)*0.12; cam.tgt.lerp(camT.tgt,0.12);
+  const sp=cam.ph, st=cam.th;
+  camera.position.set(cam.tgt.x+cam.rad*Math.sin(sp)*Math.cos(st), cam.tgt.y+cam.rad*Math.cos(sp), cam.tgt.z+cam.rad*Math.sin(sp)*Math.sin(st));
+  camera.lookAt(cam.tgt);
+  nodeList.forEach(o=>{ if(o.ring) o.ring.quaternion.copy(camera.quaternion); });
+  updateLabels(); renderer.render(scene,camera);
+}
+function onResize(){ W=sceneEl.clientWidth; H=sceneEl.clientHeight; camera.aspect=W/H; camera.updateProjectionMatrix(); renderer.setSize(W,H); }
+
+// ---------- controls ----------
+let dragging=false, mode='rot', lastX=0, lastY=0; const pointers=new Map(); let pinchDist=0;
+function bindControls(){
+  const el=renderer.domElement;
+  el.addEventListener('contextmenu',e=>e.preventDefault());
+  el.addEventListener('pointerdown',e=>{
+    el.setPointerCapture(e.pointerId); pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(pointers.size===1){ dragging=true; mode=(e.button===2||e.button===1||e.shiftKey)?'pan':'rot'; lastX=e.clientX; lastY=e.clientY; }
+    else if(pointers.size===2){ dragging=true; mode='pinch'; const p=[...pointers.values()]; pinchDist=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y); }
+  });
+  el.addEventListener('pointermove',e=>{
+    if(pointers.has(e.pointerId)) pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(!dragging){ hoverTest(e); return; }
+    if(mode==='pinch'&&pointers.size>=2){ const p=[...pointers.values()]; const d=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y); camT.rad*=Math.max(0.5,Math.min(1.5,pinchDist/Math.max(1,d))); camT.rad=Math.max(220,Math.min(1600,camT.rad)); pinchDist=d; return; }
+    const dx=e.clientX-lastX, dy=e.clientY-lastY; lastX=e.clientX; lastY=e.clientY;
+    if(mode==='pan') doPan(dx,dy); else { camT.th-=dx*0.005; camT.ph-=dy*0.005; camT.ph=Math.max(0.12,Math.min(Math.PI-0.12,camT.ph)); }
+  });
+  const up=e=>{ pointers.delete(e.pointerId); if(pointers.size===0) dragging=false; else if(pointers.size===1){mode='rot'; const p=[...pointers.values()][0]; lastX=p.x; lastY=p.y;} };
+  el.addEventListener('pointerup',up); el.addEventListener('pointercancel',up);
+  el.addEventListener('wheel',e=>{ e.preventDefault(); camT.rad*=(1+e.deltaY*0.0009); camT.rad=Math.max(220,Math.min(1600,camT.rad)); },{passive:false});
+}
+function doPan(dx,dy){ const f=camT.rad*0.0016; const right=new THREE.Vector3(), up=new THREE.Vector3(); camera.getWorldDirection(right); right.cross(camera.up).normalize(); up.copy(camera.up).normalize(); camT.tgt.addScaledVector(right,-dx*f); camT.tgt.addScaledVector(up,dy*f); }
+
+const mouse=new THREE.Vector2();
+function hoverTest(e){
+  const rect=renderer.domElement.getBoundingClientRect();
+  mouse.x=((e.clientX-rect.left)/rect.width)*2-1; mouse.y=-((e.clientY-rect.top)/rect.height)*2+1;
+  raycaster.setFromCamera(mouse,camera);
+  const hit=raycaster.intersectObjects(nodeMeshes,false);
+  if(hit.length){
+    const o=nodeById[hit[0].object.userData.id]; hovered=o.id;
+    tip.querySelector('.tl').textContent=o.label;
+    tip.querySelector('.tt').textContent=o.desc+'  ·  '+o.year;
+    let x=e.clientX+16,y=e.clientY+16; if(x>innerWidth-270)x=e.clientX-260;
+    tip.style.left=x+'px'; tip.style.top=y+'px'; tip.style.opacity=1;
+  } else { hovered=null; tip.style.opacity=0; }
+}
+
+// ---------- patterns ----------
+function buildButtons(){
+  const box=document.getElementById('patterns');
+  patterns.forEach(p=>{ const b=document.createElement('button'); b.className='ptn'; b.dataset.id=p.id; b.style.setProperty('--pc',p.color); b.innerHTML=`<span class="pn">${p.n}</span><span class="pt">${p.t}</span>`; b.onclick=()=>select(p.id); box.appendChild(b); });
+  const r=document.createElement('button'); r.className='ptn reset'; r.innerHTML='<span class="pt">↺ Show all</span>'; r.onclick=clearSel; box.appendChild(r);
+}
+function disposeTube(){ if(patternTube){ scene.remove(patternTube); patternTube.geometry.dispose(); patternTube.material.dispose(); patternTube=null; } }
+function clearSel(){
+  active=null; dimSet=null; disposeTube();
+  document.querySelectorAll('.ptn').forEach(e=>e.classList.remove('on'));
+  nodeList.forEach(o=>{ o.mesh.material.opacity=1; o.mesh.material.transparent=false; o.halo.material.opacity=o.baseHalo; if(o.ring)o.ring.material.opacity=0.75; });
+  document.getElementById('p-eye').textContent='map + time axis';
+  document.getElementById('p-title').textContent='The 2D map, stood up in time';
+  document.getElementById('p-body').innerHTML='The same 2D map is kept and <b>time is raised as the depth axis</b>. Head-on it looks identical to the 2D figure; from the side each topic scatters back-to-front by its publication / research period.<br><br><b>Computational Mechanics</b> (2010–2013) sits farthest back; <b>Infrastructure · Autonomy</b> (2025–2026) sits closest to the front. Press pattern ⑦ <b>Two Computational Eras</b> and rotate to the side.';
+  document.getElementById('p-chips').innerHTML='';
+}
+function select(id){
+  if(active===id){ clearSel(); return; }
+  const p=patterns.find(x=>x.id===id); active=id; dimSet=new Set(p.seq);
+  document.querySelectorAll('.ptn').forEach(e=>e.classList.toggle('on',e.dataset.id===id));
+  disposeTube();
+  const pts=p.seq.map(nid=>{const o=nodeById[nid];return v3(o.x,o.y,o.z);});
+  const curve=new THREE.CatmullRomCurve3(pts,false,'catmullrom',0.25); const col=new THREE.Color(p.color);
+  patternTube=new THREE.Mesh(new THREE.TubeGeometry(curve,140,1.7,10,false),
+    new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0.85,blending:THREE.AdditiveBlending,depthWrite:false}));
+  scene.add(patternTube);
+  nodeList.forEach(o=>{ const on=dimSet.has(o.id); o.mesh.material.transparent=true; o.mesh.material.opacity=on?1:0.12; o.halo.material.opacity=on?Math.min(o.baseHalo+0.2,0.7):0.03; if(o.ring)o.ring.material.opacity=on?0.9:0.12; });
+  document.getElementById('p-eye').textContent=p.n.replace('pattern','Pattern');
+  document.getElementById('p-title').textContent=p.t;
+  document.getElementById('p-body').innerHTML=p.body;
+  document.getElementById('p-chips').innerHTML=p.crosses.map(c=>`<span class="chip">↔ ${c}</span>`).join('');
+}
+
+// ---------- view buttons ----------
+document.getElementById('b-front').onclick=()=>{ camT.th=Math.PI/2; camT.ph=Math.PI/2; camT.rad=760; camT.tgt.set(0,0,ZMID); autoRotate=false; setRot(); };
+document.getElementById('b-side').onclick=()=>{ camT.th=Math.PI/2-0.72; camT.ph=1.0; camT.rad=820; camT.tgt.set(0,0,ZMID); autoRotate=false; setRot(); };
+document.getElementById('b-home').onclick=()=>{ camT.th=HOME.th; camT.ph=HOME.ph; camT.rad=HOME.rad; camT.tgt.copy(HOME.tgt); };
+function setRot(){ const b=document.getElementById('b-rot'); b.textContent='⟳ Auto-rotate: '+(autoRotate?'on':'off'); b.classList.toggle('on',autoRotate); }
+document.getElementById('b-rot').onclick=()=>{ autoRotate=!autoRotate; setRot(); };
+
+init(); buildButtons();
+</script>
+</body>
+</html>
