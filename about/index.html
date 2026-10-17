@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Taeyoung Yun · About | KICT</title>
-<meta name="description" content="한국건설기술연구원 윤태영 연구위원 — 재료역학 · 다중물리 시뮬레이션, 경력 · 학력 · 주요 연구 · 논문 · 수상">
+<meta name="description" content="Taeyoung Yun, Research Fellow at KICT — pavement design, construction material evaluation, life-cycle greenhouse-gas assessment, and multiscale simulation.">
 <meta name="color-scheme" content="light">
 <script>
 /* 언어: 기본 영문, ?lang=ko|en 또는 저장된 선택(같은 사이트 모든 쪽 공통) */
@@ -22,29 +22,31 @@ document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("ar
 :root{--cream:#F8F5F0;--paper:#fff;--ink:#231F20;--ink2:#4A4440;--mute:#7A716A;--line:#E6E0D8;--or:#C8610C;--or-bg:#FEF0DC;
   --f:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;--m:"JetBrains Mono",ui-monospace,monospace}
 html[data-ui="en"] [data-l="ko"],html[data-ui="ko"] [data-l="en"]{display:none!important}
-.lang{margin-left:auto;display:inline-flex;border:1.4px solid var(--or);border-radius:6px;overflow:hidden;flex:none}
-@media (min-width:860px){.lang{margin-left:8px}}
-.lang button{font:600 13px/1 var(--f);padding:7px 11px;border:0;background:var(--paper);color:var(--or);cursor:pointer}
-.lang button[aria-pressed="true"]{background:var(--or);color:#fff}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:break-word}
 a{color:inherit}
-.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
 @media (min-width:720px){.wrap{padding:0 28px}}
 header{position:sticky;top:0;z-index:10;background:rgba(248,245,240,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
 header .wrap{display:flex;align-items:center;gap:14px;min-height:56px;font-size:14.5px}
 header a{text-decoration:none;color:var(--ink2)}
 header a:hover{color:var(--or)}
-header nav{margin-left:auto;display:none;gap:18px}
-@media (min-width:860px){header nav{display:flex}}
+header nav{margin-left:auto;display:none;gap:16px}
+@media (min-width:900px){header nav{display:flex}}
+.lang{margin-left:auto;display:inline-flex;border:1.4px solid var(--or);border-radius:6px;overflow:hidden;flex:none}
+@media (min-width:900px){.lang{margin-left:8px}}
+.lang button{font:600 13px/1 var(--f);padding:7px 11px;border:0;background:var(--paper);color:var(--or);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--or);color:#fff}
 .top{padding:36px 0 30px;border-bottom:1px solid var(--line);background:radial-gradient(800px 380px at 100% 0%,rgba(249,157,28,.12),transparent 60%)}
-.eyebrow{font-size:13px;font-weight:700;letter-spacing:.05em;color:var(--or)}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.05em;color:var(--or)}
 h1{margin:8px 0 0;font-size:clamp(30px,5vw,42px);line-height:1.25;letter-spacing:-.02em}
 h1 span{font-size:.55em;font-weight:500;color:var(--mute)}
 .roles{margin:10px 0 0;padding:0;list-style:none;font-size:16.5px;color:var(--ink2)}
 .roles li{margin:2px 0}
 .lead{margin:18px 0 0;font-size:clamp(16px,2vw,17.5px);color:var(--ink2)}
+.chips{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--or);border-radius:4px;padding:5px 11px;font-size:14px}
 section{padding:36px 0;border-bottom:1px solid var(--line)}
 h2{margin:0 0 16px;font-size:clamp(20px,2.8vw,24px);letter-spacing:-.01em}
 h2::after{content:"";display:block;width:40px;height:3px;background:var(--or);margin-top:8px}
@@ -53,14 +55,16 @@ ul.b{margin:0;padding-left:20px}
 ul.b li{margin:5px 0;color:var(--ink2)}
 ul.b li b{color:var(--ink)}
 .tl{display:grid;grid-template-columns:1fr;gap:4px 18px;margin:0}
-@media (min-width:640px){.tl{grid-template-columns:150px 1fr}}
+@media (min-width:640px){.tl{grid-template-columns:120px 1fr}}
 .tl dt{font-family:var(--m);font-size:14px;color:var(--or);font-weight:600;padding-top:2px}
 .tl dd{margin:0 0 10px}
 .tl dd small{display:block;color:var(--mute);font-size:14px}
-.pubs{margin:0;padding-left:22px}
-.pubs li{margin:8px 0;color:var(--ink2);font-size:15px}
+.pubs{margin:0;padding-left:26px}
+.pubs li{margin:7px 0;color:var(--ink2);font-size:15px}
 .pubs i{color:var(--ink)}
 .pubs a{color:var(--or)}
+details{margin-top:10px}
+summary{cursor:pointer;font-weight:700;font-size:16px;color:var(--ink)}
 .box{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
 .box dl{margin:0;display:grid;grid-template-columns:90px 1fr;row-gap:8px;font-size:15px}
 .box dt{color:var(--or);font-weight:700}
@@ -70,300 +74,66 @@ footer{padding:22px 0 36px;font-size:13px;color:var(--mute)}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <a href="../"><span data-l="en">← Home</span><span data-l="ko">← 첫 화면</span></a>
-    <nav aria-label="Sections" data-l="en">
-      <a href="#en-expertise">Expertise</a><a href="#en-career">Experience</a><a href="#en-work">Contributions</a><a href="#en-pubs">Publications</a><a href="#en-awards">Recognition</a>
-    </nav>
-    <nav aria-label="쪽 안 이동" data-l="ko">
-      <a href="#ko-expertise">전문 분야</a><a href="#ko-career">경력 · 학력</a><a href="#ko-work">주요 연구</a><a href="#ko-pubs">논문</a><a href="#ko-awards">수상</a>
-    </nav>
-    <div class="lang" role="group" aria-label="Language">
-      <button type="button" data-v="en" aria-pressed="true" onclick="setLang('en')">EN</button>
-      <button type="button" data-v="ko" aria-pressed="false" onclick="setLang('ko')">한글</button>
-    </div>
-  </div>
-</header>
-
+<header><div class="wrap">
+  <a href="../"><span data-l="en">← Home</span><span data-l="ko">← 첫 화면</span></a>
+  <nav aria-label="Sections" data-l="en"><a href="#en-expertise">Expertise</a><a href="#en-career">Experience</a><a href="#en-work">Contributions</a><a href="#en-programs">Programs</a><a href="#en-pubs">Publications</a><a href="#en-awards">Awards</a></nav><nav aria-label="Sections" data-l="ko"><a href="#ko-expertise">전문 분야</a><a href="#ko-career">경력 · 학력</a><a href="#ko-work">주요 연구</a><a href="#ko-programs">연구과제</a><a href="#ko-pubs">논문</a><a href="#ko-awards">수상</a></nav>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-v="en" aria-pressed="true" onclick="setLang('en')">EN</button><button type="button" data-v="ko" aria-pressed="false" onclick="setLang('ko')">한글</button></div>
+</div></header>
 <main data-l="en">
-  <div class="top">
-    <div class="wrap">
-      <div class="eyebrow">MATERIALS MECHANICS AND MULTIPHYSICS SIMULATION</div>
-      <h1>Taeyoung Yun <span>윤태영</span></h1>
-      <ul class="roles">
-        <li>Research Fellow, Korea Institute of Civil Engineering and Building Technology (KICT), 2009–present</li>
-        <li>Full Professor (concurrent appointment), University of Science and Technology (UST), 2025–present</li>
-      </ul>
-      <p class="lead">Research Fellow in computational materials mechanics, with research spanning viscoelasticity, viscoplasticity, continuum damage, and molecular interactions. Develops constitutive models and scientific software, verifies numerical implementations, and evaluates simulations against experiments. Experience includes finite element software development, molecular simulation of asphalt binders and polymer units, and simulation-based support for industrial equipment design.</p>
-    </div>
-  </div>
-
-  <section id="en-expertise">
-    <div class="wrap">
-      <h2>Core Expertise</h2>
-      <ul class="b">
-        <li><b>Deformable body mechanics</b> — time-dependent deformation, rate-dependent hardening and softening, cohesive viscoelastic contact, and continuum damage modeling.</li>
-        <li><b>Finite element and multiphysics analysis</b> — in-house FEA development, Abaqus, coupled CFD–DEM, heat and mass transfer, and Ansys Fluent user-defined functions.</li>
-        <li><b>Molecular structure and properties</b> — MD of organic–inorganic systems, polymer units in asphalt binder, tensile response, and moisture- and salt-water-induced degradation; LAMMPS and Materials Studio/Forcite.</li>
-        <li><b>Scientific programming and materials informatics</b> — Python, C++, Fortran, GNN-based supergraph models (Graphormer3D), tabular models (Random Forest and XGBoost), automated simulation workflows, and validation of predictive models.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="en-career">
-    <div class="wrap">
-      <h2>Professional Experience</h2>
-      <dl class="tl">
-        <dt>2009–present</dt>
-        <dd><b>Korea Institute of Civil Engineering and Building Technology</b> · Research Fellow
-          <ul class="b" style="margin-top:6px">
-            <li>Develop physics-based models and scientific software for material behavior, construction processes, and equipment design, combining continuum, particle, and molecular simulation methods.</li>
-            <li>Provide simulation-based industry support, including aggregate dryer-drum analysis for a Korean plant equipment company using engineering design drawings.</li>
-            <li>Architect and develop COMID, a Python-based environment for automated molecular simulation and materials informatics, including model preparation, remote execution, and analysis workflows.</li>
-          </ul></dd>
-        <dt>2025–present</dt>
-        <dd><b>University of Science and Technology (UST)</b> · Full Professor, concurrent appointment</dd>
-        <dt>2014–2022</dt>
-        <dd><b>Chung-Ang University</b> · Adjunct Professor</dd>
-        <dt>2009–2012</dt>
-        <dd><b>Chung-Ang University</b> · Lecturer</dd>
-      </dl>
-      <h3>Education</h3>
-      <dl class="tl">
-        <dt>2008</dt><dd><b>Ph.D.</b> · North Carolina State University, USA<small>Civil and Environmental Engineering</small></dd>
-        <dt>2003</dt><dd><b>M.S.</b> · Chung-Ang University, South Korea<small>Civil and Environmental Engineering</small></dd>
-        <dt>2001</dt><dd><b>B.S.</b> · Chung-Ang University, South Korea<small>Civil and Environmental Engineering</small></dd>
-      </dl>
-    </div>
-  </section>
-
-  <section id="en-work">
-    <div class="wrap">
-      <h2>Selected Research and Engineering Contributions</h2>
-      <h3>Constitutive Modeling and Finite Element Analysis</h3>
-      <ul class="b">
-        <li>Contributed to VEPCD-FEP++, a multiaxial viscoelastoplastic continuum damage finite element program, within a US Federal Highway Administration research program (2005–2008). Related work addressed performance specifications based on viscoelastoplastic continuum damage models (2008).</li>
-        <li>Modeled rate-dependent viscoplastic hardening and softening of asphalt mixtures in compression, addressing time-dependent mechanical behavior under loading.</li>
-        <li>Developed in-house finite element analysis code in Fortran for structural simulation, including a load discretization algorithm for jointed concrete pavement.</li>
-        <li>Implemented a linear cohesive viscoelastic contact model in C++ for DEM and verified its response against analytical solutions. Extended EDEM contact models for particle–solid interactions and evaluated models through experimental validation.</li>
-        <li>Evaluated similarity principles and exact scaling in DEM using analytical solutions, examining the effects of particle dynamics, contact models, and geometry on the validity of scaled simulations.</li>
-      </ul>
-      <h3>Molecular Simulation of Binder Materials and Interfaces</h3>
-      <ul class="b">
-        <li>Investigated material properties of polymer units in asphalt binder using molecular dynamics and machine learning.</li>
-        <li>Simulated amorphous–crystalline interactions and tensile response in organic–inorganic material systems. Related published research examined moisture- and salt-water-induced degradation of asphalt concrete mixtures.</li>
-        <li>Prepared a 5,346-case Materials Studio/Forcite MD dataset for density and energy-density prediction. Developed a GNN-based supergraph model using an adapted Graphormer3D architecture, integrating molecular, interaction, and system features.</li>
-        <li>Evaluated supergraph model generalization on 891 held-out cases, benchmarked against tabular models (Random Forest and XGBoost), and performed feature-ablation studies. Assessed representative molecular-system size using density and radial distribution functions.</li>
-        <li>Co-authored a study using large-scale ReaxFF reactive molecular dynamics to investigate early-stage hydration of four cement clinker phases under temperature-accelerated conditions, relating crystal structure to phase-specific reaction mechanisms (Construction and Building Materials, 2026).</li>
-      </ul>
-      <h3>Multiphysics Analysis and Industrial Design Support</h3>
-      <ul class="b">
-        <li>Coupled DEM and CFD to investigate particle transport, clogging, and pavement permeability with experimental validation. Also modeled airflow-driven cooling of asphalt mixtures during transport.</li>
-        <li>Modeled aggregate transport in rotating and double-drum equipment using engineering design drawings. Evaluated residence time and velocity to inform design decisions for a Korean plant equipment company.</li>
-        <li>Developed a cohesive shrinking particle model for soil drying in DEM, incorporating moisture-dependent cohesion and particle size. Compared changes in specimen radius and thickness with published experiments and assessed limitations in curling and crack development.</li>
-      </ul>
-      <h3>Simulation Automation and Digital Research Workflows</h3>
-      <ul class="b">
-        <li>Developed COMID to automate molecular bulk-system preparation and equilibration, crystalline and multilayer structure generation, and tensile simulations under varied conditions. The frontend and backend contain over 140,000 lines of Python code.</li>
-        <li>Designed local queueing and an SSH remote-compute bridge. Executed over 2,000 LAMMPS conditions on six H200 GPUs using automated queueing and CUDA MPS.</li>
-        <li>Developed early-stage self-driving laboratory workflows and reusable MD analysis procedures, providing a basis for linking physics-based models, experimental validation, and automated analysis in future digital-twin applications.</li>
-      </ul>
-      <h3>Selected Research Programs</h3>
-      <dl class="tl">
-        <dt>2024–2026</dt><dd>Molecular Dynamics and Materials Informatics-Based Mix Design of Road Construction Materials<small>KICT</small></dd>
-        <dt>2022–2023</dt><dd>Development of a Computational Science-Based Data Generation and Machine Learning-Integrated Data Platform for Construction Material Design Innovation<small>KICT</small></dd>
-        <dt>2016–2018</dt><dd>Study on Simulation Technology of Rheological Materials for 3D Printing Construction<small>National Research Foundation of Korea</small></dd>
-        <dt>2005–2008</dt><dd>VEPCD-FEP++: Development of a Multiaxial Viscoelastoplastic Continuum Damage Finite Element Program<small>Federal Highway Administration, USA</small></dd>
-      </dl>
-      <h3>International Collaboration and Teaching</h3>
-      <p style="margin:0;color:var(--ink2)">Maintains research collaborations with universities in the United States, Canada, and Türkiye. Teaches simulation methods and research workflows, supported by technical documentation and instructional materials.</p>
-    </div>
-  </section>
-
-  <section id="en-pubs">
-    <div class="wrap">
-      <h2>Selected Publications</h2>
-      <ol class="pubs">
-        <li>Shimelis, E.; Yang, B.; Haider, T.; Yun, T.; Bae, J.-H. (2026). Molecular-level insights into early-stage hydration of cement clinkers via temperature-accelerated large-scale reactive molecular dynamics. <i>Construction and Building Materials</i>, 537, 147150. <a href="https://doi.org/10.1016/j.conbuildmat.2026.147150">doi</a></li>
-        <li>Yun, T. (2025). Property Evaluation of Polymer Units in Asphalt Binder (II): Prediction of Properties Using Molecular Dynamics and Machine Learning. <i>International Journal of Highway Engineering</i>, 27(4), 31–41.</li>
-        <li>Jeon, I.; Lee, J.; Lee, T.; Yun, T.; Yang, S. (2024). In silico simulation study on moisture- and salt water-induced degradation of asphalt concrete mixture. <i>Construction and Building Materials</i>, 417, 135229.</li>
-        <li>Yun, T. (2024). Assessment of the Representative-Molecular-Structure Size in Molecular Dynamics through the Analysis of Asphalt-Binder Density and Radial Distribution Functions. <i>International Journal of Highway Engineering</i>, 26(6), 13–21.</li>
-        <li>Yun, T. (2019). Numerical Simulation of Soil Shrinkage by Using Cohesive Shrinking Particle Model. <i>International Journal of Highway Engineering</i>, 21(6), 13–21.</li>
-        <li>Yun, T.; Cho, Y. H. (2019). Fundamental Permeability Test and CFD-DEM System Coupling for Clogging Analysis in Block Pavement (II). <i>International Journal of Highway Engineering</i>, 21(3), 37–47.</li>
-        <li>Yun, T.; Park, H. M. (2016). Feasibility Study on Similarity Principle in Discrete Element Analysis. <i>International Journal of Highway Engineering</i>, 18(2), 51–60. <a href="https://doi.org/10.7855/IJHE.2016.18.2.051">doi</a></li>
-        <li>Yun, T.; Yoo, P. (2015). Implementation and Verification of Linear Cohesive Viscoelastic Contact Model for DEM. <i>International Journal of Highway Engineering</i>, 17(4), 25–32.</li>
-        <li>Yun, T.; Kim, Y. R. (2011). Modeling of Viscoplastic Rate-dependent Hardening-softening Behavior of Hot Mix Asphalt in Compression. <i>Mechanics of Time-Dependent Materials</i>, 15, 89–103.</li>
-        <li>Yun, T.; Kim, J.; Cho, Y. H. (2003). Development of Structure Analysis Program for Jointed Concrete Pavement Applying Load Discretization Algorithm. <i>Journal of Korean Society of Pavement Engineers</i>, 5(4), 1–11.</li>
-      </ol>
-    </div>
-  </section>
-
-  <section id="en-awards">
-    <div class="wrap">
-      <h2>Selected Recognition</h2>
-      <dl class="tl">
-        <dt>2020</dt><dd>Outstanding Researcher<small>Korean Society of Road Engineers</small></dd>
-        <dt>2016</dt><dd>Outstanding Researcher of the Institute<small>National Research Council of Science &amp; Technology</small></dd>
-        <dt>2013</dt><dd>Young Researcher of the Year<small>KICT</small></dd>
-        <dt>2012</dt><dd>Young Researcher of the Year<small>Korean Society of Civil Engineers</small></dd>
-      </dl>
-    </div>
-  </section>
-
-  <section id="en-contact" style="border-bottom:none">
-    <div class="wrap">
-      <h2>Contact</h2>
-      <div class="box">
-        <dl>
-          <dt>Email</dt><dd><a class="mono" href="mailto:tyun@kict.re.kr">tyun@kict.re.kr</a></dd>
-          <dt>Affiliation</dt><dd>Korea Institute of Civil Engineering and Building Technology (KICT)</dd>
-          <dt>Address</dt><dd>283 Goyangdae-ro, Goyang-si 10223, Republic of Korea</dd>
-          <dt>ORCID</dt><dd><a class="mono" href="https://orcid.org/0000-0003-1917-4126">0000-0003-1917-4126</a></dd>
-        </dl>
-      </div>
-    </div>
-  </section>
+  <div class="top"><div class="wrap">
+    <div class="eyebrow">PAVEMENT DESIGN · CONSTRUCTION MATERIALS · LIFE-CYCLE ASSESSMENT · MULTISCALE SIMULATION</div>
+    <h1>Taeyoung Yun <span>윤태영</span></h1>
+    <ul class="roles"><li>Research Fellow, Korea Institute of Civil Engineering and Building Technology (KICT), 2009–present</li><li>Full Professor (concurrent appointment), University of Science and Technology (UST), 2025–present</li></ul>
+    <p class="lead">Research Fellow at KICT working across pavement and construction-materials engineering: design methods, material evaluation, life-cycle greenhouse-gas assessment, and multiscale simulation from molecules to structures. Has developed structural analysis and design criteria for concrete and composite pavements, characterized asphalt mixtures and binders through laboratory testing and constitutive modeling, and quantified energy use and greenhouse-gas emissions over the production and construction of pavements. Builds simulation and data workflows — finite element, discrete element, CFD, heat transfer, and molecular dynamics with machine learning — that connect material behavior to design decisions.</p>
+    <ul class="chips" aria-label="Fields"><li>Pavement design methods</li><li>Construction material evaluation</li><li>Life-cycle greenhouse-gas assessment</li><li>Constitutive modeling and finite element analysis</li><li>Particle, fluid, and heat-transfer simulation</li><li>Molecular simulation and materials informatics</li></ul>
+  </div></div>
+  <section id="en-expertise"><div class="wrap"><h2>Core Expertise</h2><ul class="b"><li><b>Pavement design methods</b> — Structural analysis of jointed concrete pavement, application criteria for ultra-thin whitetopping, composite and modular pavement systems, performance-related specifications for hot mix asphalt, and design factors for planetary road pavement.</li>
+<li><b>Construction material evaluation</b> — Viscoelastic, viscoplastic, and damage characterization of asphalt mixtures in compression; PG testing of polymer-modified binders; dynamic shear modulus mastercurves of aged binders; preformed joint sealants; recycled concrete aggregate in asphalt base layers; machine-learning evaluation of binder aging.</li>
+<li><b>Life-cycle greenhouse-gas assessment</b> — Life-cycle inventory and impact assessment of asphalt mixture production and pavement construction, energy consumption and sensitivity analysis, environmental impacts of jointed and continuously reinforced concrete pavements, emissions from road-marking and traffic-safety-facility works, and LCA of specialty asphalt mixtures.</li>
+<li><b>Constitutive modeling and finite element analysis</b> — Time-dependent deformation, rate-dependent hardening and softening, viscoelastoplastic continuum damage, in-house FEA development, Abaqus, and Ansys Fluent user-defined functions.</li>
+<li><b>Particle, fluid, and heat-transfer simulation</b> — DEM for aggregate packing, slump, compaction, gravel-road corrugation, soil shrinkage, and subsidence; coupled CFD–DEM for permeability and clogging; cement-paste flow; heat transfer for black-ice prediction, snow melting on porous pavement, and cooling of asphalt mixtures in transit.</li>
+<li><b>Molecular simulation and materials informatics</b> — MD of organic–inorganic systems, polymer units in asphalt binder, concrete carbonation and cement hydration (reactive MD); LAMMPS and Materials Studio/Forcite; Python, C++, Fortran; GNN supergraph models (Graphormer3D), Random Forest, XGBoost, and automated simulation workflows.</li></ul></div></section>
+  <section id="en-career"><div class="wrap"><h2>Professional Experience</h2><dl class="tl"><dt>2009–present</dt><dd><b>Korea Institute of Civil Engineering and Building Technology</b> · Research Fellow<ul class="b" style="margin-top:6px"><li>Develop physics-based models and scientific software for material behavior, construction processes, and equipment design, combining continuum, particle, and molecular simulation methods.</li><li>Conduct life-cycle greenhouse-gas assessment of pavement materials and construction, including specialty asphalt mixtures and digital platforms for carbon-neutral cities.</li><li>Provide simulation-based industry support, including aggregate dryer-drum analysis for a Korean plant equipment company using engineering design drawings.</li><li>Architect and develop COMID, a Python-based environment for automated molecular simulation and materials informatics.</li></ul></dd><dt>2025–present</dt><dd><b>University of Science and Technology (UST)</b> · Full Professor, concurrent appointment</dd><dt>2014–2022</dt><dd><b>Chung-Ang University</b> · Adjunct Professor</dd><dt>2009–2012</dt><dd><b>Chung-Ang University</b> · Lecturer</dd><dt>2003–2004</dt><dd><b>Korea Institute of Civil Engineering and Building Technology</b> · Researcher</dd></dl>
+    <h3>Education</h3><dl class="tl"><dt>2008</dt><dd><b>Ph.D.</b> · North Carolina State University, USA<small>Civil and Environmental Engineering · Thesis: Development of a Viscoplastic Constitutive Model using Rate-Dependent Yield Criterion for HMA in Compression</small></dd><dt>2003</dt><dd><b>M.S.</b> · Chung-Ang University, Korea<small>Civil and Environmental Engineering · Thesis: Development of Behavior Analysis Program for Jointed Concrete Pavement by Applying Load Discretization Algorithm</small></dd><dt>2001</dt><dd><b>B.S.</b> · Chung-Ang University, Korea<small>Civil and Environmental Engineering</small></dd></dl></div></section>
+  <section id="en-work"><div class="wrap"><h2>Selected Research and Engineering Contributions</h2><h3>Pavement Design and Specifications</h3><ul class="b"><li>Developed a structural analysis program for jointed concrete pavement applying a load discretization algorithm, and application criteria for ultra-thin whitetopping on asphalt pavement (2003).</li><li>Participated in whitetopping design and implementation, the Korea Pavement Research Project, composite pavement systems, and sustainable–perpetual–modular road systems.</li><li>Contributed to performance-related specifications for hot mix asphalt based on viscoelastoplastic continuum damage models (FHWA, 2008) and proposed design factors and a framework for planetary road pavement (2018).</li></ul><h3>Construction Material Evaluation</h3><ul class="b"><li>Characterized hot mix asphalt in compression — viscoelastic and damage behavior, rate-dependent hardening–softening, and response at high confining pressure — with time–temperature superposition under growing damage.</li><li>Evaluated polymer-modified binders with PG protocols, dynamic shear modulus mastercurves of aged and unaged binders, binder modification with dimethyl phenol and high-impact polystyrene, and binder aging with artificial neural networks.</li><li>Developed a performance evaluation method for preformed joint sealants (slip-down failure) and evaluated recycled concrete aggregate for asphalt base layers.</li></ul><h3>Life-Cycle Greenhouse-Gas Assessment</h3><ul class="b"><li>Built life-cycle inventories and impact assessments for asphalt mixture production and asphalt pavement production and construction, with energy-consumption estimation and sensitivity analysis.</li><li>Compared environmental-impact emissions of jointed and continuously reinforced concrete pavements over production and construction.</li><li>Quantified carbon emissions of road-marking works and life-cycle impacts of traffic-safety-facility works; conducts LCA of greenhouse-gas emissions from specialty asphalt mixtures (2024–2026).</li></ul><h3>Constitutive Modeling and Finite Element Analysis</h3><ul class="b"><li>Contributed to VEPCD-FEP++, a multiaxial viscoelastoplastic continuum damage finite element program, within a US Federal Highway Administration research program (2005–2008).</li><li>Modeled rate-dependent viscoplastic hardening and softening of asphalt mixtures, including an overstress-based viscoplastic model with time–temperature superposition.</li><li>Implemented and verified a linear cohesive viscoelastic contact model for DEM in C++ and evaluated similarity principles and exact scaling in DEM.</li></ul><h3>Particle, Fluid, and Heat-Transfer Simulation</h3><ul class="b"><li>Coupled DEM and CFD to analyze clogging and permeability of block pavement with laboratory tests; simulated cement-paste flow and slump.</li><li>Modeled heat transfer for black-ice prediction on asphalt pavements, snow melting on porous pavement, wind effects on mixture temperature, and cooling of asphalt mixtures in transit.</li><li>Simulated aggregate packing and slump, asphalt-mixture compaction, gravel-road corrugation, soil shrinkage and unsaturated-soil subsidence; modeled aggregate transport in rotating drums for equipment design.</li></ul><h3>Molecular Simulation and Materials Informatics</h3><ul class="b"><li>Evaluated polymer units in asphalt binder with experimental data, molecular dynamics, and machine learning; assessed representative molecular-structure size and phase-transition temperature of binders by MD.</li><li>Developed a GNN supergraph model (adapted Graphormer3D) on a 5,346-case MD dataset for density and energy-density prediction, and a GA–PLS regression model for binder density from molecular descriptors.</li><li>Co-authored reactive-MD studies of concrete carbonation with micromechanics and of early-stage cement-clinker hydration, and simulations of moisture- and salt-water-induced degradation of asphalt mixtures.</li><li>Developed COMID to automate bulk-system preparation, crystalline and multilayer structure generation, and tensile simulations (over 140,000 lines of Python); executed over 2,000 LAMMPS conditions on six H200 GPUs.</li></ul>
+    <h3>International Collaboration and Teaching</h3>
+    <p style="margin:0;color:var(--ink2)">Maintains research collaborations with universities in the United States, Canada, and Türkiye, and teaches simulation methods and research workflows with technical documentation and instructional materials.</p></div></section>
+  <section id="en-programs"><div class="wrap"><h2>Research Programs</h2><dl class="tl"><dt>2025</dt><dd>Future Road Transportation Infrastructure Development Program<small>Korea Institute of Civil Engineering and Building Technology</small></dd><dt>2024–2026</dt><dd>Molecular Dynamics and Materials Informatics-Based Mix Design of Road Construction Materials<small>Korea Institute of Civil Engineering and Building Technology</small></dd><dt>2024–2026</dt><dd>Life Cycle Assessment of Greenhouse Gas Emissions from Specialty Asphalt Mixtures<small>Korea Institute of Civil Engineering and Building Technology</small></dd><dt>2023–2026</dt><dd>Digital Platform Technologies for Carbon-Neutral Cities<small>Korea Institute of Civil Engineering and Building Technology</small></dd><dt>2022–2023</dt><dd>Development of a Computational Science-Based Data Generation and Machine Learning-Integrated Data Platform for Construction Material Design Innovation<small>Korea Institute of Civil Engineering and Building Technology</small></dd><dt>2016–2018</dt><dd>Study on Simulation Technology of Rheological Materials for 3D Printing Construction<small>National Research Foundation of Korea</small></dd><dt>2016–2017</dt><dd>Development of Environmental Simulator and Advanced Construction Technologies over TRL6 in Extreme Conditions<small>Korea Institute of Construction Technology</small></dd><dt>2016</dt><dd>Geotechnical Engineering Preparations for Lunar Exploration — Soil Mechanics with Lunar Soil and Laboratory Demonstration of Lunar Environments<small>Korea Institute of Construction Technology</small></dd><dt>2015–2016</dt><dd>Development of Evaluation and Analysis Techniques for Road Sinks<small>Ministry of Construction &amp; Transportation of Korea</small></dd><dt>2014</dt><dd>Package Technology of Mobile Plant with Appropriate Mix Design for Developing Countries<small>Korea Institute of Construction Technology</small></dd><dt>2012–2015</dt><dd>Sustainable–Perpetual–Modular Road System Development<small>Korea Institute of Construction Technology</small></dd><dt>2010–2014</dt><dd>Development of Composite Pavement System<small>Korea Institute of Construction Technology</small></dd><dt>2009–2013</dt><dd>Korea Pavement Research Project<small>Ministry of Construction &amp; Transportation of Korea</small></dd><dt>2008</dt><dd>Hot Mix Asphalt Performance-Related Specifications (HMA-PRS) Based on Viscoelastoplastic Continuum Damage (VEPCD) Models<small>Federal Highway Administration, USA</small></dd><dt>2005–2008</dt><dd>Development of a Multiaxial VEPCD-FEP++<small>Federal Highway Administration, USA</small></dd><dt>2004–2006</dt><dd>Development of the Asphalt Pavement Performance Prediction Methodology Based on the Viscoelastoplastic Continuum Damage Theory<small>Korea Highway Corporation</small></dd><dt>2004–2005</dt><dd>Characterization of ALF Mixtures Using the Viscoelastoplastic Continuum Damage Model<small>Federal Highway Administration, USA</small></dd><dt>2002–2004</dt><dd>Korea Pavement Research Project<small>Ministry of Construction &amp; Transportation of Korea</small></dd><dt>2002–2003</dt><dd>Research on Design and Implementation of Whitetopping<small>Ministry of Construction &amp; Transportation of Korea</small></dd></dl></div></section>
+  <section id="en-pubs"><div class="wrap"><h2>Publications</h2>
+    <h3>International journals (14)</h3><ol class="pubs"><li>Shimelis, E.; Yang, B.; Haider, T.; Yun, T.; Bae, J.-H. (2026). Molecular-level insights into early-stage hydration of cement clinkers via temperature-accelerated large-scale reactive molecular dynamics. <i>Construction and Building Materials</i>, 537, 147150. <a href="https://doi.org/10.1016/j.conbuildmat.2026.147150">doi</a></li><li>Bae, J. H.; Kil, T.; Yun, T.; Yang, B. (2025). An intricately designed modeling of concrete carbonation utilizing reactive molecular dynamics and micromechanics. <i>Construction and Building Materials</i>, 489, 142297.</li><li>Jeon, I.; Lee, J.; Lee, T.; Yun, T.; Yang, S. (2024). In silico simulation study on moisture- and salt water-induced degradation of asphalt concrete mixture. <i>Construction and Building Materials</i>, 417, 135229.</li><li>Jeon, I.; Yun, T.; Yang, S. (2022). Classical, coarse-grained, and reactive molecular dynamics simulations on polymer nanocomposites. <i>Multiscale Science and Engineering</i>, 4(4), 161–178.</li><li>Yun, T.; Kim, Y. (2014). Evaluation of particle simulation methods using aggregate angularity and slump tests. <i>Construction and Building Materials</i>, 66, 549–566.</li><li>Yun, T.; Kim, Y. R. (2013). Viscoelastoplastic modeling of the behavior of hot mix asphalt in compression. <i>KSCE Journal of Civil Engineering</i>, 17(6), 1323–1332.</li><li>Yoo, P. J.; Yun, T. (2013). Micro-heterogeneous modification of an asphalt binder using a dimethyl phenol and high-impact polystyrene solution. <i>Construction and Building Materials</i>, 49, 77–83.</li><li>Yun, T.; Kim, Y. R. (2011). Modeling of viscoplastic rate-dependent hardening-softening behavior of hot mix asphalt in compression. <i>Mechanics of Time-Dependent Materials</i>, 15(1), 89–103.</li><li>Yun, T.; Kim, Y. R. (2011). Experimental investigation of rate-dependent hardening-softening behavior of hot mix asphalt in compression. <i>Road Materials and Pavement Design</i>, 12(1).</li><li>Yun, T.; Kim, Y. R. (2011). A viscoplastic constitutive model for hot mix asphalt in compression at high confining pressure. <i>Construction and Building Materials</i>, 25(5), 2733–2740.</li><li>Underwood, B. S.; Yun, T.; Kim, Y. R. (2011). Experimental investigations of the viscoelastic and damage behaviors of hot mix asphalt in compression. <i>Journal of Materials in Civil Engineering</i>, 23(4), 459–466.</li><li>Yun, T.; Lee, O.; Lee, S. W.; Kim, I. T.; Cho, Y.-H. (2011). A performance evaluation method of preformed joint sealant: slip-down failure. <i>Construction and Building Materials</i>, 25(4), 1677–1684.</li><li>Cho, Y.-H.; Yun, T.; Kim, I. T.; Choi, N. R. (2011). The application of recycled concrete aggregate (RCA) for hot mix asphalt (HMA) base layer aggregate. <i>Korean Society of Civil Engineers</i>, 15(4).</li><li>Yun, T.; Underwood, B. S.; Kim, Y. R. (2010). Time-temperature superposition for HMA with growing damage and permanent strain in confined tension and compression. <i>Journal of Materials in Civil Engineering</i>, 22(5), 415–422.</li></ol>
+    <h3>Book</h3><ul class="b"><li>Contributor, Modeling of Asphalt Concrete (Y. Richard Kim, ed.), McGraw-Hill, 2008.</li></ul>
+    <details><summary>Korean journals (42)</summary><ol class="pubs"><li>Eom, B.; Yun, T. (2025). Comparative analysis of environmental impact factor emissions for JCP and CRCP. <i>International Journal of Highway Engineering</i>, 27(6), 101–116.</li><li>Kim, Y.; Yun, T.; Yoon, C. (2025). Analysis of inventory and life cycle assessment for traffic safety facility work. <i>International Journal of Highway Engineering</i>, 27(5), 49–62.</li><li>Yun, T. (2025). Property evaluation of polymer units in asphalt binder (II): prediction of properties using molecular dynamics and machine learning. <i>International Journal of Highway Engineering</i>, 27(4), 31–41.</li><li>Yun, T. (2025). Property evaluation of polymer units in asphalt binder (I): assessment of properties using experimental data and molecular dynamics. <i>International Journal of Highway Engineering</i>, 27(4), 21–29.</li><li>Noh, S.; Yun, T. (2025). Analysis of heat-transfer modeling and decision criteria for predicting black ice on asphalt pavements. <i>International Journal of Highway Engineering</i>, 27(1), 25–34.</li><li>Eom, B.; Yun, T. (2024). Comparative analysis of environmental-impact-factor emissions for the production and construction of jointed concrete pavements. <i>International Journal of Highway Engineering</i>, 26(6), 115–126.</li><li>Kim, Y.; Yun, T.; Yoon, C. (2024). Estimation of carbon emission caused by road-marking works. <i>International Journal of Highway Engineering</i>, 26(6), 41–51.</li><li>Yun, T. (2024). Assessment of the representative-molecular-structure size in molecular dynamics through the analysis of asphalt-binder density and radial distribution functions. <i>International Journal of Highway Engineering</i>, 26(6), 13–21.</li><li>Joo, H.; Yun, T.; Shim, S. (2024). Research methods utilizing materials informatics and molecular dynamics for the development of road-pavement materials (II): material research trends using artificial intelligence technology. <i>International Journal of Highway Engineering</i>, 26(6), 1–11.</li><li>Yun, T.; Moon, J.; Shim, S.; Joo, H. (2024). Genetic algorithm–partial least squares regression model for predicting density from asphalt binder molecular descriptors. <i>International Journal of Highway Engineering</i>, 26(4), 69–78.</li><li>Yun, T. (2024). Research methods using materials informatics and molecular dynamics for the development of road pavement materials (I): material evaluation methods using molecular dynamics. <i>International Journal of Highway Engineering</i>, 26(4), 45–58.</li><li>Yun, T. (2023). Analysis of the fundamental inventory and impact assessment for the production process of hot mix asphalt mixture. <i>International Journal of Highway Engineering</i>, 25(6), 85–93.</li><li>Yun, T. (2023). Estimation and sensitivity analysis of energy consumption during the production of asphalt mixtures. <i>International Journal of Highway Engineering</i>, 25(5), 101–108.</li><li>Shim, S.; Yun, T. (2023). Evaluation of the aging of asphalt binders using artificial neural networks. <i>International Journal of Highway Engineering</i>, 25(5), 1–9.</li><li>Yun, T. (2023). Application of molecular dynamics for evaluating phase transition temperature of asphalt binders. <i>International Journal of Highway Engineering</i>, 25(4), 1–9.</li><li>Yun, T. (2022). Evaluation of asphalt pavement production and construction processes to determine impact category based on life cycle inventory. <i>International Journal of Highway Engineering</i>, 24(6), 53–60.</li><li>Yun, T. (2020). Fundamental numerical analysis on cooling characteristic of asphalt mixture in transit. <i>International Journal of Highway Engineering</i>, 23(1), 79–86.</li><li>Yun, T.; Park, H. M. (2019). Numerical parametric study on development of gravel road corrugation. <i>International Journal of Highway Engineering</i>, 21(6), 45–55.</li><li>Yun, T. (2019). Feasibility study on cohesive elastoplastic model for asphalt mixture compaction simulation. <i>International Journal of Highway Engineering</i>, 21(6), 35–43.</li><li>Yun, T. (2019). Numerical simulation of soil shrinkage by using cohesive shrinking particle model. <i>International Journal of Highway Engineering</i>, 21(6), 13–21.</li><li>Yun, T. (2019). Fundamental numerical study on subsidence of unsaturated soil with various shear characteristics. <i>International Journal of Highway Engineering</i>, 21(5), 11–24.</li><li>Yun, T.; Cho, Y. (2019). Fundamental permeability test and CFD-DEM system coupling for clogging analysis in block pavement (II). <i>International Journal of Highway Engineering</i>, 21(3), 37–47.</li><li>Yun, T.; Yi, J. H.; Cho, Y. (2019). Fundamental permeability test and CFD-DEM system coupling for clogging analysis in block pavement (I). <i>International Journal of Highway Engineering</i>, 21(3), 25–35.</li><li>Yun, T. (2018). Applicability evaluation of DEM with spherical particles for packing degree estimation. <i>International Journal of Highway Engineering</i>, 20(6), 21–30.</li><li>Yun, T. (2018). Design factors and framework for planetary road pavement. <i>International Journal of Highway Engineering</i>, 20(5), 1–11.</li><li>Yun, T.; Chung, T.; Shin, H. (2018). Numerical analysis for initiation and development of corrugation on gravel road. <i>International Journal of Highway Engineering</i>, 20(1), 11–20.</li><li>Yun, T. (2017). Numerical analysis on flow of cement paste using 2D-CFD. <i>International Journal of Highway Engineering</i>, 19(4), 19–25.</li><li>Yun, T. (2017). Heat transfer analysis of cylindrical asphalt specimen using DEM. <i>International Journal of Highway Engineering</i>, 19(4), 37–44.</li><li>Yun, T. (2016). Review on analytical solution for slump flow of cement paste. <i>International Journal of Highway Engineering</i>, 18(3), 21–32.</li><li>Yun, T.; Park, H. M. (2016). Feasibility study on similarity principle in discrete element method. <i>International Journal of Highway Engineering</i>, 18(2), 51–60.</li><li>Yun, T. (2015). Theoretical study on snow melting process on porous pavement system by using heat and mass transfer. <i>International Journal of Highway Engineering</i>, 17(5), 1–10.</li><li>Yun, T.; Yoo, P. (2015). Implementation and verification of linear cohesive viscoelastic contact model for discrete element method. <i>International Journal of Highway Engineering</i>, 17(4), 25–31.</li><li>Yun, T.; Yoo, P. (2015). Heat transfer analysis for asphalt mixture temperature variation due to wind speed. <i>International Journal of Highway Engineering</i>, 17(4), 33–40.</li><li>Yun, T.; Yoo, P. (2014). Application and verification of thermodynamics by using cylindrical asphalt mixture specimen. <i>International Journal of Highway Engineering</i>, 16(4).</li><li>Yun, T.; Yoo, P. (2014). Determination of DEM input parameters for dynamic behavior simulation of aggregates. <i>International Journal of Highway Engineering</i>, 16(1), 21–30.</li><li>Yun, T.; Ahn, S. H.; Nam, J. H.; Yoo, P. (2013). Simulation of aggregate slump test using equivalent sphere particle in DEM. <i>International Journal of Highway Engineering</i>, 15(5), 21–29.</li><li>Yun, T.; Yoo, P.; Kim, Y. (2013). A study on aggregate particle packing models for development of DEM based model. <i>International Journal of Highway Engineering</i>, 15(5), 31–45.</li><li>Yun, T.; Ham, S.; Yoo, P. (2013). Characteristics of dynamic shear modulus mastercurve of aged or unaged asphalt binders. <i>International Journal of Highway Engineering</i>, 15(1).</li><li>Yun, T.; Eom, B.; Yoo, P.; Kim, Y. (2012). A viscoplastic constitutive model based on overstress concept with time-temperature superposition principle. <i>International Journal of Highway Engineering</i>, 14(5), 75–83.</li><li>Yun, T.; Eom, B.; Yoo, P. (2012). Performance evaluation of polymer modified asphalt binder with PG testing protocols. <i>International Journal of Highway Engineering</i>, 14(5), 47–55.</li><li>Koo, H.; Yun, T.; Cho, Y.-H. (2003). Application criteria for UTW on asphalt pavement. <i>Journal of the Korean Society of Civil Engineers</i>, 23(2D), 201–208.</li><li>Yun, T.; Kim, J.; Cho, Y.-H. (2003). Development of structure analysis program for jointed concrete pavement applying load discretization algorithm. <i>Journal of the Korean Society of Pavement Engineers</i>, 5(4), 1–11.</li></ol></details></div></section>
+  <section id="en-awards"><div class="wrap"><h2>Awards</h2><dl class="tl"><dt>2020</dt><dd>Outstanding Research Paper of the Conference<small>Korean Society of Civil Engineers</small></dd><dt>2020</dt><dd>Outstanding Researcher (Donga-Ya)<small>Korean Society of Road Engineers</small></dd><dt>2018</dt><dd>Outstanding Research Paper of the Conference<small>Korean Society of Civil Engineers</small></dd><dt>2018</dt><dd>Outstanding Research Paper of the Journal<small>Korean Society of Road Engineers</small></dd><dt>2017</dt><dd>The Most Outstanding Research Paper of the Conference<small>Korean Society of Road Engineers</small></dd><dt>2016</dt><dd>Outstanding Researcher of the Institute<small>National Research Council of Science &amp; Technology</small></dd><dt>2016</dt><dd>Outstanding Research Paper of the Conference<small>Korean Society of Road Engineers</small></dd><dt>2014</dt><dd>The Most Outstanding Research Paper of the Conference<small>Korean Society of Road Engineers</small></dd><dt>2013</dt><dd>Outstanding Research Paper of the Conference<small>Korean Society of Road Engineers</small></dd><dt>2013</dt><dd>Young Researcher of the Year<small>Korea Institute of Civil Engineering and Building Technology</small></dd><dt>2012</dt><dd>Young Researcher of the Year<small>Korean Society of Civil Engineers</small></dd></dl></div></section>
+  <section id="en-contact" style="border-bottom:none"><div class="wrap"><h2>Contact</h2><div class="box"><dl><dt>Email</dt><dd><a class="mono" href="mailto:tyun@kict.re.kr">tyun@kict.re.kr</a></dd><dt>Affiliation</dt><dd>Korea Institute of Civil Engineering and Building Technology (KICT)</dd><dt>Address</dt><dd>283 Goyangdae-ro, Goyang-si 10223, Republic of Korea</dd>
+    <dt>ORCID</dt><dd><a class="mono" href="https://orcid.org/0000-0003-1917-4126">0000-0003-1917-4126</a></dd></dl></div></div></section>
 </main>
-
 <main data-l="ko">
-  <div class="top">
-    <div class="wrap">
-      <div class="eyebrow">MATERIALS MECHANICS AND MULTIPHYSICS SIMULATION</div>
-      <h1>윤태영 <span>Taeyoung Yun</span></h1>
-      <ul class="roles">
-        <li>한국건설기술연구원 도로교통연구본부 연구위원 (2009–현재)</li>
-        <li>과학기술연합대학원대학교(UST) 교수, 겸임 (2025–현재)</li>
-      </ul>
-      <p class="lead">연속체 · 입자 · 분자 시뮬레이션으로 재료의 역학 거동과 구조–물성 관계를 연구합니다. 점탄성, 점소성, 연속체 손상, 분자 상호작용을 다루며, 구성 모델과 해석 소프트웨어를 개발하고 수치 구현을 검증한 뒤 실험과 비교해 평가합니다. 유한요소 해석 프로그램 개발, 아스팔트 바인더와 고분자 단위의 분자 시뮬레이션, 산업 장비 설계를 위한 해석 지원을 수행했습니다.</p>
-    </div>
-  </div>
-
-  <section id="ko-expertise">
-    <div class="wrap">
-      <h2>전문 분야</h2>
-      <ul class="b">
-        <li><b>변형체 역학</b> — 시간 의존 변형, 변형률 속도에 따른 경화 · 연화, 응집 점탄성 접촉, 연속체 손상 모델링</li>
-        <li><b>유한요소 · 다중물리 해석</b> — 자체 유한요소 해석 코드 개발, Abaqus, CFD–DEM 연성 해석, 열 · 물질 전달, Ansys Fluent 사용자 정의 함수(UDF)</li>
-        <li><b>분자 구조 · 물성</b> — 유기–무기 계의 분자동역학(MD), 아스팔트 바인더 고분자 단위, 인장 거동, 수분 · 염수에 의한 열화; LAMMPS, Materials Studio/Forcite</li>
-        <li><b>과학 계산 프로그래밍 · 재료정보학</b> — Python, C++, Fortran, 그래프 신경망(GNN) 슈퍼그래프 모델(Graphormer3D), Random Forest · XGBoost, 시뮬레이션 자동화, 예측 모델 검증</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="ko-career">
-    <div class="wrap">
-      <h2>경력</h2>
-      <dl class="tl">
-        <dt>2009–현재</dt>
-        <dd><b>한국건설기술연구원</b> · 연구위원
-          <ul class="b" style="margin-top:6px">
-            <li>재료 거동 · 시공 공정 · 장비 설계를 위한 물리 기반 모델과 해석 소프트웨어 개발(연속체 · 입자 · 분자 시뮬레이션 결합)</li>
-            <li>국내 플랜트 장비 업체를 위한 골재 건조 드럼 해석 등 산업 해석 지원(설계 도면 기반)</li>
-            <li>분자 시뮬레이션 · 재료정보학 자동화 환경 COMID(Python) 설계 · 개발 — 모델 준비, 원격 실행, 분석 절차</li>
-          </ul></dd>
-        <dt>2025–현재</dt>
-        <dd><b>과학기술연합대학원대학교(UST)</b> · 교수(겸임)</dd>
-        <dt>2014–2022</dt>
-        <dd><b>중앙대학교</b> · 겸임교수 (Adjunct Professor)</dd>
-        <dt>2009–2012</dt>
-        <dd><b>중앙대학교</b> · 강사</dd>
-      </dl>
-      <h3>학력</h3>
-      <dl class="tl">
-        <dt>2008</dt><dd><b>박사</b> · North Carolina State University, 미국<small>Civil and Environmental Engineering</small></dd>
-        <dt>2003</dt><dd><b>석사</b> · 중앙대학교<small>Civil and Environmental Engineering</small></dd>
-        <dt>2001</dt><dd><b>학사</b> · 중앙대학교<small>Civil and Environmental Engineering</small></dd>
-      </dl>
-    </div>
-  </section>
-
-  <section id="ko-work">
-    <div class="wrap">
-      <h2>주요 연구 · 개발</h2>
-      <h3>구성 모델 · 유한요소 해석</h3>
-      <ul class="b">
-        <li>미국 연방도로청(FHWA) 연구 프로그램의 다축 점탄소성 연속체 손상 유한요소 프로그램 VEPCD-FEP++ 개발 참여(2005–2008), 이 모델 기반 성능 규격 연구(2008)</li>
-        <li>압축 하중을 받는 아스팔트 혼합물의 변형률 속도 의존 점소성 경화 · 연화 모델링</li>
-        <li>Fortran 자체 유한요소 해석 코드 개발 — 줄눈 콘크리트 포장의 하중 이산화 알고리즘 포함</li>
-        <li>DEM용 선형 응집 점탄성 접촉 모델을 C++로 구현하고 해석해로 검증, 입자–고체 상호작용을 위한 EDEM 접촉 모델 확장과 실험 검증</li>
-        <li>해석해를 이용한 DEM 상사 법칙 · 정확 축척 평가 — 입자 동역학 · 접촉 모델 · 형상이 축척 해석의 타당성에 미치는 영향</li>
-      </ul>
-      <h3>바인더 재료와 계면의 분자 시뮬레이션</h3>
-      <ul class="b">
-        <li>분자동역학과 기계학습으로 아스팔트 바인더 고분자 단위의 물성 평가</li>
-        <li>유기–무기 재료 계의 비정질–결정 상호작용과 인장 거동 해석, 수분 · 염수에 의한 아스팔트 혼합물 열화 연구(공저)</li>
-        <li>Materials Studio/Forcite MD 5,346건 자료로 밀도 · 에너지 밀도 예측용 GNN 슈퍼그래프 모델(Graphormer3D 변형) 개발 — 분자 · 상호작용 · 계 특성 통합</li>
-        <li>학습에 쓰지 않은 891건으로 일반화 평가, Random Forest · XGBoost 대비 비교와 특성 제거 분석, 밀도 · 방사분포함수로 대표 분자 계 크기 평가</li>
-        <li>대규모 ReaxFF 반응 분자동역학으로 시멘트 클링커 4상의 초기 수화 기구 연구(공저, 2026)</li>
-      </ul>
-      <h3>다중물리 해석 · 산업 설계 지원</h3>
-      <ul class="b">
-        <li>DEM–CFD 연성으로 입자 이동 · 막힘 · 포장 투수성 해석과 실험 검증, 운반 중 아스팔트 혼합물의 공기 냉각 해석</li>
-        <li>설계 도면을 바탕으로 회전 · 이중 드럼 장비의 골재 이송 해석(체류 시간 · 속도) — 국내 플랜트 장비 업체 설계 지원</li>
-        <li>함수비에 따른 응집력과 입자 크기를 반영한 DEM 응집 수축 입자 모델로 흙의 건조 수축 해석, 문헌 실험과 비교</li>
-      </ul>
-      <h3>시뮬레이션 자동화 · 디지털 연구 절차</h3>
-      <ul class="b">
-        <li>COMID — 분자 벌크 계 준비 · 평형, 결정 · 다층 구조 생성, 조건별 인장 해석 자동화(프런트엔드 · 백엔드 Python 14만 줄 이상)</li>
-        <li>로컬 작업 큐와 SSH 원격 계산 연결 설계, H200 GPU 6대에서 LAMMPS 2,000여 조건 자동 실행(CUDA MPS)</li>
-        <li>초기 단계 자율실험실 작업 절차와 재사용 가능한 MD 분석 절차 개발</li>
-      </ul>
-      <h3>주요 연구과제</h3>
-      <dl class="tl">
-        <dt>2024–2026</dt><dd>Molecular Dynamics and Materials Informatics-Based Mix Design of Road Construction Materials<small>한국건설기술연구원</small></dd>
-        <dt>2022–2023</dt><dd>Development of a Computational Science-Based Data Generation and Machine Learning-Integrated Data Platform for Construction Material Design Innovation<small>한국건설기술연구원</small></dd>
-        <dt>2016–2018</dt><dd>Study on Simulation Technology of Rheological Materials for 3D Printing Construction<small>한국연구재단</small></dd>
-        <dt>2005–2008</dt><dd>VEPCD-FEP++: Development of a Multiaxial Viscoelastoplastic Continuum Damage Finite Element Program<small>미국 연방도로청(FHWA)</small></dd>
-      </dl>
-      <h3>국제 협력 · 교육</h3>
-      <p style="margin:0;color:var(--ink2)">미국 · 캐나다 · 튀르키예 대학과 연구 협력을 하고 있으며, 해석 방법과 연구 절차를 기술 문서 · 교육 자료와 함께 가르칩니다.</p>
-    </div>
-  </section>
-
-  <section id="ko-pubs">
-    <div class="wrap">
-      <h2>주요 논문</h2>
-      <ol class="pubs">
-        <li>Shimelis, E.; Yang, B.; Haider, T.; Yun, T.; Bae, J.-H. (2026). Molecular-level insights into early-stage hydration of cement clinkers via temperature-accelerated large-scale reactive molecular dynamics. <i>Construction and Building Materials</i>, 537, 147150. <a href="https://doi.org/10.1016/j.conbuildmat.2026.147150">doi</a></li>
-        <li>Yun, T. (2025). Property Evaluation of Polymer Units in Asphalt Binder (II): Prediction of Properties Using Molecular Dynamics and Machine Learning. <i>International Journal of Highway Engineering</i>, 27(4), 31–41.</li>
-        <li>Jeon, I.; Lee, J.; Lee, T.; Yun, T.; Yang, S. (2024). In silico simulation study on moisture- and salt water-induced degradation of asphalt concrete mixture. <i>Construction and Building Materials</i>, 417, 135229.</li>
-        <li>Yun, T. (2024). Assessment of the Representative-Molecular-Structure Size in Molecular Dynamics through the Analysis of Asphalt-Binder Density and Radial Distribution Functions. <i>International Journal of Highway Engineering</i>, 26(6), 13–21.</li>
-        <li>Yun, T. (2019). Numerical Simulation of Soil Shrinkage by Using Cohesive Shrinking Particle Model. <i>International Journal of Highway Engineering</i>, 21(6), 13–21.</li>
-        <li>Yun, T.; Cho, Y. H. (2019). Fundamental Permeability Test and CFD-DEM System Coupling for Clogging Analysis in Block Pavement (II). <i>International Journal of Highway Engineering</i>, 21(3), 37–47.</li>
-        <li>Yun, T.; Park, H. M. (2016). Feasibility Study on Similarity Principle in Discrete Element Analysis. <i>International Journal of Highway Engineering</i>, 18(2), 51–60. <a href="https://doi.org/10.7855/IJHE.2016.18.2.051">doi</a></li>
-        <li>Yun, T.; Yoo, P. (2015). Implementation and Verification of Linear Cohesive Viscoelastic Contact Model for DEM. <i>International Journal of Highway Engineering</i>, 17(4), 25–32.</li>
-        <li>Yun, T.; Kim, Y. R. (2011). Modeling of Viscoplastic Rate-dependent Hardening-softening Behavior of Hot Mix Asphalt in Compression. <i>Mechanics of Time-Dependent Materials</i>, 15, 89–103.</li>
-        <li>Yun, T.; Kim, J.; Cho, Y. H. (2003). Development of Structure Analysis Program for Jointed Concrete Pavement Applying Load Discretization Algorithm. <i>Journal of Korean Society of Pavement Engineers</i>, 5(4), 1–11.</li>
-      </ol>
-    </div>
-  </section>
-
-  <section id="ko-awards">
-    <div class="wrap">
-      <h2>수상</h2>
-      <dl class="tl">
-        <dt>2020</dt><dd>Outstanding Researcher<small>한국도로학회(Korean Society of Road Engineers)</small></dd>
-        <dt>2016</dt><dd>Outstanding Researcher of the Institute<small>국가과학기술연구회(National Research Council of Science &amp; Technology)</small></dd>
-        <dt>2013</dt><dd>Young Researcher of the Year<small>한국건설기술연구원</small></dd>
-        <dt>2012</dt><dd>Young Researcher of the Year<small>대한토목학회(Korean Society of Civil Engineers)</small></dd>
-      </dl>
-    </div>
-  </section>
-
-  <section id="ko-contact" style="border-bottom:none">
-    <div class="wrap">
-      <h2>연락처</h2>
-      <div class="box">
-        <dl>
-          <dt>이메일</dt><dd><a class="mono" href="mailto:tyun@kict.re.kr">tyun@kict.re.kr</a></dd>
-          <dt>소속</dt><dd>한국건설기술연구원 도로교통연구본부</dd>
-          <dt>주소</dt><dd>10223 경기도 고양시 일산서구 고양대로 283</dd>
-          <dt>ORCID</dt><dd><a class="mono" href="https://orcid.org/0000-0003-1917-4126">0000-0003-1917-4126</a></dd>
-        </dl>
-      </div>
-    </div>
-  </section>
+  <div class="top"><div class="wrap">
+    <div class="eyebrow">PAVEMENT DESIGN · CONSTRUCTION MATERIALS · LIFE-CYCLE ASSESSMENT · MULTISCALE SIMULATION</div>
+    <h1>윤태영 <span>Taeyoung Yun</span></h1>
+    <ul class="roles"><li>한국건설기술연구원 도로교통연구본부 연구위원 (2009–현재)</li><li>과학기술연합대학원대학교(UST) 교수, 겸임 (2025–현재)</li></ul>
+    <p class="lead">도로 포장과 건설재료 분야에서 설계법, 재료 평가, 건설 전주기 온실가스 평가, 분자에서 구조물까지의 다중 규모 해석을 함께 연구합니다. 콘크리트 · 복합 포장의 구조 해석과 설계 기준을 개발했고, 아스팔트 혼합물과 바인더를 실내 시험과 구성 모델로 평가했으며, 포장의 생산 · 시공 과정에서 쓰이는 에너지와 온실가스 배출을 전과정평가(LCA)로 정량화했습니다. 유한요소 · 개별요소 · 전산유체 · 열전달 해석과 분자동역학 · 기계학습을 결합해 재료 거동을 설계 판단으로 연결하는 해석 · 데이터 체계를 만들고 있습니다.</p>
+    <ul class="chips" aria-label="분야"><li>포장 설계법</li><li>건설재료 평가</li><li>건설 전주기 온실가스 평가</li><li>구성 모델 · 유한요소 해석</li><li>입자 · 유체 · 열전달 해석</li><li>분자 시뮬레이션 · 재료정보학</li></ul>
+  </div></div>
+  <section id="ko-expertise"><div class="wrap"><h2>전문 분야</h2><ul class="b"><li><b>포장 설계법</b> — 줄눈 콘크리트 포장 구조 해석, 초박층 화이트토핑 적용 기준, 복합 · 모듈러 포장 체계, 아스팔트 혼합물 성능 관련 규격, 행성 도로 포장 설계 인자</li>
+<li><b>건설재료 평가</b> — 압축 하중을 받는 아스팔트 혼합물의 점탄성 · 점소성 · 손상 특성, 개질 바인더 PG 시험, 노화 바인더 동적 전단 탄성계수 마스터커브, 줄눈재 성능 평가, 아스팔트 기층용 순환골재, 기계학습 기반 바인더 노화 평가</li>
+<li><b>건설 전주기 온실가스 평가</b> — 아스팔트 혼합물 생산 · 포장 시공의 전과정 목록(LCI) · 영향 평가, 생산 에너지 소비와 민감도 분석, 줄눈 · 연속철근 콘크리트 포장의 환경 영향 비교, 노면표시 · 교통안전시설 공사 탄소 배출, 특수 아스팔트 혼합물 전과정평가</li>
+<li><b>구성 모델 · 유한요소 해석</b> — 시간 의존 변형, 변형률 속도에 따른 경화 · 연화, 점탄소성 연속체 손상, 자체 유한요소 코드 개발, Abaqus, Ansys Fluent 사용자 정의 함수</li>
+<li><b>입자 · 유체 · 열전달 해석</b> — 골재 충전 · 슬럼프 · 다짐 · 비포장도로 파상 · 흙 수축 · 침하의 개별요소(DEM) 해석, CFD–DEM 연성 투수 · 막힘 해석, 시멘트 페이스트 유동, 블랙아이스 예측 · 투수 포장 융설 · 운반 중 아스팔트 혼합물 냉각의 열전달 해석</li>
+<li><b>분자 시뮬레이션 · 재료정보학</b> — 유기–무기 계 분자동역학, 아스팔트 바인더 고분자 단위, 콘크리트 탄산화 · 시멘트 수화(반응 MD); LAMMPS, Materials Studio/Forcite; Python · C++ · Fortran; GNN 슈퍼그래프 모델(Graphormer3D), Random Forest · XGBoost, 시뮬레이션 자동화</li></ul></div></section>
+  <section id="ko-career"><div class="wrap"><h2>경력</h2><dl class="tl"><dt>2009–현재</dt><dd><b>한국건설기술연구원</b> · 연구위원<ul class="b" style="margin-top:6px"><li>재료 거동 · 시공 공정 · 장비 설계를 위한 물리 기반 모델과 해석 소프트웨어 개발(연속체 · 입자 · 분자 시뮬레이션 결합)</li><li>포장 재료 · 시공의 전과정 온실가스 평가 수행(특수 아스팔트 혼합물, 탄소중립 도시 디지털 플랫폼 포함)</li><li>국내 플랜트 장비 업체를 위한 골재 건조 드럼 해석 등 산업 해석 지원(설계 도면 기반)</li><li>분자 시뮬레이션 · 재료정보학 자동화 환경 COMID(Python) 설계 · 개발</li></ul></dd><dt>2025–현재</dt><dd><b>과학기술연합대학원대학교(UST)</b> · 교수(겸임)</dd><dt>2014–2022</dt><dd><b>중앙대학교</b> · 겸임교수</dd><dt>2009–2012</dt><dd><b>중앙대학교</b> · 강사</dd><dt>2003–2004</dt><dd><b>한국건설기술연구원</b> · 연구원</dd></dl>
+    <h3>학력</h3><dl class="tl"><dt>2008</dt><dd><b>박사</b> · North Carolina State University, 미국<small>Civil and Environmental Engineering · Thesis: Development of a Viscoplastic Constitutive Model using Rate-Dependent Yield Criterion for HMA in Compression</small></dd><dt>2003</dt><dd><b>석사</b> · 중앙대학교<small>Civil and Environmental Engineering · Thesis: Development of Behavior Analysis Program for Jointed Concrete Pavement by Applying Load Discretization Algorithm</small></dd><dt>2001</dt><dd><b>학사</b> · 중앙대학교<small>Civil and Environmental Engineering</small></dd></dl></div></section>
+  <section id="ko-work"><div class="wrap"><h2>주요 연구 · 개발</h2><h3>포장 설계 · 규격</h3><ul class="b"><li>하중 이산화 알고리즘을 적용한 줄눈 콘크리트 포장 구조 해석 프로그램 개발, 아스팔트 포장 위 초박층 화이트토핑 적용 기준 제시(2003)</li><li>화이트토핑 설계 · 시공, 한국형 포장 설계법 연구, 복합 포장 체계, 지속가능 · 장수명 · 모듈러 도로 체계 연구 참여</li><li>점탄소성 연속체 손상 모델 기반 아스팔트 혼합물 성능 관련 규격 연구 참여(FHWA, 2008), 행성 도로 포장 설계 인자와 틀 제안(2018)</li></ul><h3>건설재료 평가</h3><ul class="b"><li>압축 하중을 받는 아스팔트 혼합물의 점탄성 · 손상 거동, 변형률 속도 의존 경화–연화, 고구속압 거동을 시험 · 모델링하고 손상 진행 중 시간–온도 중첩 검증</li><li>PG 시험에 의한 개질 바인더 평가, 노화 · 비노화 바인더 동적 전단 탄성계수 마스터커브, 디메틸페놀 · 고충격 폴리스티렌 개질, 인공신경망 기반 바인더 노화 평가</li><li>성형 줄눈재 성능 평가 방법(흘러내림 파손) 개발, 아스팔트 기층 골재로서 순환 콘크리트 골재 평가</li></ul><h3>건설 전주기 온실가스 평가</h3><ul class="b"><li>아스팔트 혼합물 생산과 아스팔트 포장 생산 · 시공의 전과정 목록 · 영향 평가 구축, 생산 에너지 소비 추정과 민감도 분석</li><li>줄눈 콘크리트 포장과 연속철근 콘크리트 포장의 생산 · 시공 단계 환경 영향 배출 비교</li><li>노면표시 공사 탄소 배출과 교통안전시설 공사 전과정 영향 정량화, 특수 아스팔트 혼합물 온실가스 전과정평가 수행(2024–2026)</li></ul><h3>구성 모델 · 유한요소 해석</h3><ul class="b"><li>미국 연방도로청(FHWA) 연구 프로그램의 다축 점탄소성 연속체 손상 유한요소 프로그램 VEPCD-FEP++ 개발 참여(2005–2008)</li><li>아스팔트 혼합물의 변형률 속도 의존 점소성 경화 · 연화 모델링(시간–온도 중첩을 적용한 과응력 기반 점소성 모델 포함)</li><li>DEM 선형 응집 점탄성 접촉 모델 구현(C++) · 해석해 검증, DEM 상사 법칙 · 정확 축척 평가</li></ul><h3>입자 · 유체 · 열전달 해석</h3><ul class="b"><li>CFD–DEM 연성으로 블록 포장 막힘 · 투수 해석과 실험 검증, 시멘트 페이스트 유동 · 슬럼프 해석</li><li>아스팔트 포장 블랙아이스 예측, 투수 포장 융설, 풍속에 따른 혼합물 온도 변화, 운반 중 아스팔트 혼합물 냉각의 열전달 해석</li><li>골재 충전 · 슬럼프, 아스팔트 혼합물 다짐, 비포장도로 파상, 흙 수축 · 불포화토 침하 해석, 장비 설계를 위한 회전 드럼 골재 이송 해석</li></ul><h3>분자 시뮬레이션 · 재료정보학</h3><ul class="b"><li>실험 자료 · 분자동역학 · 기계학습으로 아스팔트 바인더 고분자 단위 평가, MD 대표 분자 구조 크기와 바인더 상전이 온도 평가</li><li>MD 5,346건 자료로 밀도 · 에너지 밀도 예측 GNN 슈퍼그래프 모델(Graphormer3D 변형) 개발, 분자 기술자 기반 바인더 밀도 GA–PLS 회귀 모델</li><li>반응 MD와 미시역학을 결합한 콘크리트 탄산화, 시멘트 클링커 초기 수화, 수분 · 염수에 의한 아스팔트 혼합물 열화 연구(공저)</li><li>COMID — 벌크 계 준비, 결정 · 다층 구조 생성, 인장 해석 자동화(Python 14만 줄 이상), H200 GPU 6대에서 LAMMPS 2,000여 조건 자동 실행</li></ul>
+    <h3>국제 협력 · 교육</h3>
+    <p style="margin:0;color:var(--ink2)">미국 · 캐나다 · 튀르키예 대학과 연구 협력을 하고 있으며, 해석 방법과 연구 절차를 기술 문서 · 교육 자료와 함께 가르칩니다.</p></div></section>
+  <section id="ko-programs"><div class="wrap"><h2>연구과제</h2><dl class="tl"><dt>2025</dt><dd>Future Road Transportation Infrastructure Development Program<small>한국건설기술연구원</small></dd><dt>2024–2026</dt><dd>Molecular Dynamics and Materials Informatics-Based Mix Design of Road Construction Materials<small>한국건설기술연구원</small></dd><dt>2024–2026</dt><dd>Life Cycle Assessment of Greenhouse Gas Emissions from Specialty Asphalt Mixtures<small>한국건설기술연구원</small></dd><dt>2023–2026</dt><dd>Digital Platform Technologies for Carbon-Neutral Cities<small>한국건설기술연구원</small></dd><dt>2022–2023</dt><dd>Development of a Computational Science-Based Data Generation and Machine Learning-Integrated Data Platform for Construction Material Design Innovation<small>한국건설기술연구원</small></dd><dt>2016–2018</dt><dd>Study on Simulation Technology of Rheological Materials for 3D Printing Construction<small>한국연구재단</small></dd><dt>2016–2017</dt><dd>Development of Environmental Simulator and Advanced Construction Technologies over TRL6 in Extreme Conditions<small>한국건설기술연구원</small></dd><dt>2016</dt><dd>Geotechnical Engineering Preparations for Lunar Exploration — Soil Mechanics with Lunar Soil and Laboratory Demonstration of Lunar Environments<small>한국건설기술연구원</small></dd><dt>2015–2016</dt><dd>Development of Evaluation and Analysis Techniques for Road Sinks<small>국토교통부(옛 건설교통부)</small></dd><dt>2014</dt><dd>Package Technology of Mobile Plant with Appropriate Mix Design for Developing Countries<small>한국건설기술연구원</small></dd><dt>2012–2015</dt><dd>Sustainable–Perpetual–Modular Road System Development<small>한국건설기술연구원</small></dd><dt>2010–2014</dt><dd>Development of Composite Pavement System<small>한국건설기술연구원</small></dd><dt>2009–2013</dt><dd>Korea Pavement Research Project<small>국토교통부(옛 건설교통부)</small></dd><dt>2008</dt><dd>Hot Mix Asphalt Performance-Related Specifications (HMA-PRS) Based on Viscoelastoplastic Continuum Damage (VEPCD) Models<small>미국 연방도로청(FHWA)</small></dd><dt>2005–2008</dt><dd>Development of a Multiaxial VEPCD-FEP++<small>미국 연방도로청(FHWA)</small></dd><dt>2004–2006</dt><dd>Development of the Asphalt Pavement Performance Prediction Methodology Based on the Viscoelastoplastic Continuum Damage Theory<small>한국도로공사</small></dd><dt>2004–2005</dt><dd>Characterization of ALF Mixtures Using the Viscoelastoplastic Continuum Damage Model<small>미국 연방도로청(FHWA)</small></dd><dt>2002–2004</dt><dd>Korea Pavement Research Project<small>국토교통부(옛 건설교통부)</small></dd><dt>2002–2003</dt><dd>Research on Design and Implementation of Whitetopping<small>국토교통부(옛 건설교통부)</small></dd></dl></div></section>
+  <section id="ko-pubs"><div class="wrap"><h2>논문 · 저서</h2>
+    <h3>국제 학술지 (14)</h3><ol class="pubs"><li>Shimelis, E.; Yang, B.; Haider, T.; Yun, T.; Bae, J.-H. (2026). Molecular-level insights into early-stage hydration of cement clinkers via temperature-accelerated large-scale reactive molecular dynamics. <i>Construction and Building Materials</i>, 537, 147150. <a href="https://doi.org/10.1016/j.conbuildmat.2026.147150">doi</a></li><li>Bae, J. H.; Kil, T.; Yun, T.; Yang, B. (2025). An intricately designed modeling of concrete carbonation utilizing reactive molecular dynamics and micromechanics. <i>Construction and Building Materials</i>, 489, 142297.</li><li>Jeon, I.; Lee, J.; Lee, T.; Yun, T.; Yang, S. (2024). In silico simulation study on moisture- and salt water-induced degradation of asphalt concrete mixture. <i>Construction and Building Materials</i>, 417, 135229.</li><li>Jeon, I.; Yun, T.; Yang, S. (2022). Classical, coarse-grained, and reactive molecular dynamics simulations on polymer nanocomposites. <i>Multiscale Science and Engineering</i>, 4(4), 161–178.</li><li>Yun, T.; Kim, Y. (2014). Evaluation of particle simulation methods using aggregate angularity and slump tests. <i>Construction and Building Materials</i>, 66, 549–566.</li><li>Yun, T.; Kim, Y. R. (2013). Viscoelastoplastic modeling of the behavior of hot mix asphalt in compression. <i>KSCE Journal of Civil Engineering</i>, 17(6), 1323–1332.</li><li>Yoo, P. J.; Yun, T. (2013). Micro-heterogeneous modification of an asphalt binder using a dimethyl phenol and high-impact polystyrene solution. <i>Construction and Building Materials</i>, 49, 77–83.</li><li>Yun, T.; Kim, Y. R. (2011). Modeling of viscoplastic rate-dependent hardening-softening behavior of hot mix asphalt in compression. <i>Mechanics of Time-Dependent Materials</i>, 15(1), 89–103.</li><li>Yun, T.; Kim, Y. R. (2011). Experimental investigation of rate-dependent hardening-softening behavior of hot mix asphalt in compression. <i>Road Materials and Pavement Design</i>, 12(1).</li><li>Yun, T.; Kim, Y. R. (2011). A viscoplastic constitutive model for hot mix asphalt in compression at high confining pressure. <i>Construction and Building Materials</i>, 25(5), 2733–2740.</li><li>Underwood, B. S.; Yun, T.; Kim, Y. R. (2011). Experimental investigations of the viscoelastic and damage behaviors of hot mix asphalt in compression. <i>Journal of Materials in Civil Engineering</i>, 23(4), 459–466.</li><li>Yun, T.; Lee, O.; Lee, S. W.; Kim, I. T.; Cho, Y.-H. (2011). A performance evaluation method of preformed joint sealant: slip-down failure. <i>Construction and Building Materials</i>, 25(4), 1677–1684.</li><li>Cho, Y.-H.; Yun, T.; Kim, I. T.; Choi, N. R. (2011). The application of recycled concrete aggregate (RCA) for hot mix asphalt (HMA) base layer aggregate. <i>Korean Society of Civil Engineers</i>, 15(4).</li><li>Yun, T.; Underwood, B. S.; Kim, Y. R. (2010). Time-temperature superposition for HMA with growing damage and permanent strain in confined tension and compression. <i>Journal of Materials in Civil Engineering</i>, 22(5), 415–422.</li></ol>
+    <h3>저서</h3><ul class="b"><li>Contributor, Modeling of Asphalt Concrete (Y. Richard Kim, ed.), McGraw-Hill, 2008.</li></ul>
+    <details><summary>국내 학술지 (42)</summary><ol class="pubs"><li>Eom, B.; Yun, T. (2025). Comparative analysis of environmental impact factor emissions for JCP and CRCP. <i>International Journal of Highway Engineering</i>, 27(6), 101–116.</li><li>Kim, Y.; Yun, T.; Yoon, C. (2025). Analysis of inventory and life cycle assessment for traffic safety facility work. <i>International Journal of Highway Engineering</i>, 27(5), 49–62.</li><li>Yun, T. (2025). Property evaluation of polymer units in asphalt binder (II): prediction of properties using molecular dynamics and machine learning. <i>International Journal of Highway Engineering</i>, 27(4), 31–41.</li><li>Yun, T. (2025). Property evaluation of polymer units in asphalt binder (I): assessment of properties using experimental data and molecular dynamics. <i>International Journal of Highway Engineering</i>, 27(4), 21–29.</li><li>Noh, S.; Yun, T. (2025). Analysis of heat-transfer modeling and decision criteria for predicting black ice on asphalt pavements. <i>International Journal of Highway Engineering</i>, 27(1), 25–34.</li><li>Eom, B.; Yun, T. (2024). Comparative analysis of environmental-impact-factor emissions for the production and construction of jointed concrete pavements. <i>International Journal of Highway Engineering</i>, 26(6), 115–126.</li><li>Kim, Y.; Yun, T.; Yoon, C. (2024). Estimation of carbon emission caused by road-marking works. <i>International Journal of Highway Engineering</i>, 26(6), 41–51.</li><li>Yun, T. (2024). Assessment of the representative-molecular-structure size in molecular dynamics through the analysis of asphalt-binder density and radial distribution functions. <i>International Journal of Highway Engineering</i>, 26(6), 13–21.</li><li>Joo, H.; Yun, T.; Shim, S. (2024). Research methods utilizing materials informatics and molecular dynamics for the development of road-pavement materials (II): material research trends using artificial intelligence technology. <i>International Journal of Highway Engineering</i>, 26(6), 1–11.</li><li>Yun, T.; Moon, J.; Shim, S.; Joo, H. (2024). Genetic algorithm–partial least squares regression model for predicting density from asphalt binder molecular descriptors. <i>International Journal of Highway Engineering</i>, 26(4), 69–78.</li><li>Yun, T. (2024). Research methods using materials informatics and molecular dynamics for the development of road pavement materials (I): material evaluation methods using molecular dynamics. <i>International Journal of Highway Engineering</i>, 26(4), 45–58.</li><li>Yun, T. (2023). Analysis of the fundamental inventory and impact assessment for the production process of hot mix asphalt mixture. <i>International Journal of Highway Engineering</i>, 25(6), 85–93.</li><li>Yun, T. (2023). Estimation and sensitivity analysis of energy consumption during the production of asphalt mixtures. <i>International Journal of Highway Engineering</i>, 25(5), 101–108.</li><li>Shim, S.; Yun, T. (2023). Evaluation of the aging of asphalt binders using artificial neural networks. <i>International Journal of Highway Engineering</i>, 25(5), 1–9.</li><li>Yun, T. (2023). Application of molecular dynamics for evaluating phase transition temperature of asphalt binders. <i>International Journal of Highway Engineering</i>, 25(4), 1–9.</li><li>Yun, T. (2022). Evaluation of asphalt pavement production and construction processes to determine impact category based on life cycle inventory. <i>International Journal of Highway Engineering</i>, 24(6), 53–60.</li><li>Yun, T. (2020). Fundamental numerical analysis on cooling characteristic of asphalt mixture in transit. <i>International Journal of Highway Engineering</i>, 23(1), 79–86.</li><li>Yun, T.; Park, H. M. (2019). Numerical parametric study on development of gravel road corrugation. <i>International Journal of Highway Engineering</i>, 21(6), 45–55.</li><li>Yun, T. (2019). Feasibility study on cohesive elastoplastic model for asphalt mixture compaction simulation. <i>International Journal of Highway Engineering</i>, 21(6), 35–43.</li><li>Yun, T. (2019). Numerical simulation of soil shrinkage by using cohesive shrinking particle model. <i>International Journal of Highway Engineering</i>, 21(6), 13–21.</li><li>Yun, T. (2019). Fundamental numerical study on subsidence of unsaturated soil with various shear characteristics. <i>International Journal of Highway Engineering</i>, 21(5), 11–24.</li><li>Yun, T.; Cho, Y. (2019). Fundamental permeability test and CFD-DEM system coupling for clogging analysis in block pavement (II). <i>International Journal of Highway Engineering</i>, 21(3), 37–47.</li><li>Yun, T.; Yi, J. H.; Cho, Y. (2019). Fundamental permeability test and CFD-DEM system coupling for clogging analysis in block pavement (I). <i>International Journal of Highway Engineering</i>, 21(3), 25–35.</li><li>Yun, T. (2018). Applicability evaluation of DEM with spherical particles for packing degree estimation. <i>International Journal of Highway Engineering</i>, 20(6), 21–30.</li><li>Yun, T. (2018). Design factors and framework for planetary road pavement. <i>International Journal of Highway Engineering</i>, 20(5), 1–11.</li><li>Yun, T.; Chung, T.; Shin, H. (2018). Numerical analysis for initiation and development of corrugation on gravel road. <i>International Journal of Highway Engineering</i>, 20(1), 11–20.</li><li>Yun, T. (2017). Numerical analysis on flow of cement paste using 2D-CFD. <i>International Journal of Highway Engineering</i>, 19(4), 19–25.</li><li>Yun, T. (2017). Heat transfer analysis of cylindrical asphalt specimen using DEM. <i>International Journal of Highway Engineering</i>, 19(4), 37–44.</li><li>Yun, T. (2016). Review on analytical solution for slump flow of cement paste. <i>International Journal of Highway Engineering</i>, 18(3), 21–32.</li><li>Yun, T.; Park, H. M. (2016). Feasibility study on similarity principle in discrete element method. <i>International Journal of Highway Engineering</i>, 18(2), 51–60.</li><li>Yun, T. (2015). Theoretical study on snow melting process on porous pavement system by using heat and mass transfer. <i>International Journal of Highway Engineering</i>, 17(5), 1–10.</li><li>Yun, T.; Yoo, P. (2015). Implementation and verification of linear cohesive viscoelastic contact model for discrete element method. <i>International Journal of Highway Engineering</i>, 17(4), 25–31.</li><li>Yun, T.; Yoo, P. (2015). Heat transfer analysis for asphalt mixture temperature variation due to wind speed. <i>International Journal of Highway Engineering</i>, 17(4), 33–40.</li><li>Yun, T.; Yoo, P. (2014). Application and verification of thermodynamics by using cylindrical asphalt mixture specimen. <i>International Journal of Highway Engineering</i>, 16(4).</li><li>Yun, T.; Yoo, P. (2014). Determination of DEM input parameters for dynamic behavior simulation of aggregates. <i>International Journal of Highway Engineering</i>, 16(1), 21–30.</li><li>Yun, T.; Ahn, S. H.; Nam, J. H.; Yoo, P. (2013). Simulation of aggregate slump test using equivalent sphere particle in DEM. <i>International Journal of Highway Engineering</i>, 15(5), 21–29.</li><li>Yun, T.; Yoo, P.; Kim, Y. (2013). A study on aggregate particle packing models for development of DEM based model. <i>International Journal of Highway Engineering</i>, 15(5), 31–45.</li><li>Yun, T.; Ham, S.; Yoo, P. (2013). Characteristics of dynamic shear modulus mastercurve of aged or unaged asphalt binders. <i>International Journal of Highway Engineering</i>, 15(1).</li><li>Yun, T.; Eom, B.; Yoo, P.; Kim, Y. (2012). A viscoplastic constitutive model based on overstress concept with time-temperature superposition principle. <i>International Journal of Highway Engineering</i>, 14(5), 75–83.</li><li>Yun, T.; Eom, B.; Yoo, P. (2012). Performance evaluation of polymer modified asphalt binder with PG testing protocols. <i>International Journal of Highway Engineering</i>, 14(5), 47–55.</li><li>Koo, H.; Yun, T.; Cho, Y.-H. (2003). Application criteria for UTW on asphalt pavement. <i>Journal of the Korean Society of Civil Engineers</i>, 23(2D), 201–208.</li><li>Yun, T.; Kim, J.; Cho, Y.-H. (2003). Development of structure analysis program for jointed concrete pavement applying load discretization algorithm. <i>Journal of the Korean Society of Pavement Engineers</i>, 5(4), 1–11.</li></ol></details></div></section>
+  <section id="ko-awards"><div class="wrap"><h2>수상</h2><dl class="tl"><dt>2020</dt><dd>Outstanding Research Paper of the Conference<small>대한토목학회(Korean Society of Civil Engineers)</small></dd><dt>2020</dt><dd>Outstanding Researcher (Donga-Ya)<small>한국도로학회(Korean Society of Road Engineers)</small></dd><dt>2018</dt><dd>Outstanding Research Paper of the Conference<small>대한토목학회(Korean Society of Civil Engineers)</small></dd><dt>2018</dt><dd>Outstanding Research Paper of the Journal<small>한국도로학회(Korean Society of Road Engineers)</small></dd><dt>2017</dt><dd>The Most Outstanding Research Paper of the Conference<small>한국도로학회(Korean Society of Road Engineers)</small></dd><dt>2016</dt><dd>Outstanding Researcher of the Institute<small>국가과학기술연구회(National Research Council of Science &amp; Technology)</small></dd><dt>2016</dt><dd>Outstanding Research Paper of the Conference<small>한국도로학회(Korean Society of Road Engineers)</small></dd><dt>2014</dt><dd>The Most Outstanding Research Paper of the Conference<small>한국도로학회(Korean Society of Road Engineers)</small></dd><dt>2013</dt><dd>Outstanding Research Paper of the Conference<small>한국도로학회(Korean Society of Road Engineers)</small></dd><dt>2013</dt><dd>Young Researcher of the Year<small>한국건설기술연구원(Korea Institute of Civil Engineering and Building Technology)</small></dd><dt>2012</dt><dd>Young Researcher of the Year<small>대한토목학회(Korean Society of Civil Engineers)</small></dd></dl></div></section>
+  <section id="ko-contact" style="border-bottom:none"><div class="wrap"><h2>연락처</h2><div class="box"><dl><dt>이메일</dt><dd><a class="mono" href="mailto:tyun@kict.re.kr">tyun@kict.re.kr</a></dd><dt>소속</dt><dd>한국건설기술연구원 도로교통연구본부</dd><dt>주소</dt><dd>10223 경기도 고양시 일산서구 고양대로 283</dd>
+    <dt>ORCID</dt><dd><a class="mono" href="https://orcid.org/0000-0003-1917-4126">0000-0003-1917-4126</a></dd></dl></div></div></section>
 </main>
 <footer><div class="wrap"><span data-l="en">Last updated Oct 17, 2026</span><span data-l="ko">최종 갱신 2026. 10. 17.</span></div></footer>
 <script>setLang(document.documentElement.getAttribute("data-ui"));</script>
