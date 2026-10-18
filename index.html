@@ -97,8 +97,6 @@ a.course h3::after{content:" \2192";color:var(--or);font-weight:700}
 .box dd{margin:0}
 .mono{font-family:var(--m);font-size:14px}
 footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px}
-#visits{font-family:var(--m);font-size:12.5px}
 </style>
 </head>
 <body>
@@ -287,7 +285,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 1
 </main>
 
 <footer>
-  <div class="wrap"><span><span data-l="en">Last updated Oct 18, 2026</span><span data-l="ko">최종 갱신 2026. 10. 18.</span></span><span id="visits" hidden></span></div>
+  <div class="wrap"><span data-l="en">Last updated Oct 18, 2026</span><span data-l="ko">최종 갱신 2026. 10. 18.</span> <span id="visits" hidden></span></div>
 </footer>
 <script>setLang(document.documentElement.getAttribute("data-ui"));</script>
 <script src="assets/visits.js"></script>
