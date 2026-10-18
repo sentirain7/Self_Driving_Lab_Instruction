@@ -88,8 +88,7 @@ a.course{transition:box-shadow .2s,transform .2s}
 a.course:hover{box-shadow:0 8px 24px rgba(35,31,32,.12);transform:translateY(-2px)}
 .course h3{margin:0;font-size:17.5px;line-height:1.4}
 .course .brief{margin:0;font-size:14.5px;color:var(--ink2)}
-.course .go{margin-top:auto;padding-top:6px;font-size:14.5px;font-weight:700;color:var(--or)}
-.course .soon{margin-top:auto;padding-top:6px;font-size:14px;color:var(--mute)}
+a.course h3::after{content:" \2192";color:var(--or);font-weight:700}
 @media (max-width:480px){.course{padding:16px}}
 
 .box{margin-top:24px;max-width:720px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px}
@@ -98,6 +97,8 @@ a.course:hover{box-shadow:0 8px 24px rgba(35,31,32,.12);transform:translateY(-2p
 .box dd{margin:0}
 .mono{font-family:var(--m);font-size:14px}
 footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px}
+#visits{font-family:var(--m);font-size:12.5px}
 </style>
 </head>
 <body>
@@ -229,35 +230,36 @@ footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color
           <span class="tag"><span data-l="en">MOOC · 13 WEEKS · 2026</span><span data-l="ko">MOOC · 13주 강좌 · 2026</span></span>
           <h3 data-l="en">AI and Molecular Dynamics for Developing Inverse-Design Tools for Construction Materials</h3>
           <h3 data-l="ko">건설소재 역설계 도구 개발을 위한 AI와 분자동역학 활용</h3>
-          <p class="brief" data-l="en">13 lectures and 4 supplements (in Korean, 50 minutes per week). Lecture slides can be downloaded as PDF files with a password.</p>
-          <p class="brief" data-l="ko">강의 13개와 보충 4개(주당 50분). 강의 슬라이드 PDF를 비밀번호로 내려받을 수 있습니다.</p>
-          <span class="go"><span data-l="en">Lecture list · download →</span><span data-l="ko">강의 목록 · 내려받기 →</span></span>
+          <p class="brief" data-l="en">Covers the methods used for inverse design of construction materials: molecular dynamics principles and LAMMPS, simulations of asphalt and cement materials, machine-learning surrogate models, and autonomous exploration pipelines.</p>
+          <p class="brief" data-l="ko">분자동역학의 원리와 LAMMPS 활용, 아스팔트 · 시멘트 소재 시뮬레이션, 기계학습 대리모델과 자율 탐색 파이프라인까지 건설소재 역설계에 쓰는 방법을 다룹니다.</p>
         </a>
         <a class="course" href="lectures/viscoelastic/">
           <span class="tag"><span data-l="en">COURSE · 21 WEEKS · 6 PARTS</span><span data-l="ko">21주 강좌 · 6부 구성</span></span>
           <h3 data-l="en">Viscoelastic Materials</h3>
           <h3 data-l="ko">점탄성 재료</h3>
-          <p class="brief" data-l="en">From viscoelastic fundamentals through material functions, advanced theory, and pavement applications to PINN methods. Lecture files will be added.</p>
-          <p class="brief" data-l="ko">점탄성 기초에서 재료 함수, 심화 이론, 포장 응용을 거쳐 PINN 기법까지 다룹니다. 강의 파일은 추후 올립니다.</p>
-          <span class="go"><span data-l="en">Lecture list →</span><span data-l="ko">강의 목록 →</span></span>
+          <p class="brief" data-l="en">Covers viscoelastic fundamentals, material functions, advanced theory such as time-temperature superposition, pavement applications, and physics-informed neural networks (PINN).</p>
+          <p class="brief" data-l="ko">점탄성 기초와 재료 함수, 시간-온도 중첩 같은 심화 이론, 포장 응용, PINN(물리 정보 신경망) 기법을 다룹니다.</p>
         </a>
         <div class="course">
           <span class="tag"><span data-l="en">COURSE · 16 WEEKS</span><span data-l="ko">16주 강좌</span></span>
           <h3 data-l="en">Pavement Design Methods</h3>
           <h3 data-l="ko">도로 포장 설계법</h3>
-          <span class="soon"><span data-l="en">Lecture list and files will be added.</span><span data-l="ko">강의 목록과 파일은 추후 올립니다.</span></span>
+          <p class="brief" data-l="en">Structural design of asphalt and concrete pavements: traffic loading, subgrade support, and material properties, with empirical and mechanistic-empirical design methods.</p>
+          <p class="brief" data-l="ko">아스팔트 · 콘크리트 포장의 구조 설계를 다룹니다. 교통 하중, 노상 지지력, 재료 물성을 바탕으로 경험적 설계법과 역학적-경험적 설계법을 배웁니다.</p>
         </div>
         <div class="course">
           <span class="tag"><span data-l="en">COURSE · 16 WEEKS</span><span data-l="ko">16주 강좌</span></span>
           <h3 data-l="en">Road Maintenance</h3>
           <h3 data-l="ko">도로 유지관리</h3>
-          <span class="soon"><span data-l="en">Lecture list and files will be added.</span><span data-l="ko">강의 목록과 파일은 추후 올립니다.</span></span>
+          <p class="brief" data-l="en">Pavement condition surveys and evaluation, distress types and their causes, repair and rehabilitation methods, and maintenance planning with a pavement management system (PMS).</p>
+          <p class="brief" data-l="ko">포장 상태 조사와 평가, 파손 유형과 원인, 보수 · 보강 공법, 포장관리시스템(PMS)을 이용한 유지보수 계획을 다룹니다.</p>
         </div>
         <div class="course">
           <span class="tag"><span data-l="en">COURSE · 16 WEEKS</span><span data-l="ko">16주 강좌</span></span>
           <h3 data-l="en">Mix Design of Asphalt Paving Materials</h3>
           <h3 data-l="ko">아스팔트 포장 재료의 배합설계</h3>
-          <span class="soon"><span data-l="en">Lecture list and files will be added.</span><span data-l="ko">강의 목록과 파일은 추후 올립니다.</span></span>
+          <p class="brief" data-l="en">Properties of aggregates and asphalt binders, Marshall and Superpave mix design, volumetric properties such as air voids and VMA, and mixture performance tests.</p>
+          <p class="brief" data-l="ko">골재와 아스팔트 바인더의 물성, 마샬 · 수퍼페이브 배합설계, 공극률 · VMA 같은 체적 특성과 혼합물 성능시험을 다룹니다.</p>
         </div>
       </div>
     </div>
@@ -285,8 +287,9 @@ footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color
 </main>
 
 <footer>
-  <div class="wrap"><span data-l="en">Last updated Oct 17, 2026</span><span data-l="ko">최종 갱신 2026. 10. 17.</span></div>
+  <div class="wrap"><span><span data-l="en">Last updated Oct 18, 2026</span><span data-l="ko">최종 갱신 2026. 10. 18.</span></span><span id="visits" hidden></span></div>
 </footer>
 <script>setLang(document.documentElement.getAttribute("data-ui"));</script>
+<script src="assets/visits.js"></script>
 </body>
 </html>
