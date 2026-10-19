@@ -1,0 +1,40 @@
+name: close-public-window
+# 기한부 전체 공개 닫기 — .github/public_until.json 의 기한이 지난 전체 공개 사본을 지우고
+# 쪽의 기한부 안내(public-until / public-after 표식)를 정리한 뒤 커밋 · 푸시 · Pages 빌드를 요청한다.
+# 예약 실행은 몇 분~몇 시간 늦을 수 있어 여러 번 둔다(할 일이 없으면 그냥 끝난다).
+on:
+  schedule:
+    - cron: "5 15 30 10 *"   # 10-30 15:05 UTC = 10-31 00:05 KST
+    - cron: "5 21 30 10 *"   # 재시도 10-31 06:05 KST
+    - cron: "5 3 31 10 *"    # 재시도 10-31 12:05 KST
+    - cron: "5 3 1 11 *"     # 재시도 11-01 12:05 KST
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "true = 바꿀 내용만 출력하고 푸시 권한 · Pages 빌드 요청만 시험"
+        required: false
+        default: "true"
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: close-public
+  cancel-in-progress: false
+
+jobs:
+  close:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Close expired public files
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DRY: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+        run: |
+          if [ "$DRY" = "true" ]; then
+            python3 .github/close_public.py --dry-run --check-push
+          else
+            python3 .github/close_public.py --commit
+          fi

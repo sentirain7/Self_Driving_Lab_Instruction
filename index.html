@@ -81,6 +81,8 @@ h2::after{content:"";display:block;width:44px;height:3px;background:var(--or);ma
 .card h3{margin:0;font-size:17.5px;line-height:1.4}
 .card p{margin:0;font-size:14.5px;color:var(--ink2)}
 .card .go{margin-top:auto;padding-top:8px;font-size:14.5px;font-weight:700;color:var(--or)}
+.card.plain{border-left:3px solid var(--or);align-self:start}
+.card.plain:hover{box-shadow:none;transform:none}
 
 .courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:18px;margin-top:24px}
 .course{display:flex;flex-direction:column;gap:6px;background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--or);border-radius:8px;padding:18px 20px;color:inherit;text-decoration:none}
@@ -107,7 +109,7 @@ footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color
     <nav aria-label="Sections">
       <a href="#about"><span data-l="en">About</span><span data-l="ko">소개</span></a>
       <a href="#materials"><span data-l="en">Presentations</span><span data-l="ko">발표 자료</span></a>
-      <a href="#lectures"><span data-l="en">Lectures</span><span data-l="ko">강의 자료</span></a>
+      <a href="#lectures"><span data-l="en">Course Materials</span><span data-l="ko">정규 수업 자료</span></a>
       <a href="#contact"><span data-l="en">Contact</span><span data-l="ko">연락처</span></a>
     </nav>
     <div class="lang" role="group" aria-label="Language">
@@ -139,6 +141,17 @@ footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color
     <div class="wrap">
       <h2><span data-l="en">Presentations</span><span data-l="ko">발표 자료</span></h2>
       <div class="cards">
+        <a class="card" href="futuretech2026/">
+          <div class="th"><img src="assets/futuretech2026_thumb.jpg" alt="Special lecture on future technology development, cover" loading="lazy" width="800" height="450"></div>
+          <div class="bd">
+            <span class="tag"><span data-l="en">OCT 27, 2026 · CHUNG-ANG UNIVERSITY GRADUATE SCHOOL OF CONSTRUCTION ENGINEERING</span><span data-l="ko">2026. 10. 27. · 중앙대학교 건설대학원 글로벌 ESG건설학과</span></span>
+            <h3 data-l="en">Special Topics in Future Technology Development for Kolon Construction</h3>
+            <h3 data-l="ko">코오롱건설 대상 미래기술 개발 특론</h3>
+            <p data-l="en">Concepts of simulation-agent technology for automating construction-material and structural analysis. 60 slides (in Korean). <!-- public-until 2026-10-31T00:00:00+09:00 -->The full presentation is open to everyone until Oct 30, 2026; after that, slides 1–3 and the two closing slides stay public and the full presentation requires a password.<!-- /public-until --><!-- public-after 2026-10-31T00:00:00+09:00 Slides 1–3 and the two closing slides are shown; the full presentation requires a password. /public-after --></p>
+            <p data-l="ko">건설 소재 및 구조 분석 자동화를 위한 시뮬레이션 에이전트 기술의 개념. 슬라이드 60장. <!-- public-until 2026-10-31T00:00:00+09:00 -->2026. 10. 30.까지 전체를 공개하며, 그 뒤에는 1~3쪽과 마무리 2장만 공개하고 전체 발표는 비밀번호를 넣어야 내려받을 수 있습니다.<!-- /public-until --><!-- public-after 2026-10-31T00:00:00+09:00 1~3쪽과 마무리 2장을 공개하며, 전체 발표는 비밀번호를 넣어야 내려받을 수 있습니다. /public-after --></p>
+            <span class="go"><span data-l="en">Preview · download →</span><span data-l="ko">미리보기 · 내려받기 →</span></span>
+          </div>
+        </a>
         <a class="card" href="ksce2026/talk/">
           <div class="th"><img src="assets/talk_cover.jpg" alt="KSCE 2026 oral presentation cover" loading="lazy" width="800" height="450"></div>
           <div class="bd">
@@ -216,13 +229,64 @@ footer{padding:22px 0 36px;border-top:1px solid var(--line);font-size:13px;color
             <span class="go"><span data-l="en">Preview · download →</span><span data-l="ko">미리보기 · 내려받기 →</span></span>
           </div>
         </a>
+        <a class="card" href="gscaltex20260327/">
+          <div class="th"><img src="assets/gs0327_thumb.jpg" alt="GS Caltex project final report cover" loading="lazy" width="800" height="450"></div>
+          <div class="bd">
+            <span class="tag"><span data-l="en">MAR 27, 2026 · GS CALTEX PROJECT · FINAL REPORT</span><span data-l="ko">2026. 03. 27. · GS칼텍스 과제 · 최종보고</span></span>
+            <h3 data-l="en">Greenhouse Gas Emission Assessment of Specialty Asphalt Mixtures through Life Cycle Assessment</h3>
+            <h3 data-l="ko">특수 아스팔트 혼합물의 전과정평가를 통한 온실가스 배출량 평가</h3>
+            <p data-l="en">35 slides (in Korean). Slides 1–3 and the closing slide are shown; the full presentation requires a password.</p>
+            <p data-l="ko">슬라이드 35장. 1~3쪽과 마무리 쪽을 공개하며, 전체 발표는 비밀번호를 넣어야 내려받을 수 있습니다.</p>
+            <span class="go"><span data-l="en">Preview · download →</span><span data-l="ko">미리보기 · 내려받기 →</span></span>
+          </div>
+        </a>
+        <a class="card" href="icre2025/">
+          <div class="th"><img src="assets/icre2025_thumb.jpg" alt="ICRE 2025 presentation cover" loading="lazy" width="800" height="600"></div>
+          <div class="bd">
+            <span class="tag"><span data-l="en">SEP 25, 2025 · ICRE · CONFERENCE PRESENTATION</span><span data-l="ko">2025. 09. 25. · ICRE 학회 발표</span></span>
+            <h3 data-l="en">A Graphormer3D Model with Supergraph for Asphalt Binder Property Prediction</h3>
+            <h3 data-l="ko">슈퍼그래프를 적용한 Graphormer3D 모델의 아스팔트 바인더 물성 예측</h3>
+            <p data-l="en">20 slides (in English). Slides 1–3 and the last slide are shown; the full presentation requires a password.</p>
+            <p data-l="ko">슬라이드 20장(영문). 1~3쪽과 마지막 쪽을 공개하며, 전체 발표는 비밀번호를 넣어야 내려받을 수 있습니다.</p>
+            <span class="go"><span data-l="en">Preview · download →</span><span data-l="ko">미리보기 · 내려받기 →</span></span>
+          </div>
+        </a>
+        <a class="card" href="gyeonggi2024/">
+          <div class="th"><img src="assets/gyeonggi2024_thumb.jpg" alt="Road pavement distress lecture, cover" loading="lazy" width="800" height="600"></div>
+          <div class="bd">
+            <span class="tag"><span data-l="en">DEC 12, 2024 · TRAINING FOR GYEONGGI PROVINCE CONSTRUCTION HEADQUARTERS</span><span data-l="ko">2024. 12. 12. · 경기도 건설본부 교육</span></span>
+            <h3 data-l="en">Road Pavement Distress: Types, Causes, and Remedies</h3>
+            <h3 data-l="ko">도로포장의 파손 종류, 원인, 대책</h3>
+            <p data-l="en">Pavement types, distress, repair methods and quality control. 96 slides (in Korean). <!-- public-until 2026-10-31T00:00:00+09:00 -->The full presentation is open to everyone until Oct 30, 2026; after that, slides 1–3 and the last slide stay public and the full presentation requires a password.<!-- /public-until --><!-- public-after 2026-10-31T00:00:00+09:00 Slides 1–3 and the last slide are shown; the full presentation requires a password. /public-after --></p>
+            <p data-l="ko">도로포장의 종류 · 파손 · 보수공법 · 품질관리. 슬라이드 96장. <!-- public-until 2026-10-31T00:00:00+09:00 -->2026. 10. 30.까지 전체를 공개하며, 그 뒤에는 1~3쪽과 마지막 쪽만 공개하고 전체 발표는 비밀번호를 넣어야 내려받을 수 있습니다.<!-- /public-until --><!-- public-after 2026-10-31T00:00:00+09:00 1~3쪽과 마지막 쪽을 공개하며, 전체 발표는 비밀번호를 넣어야 내려받을 수 있습니다. /public-after --></p>
+            <span class="go"><span data-l="en">Preview · download →</span><span data-l="ko">미리보기 · 내려받기 →</span></span>
+          </div>
+        </a>
+        <div class="card plain">
+          <div class="bd">
+            <span class="tag"><span data-l="en">PROFESSIONAL TRAINING · SAFETY MANAGEMENT COURSE FOR DESIGN AND CONSTRUCTION ENGINEERS (INITIAL) · 3 HOURS</span><span data-l="ko">전문교육 · 설계·시공인 안전관리 전문교육과정(최초) · 3시간</span></span>
+            <h3 data-l="en">Smart Construction in the Era of the Fourth Industrial Revolution</h3>
+            <h3 data-l="ko">4차 산업혁명 시대의 스마트 건설</h3>
+            <p data-l="en">Covers the current state of smart construction technologies in Korea and abroad, and application cases of smart construction technologies developed by major construction companies.</p>
+            <p data-l="ko">국내외 스마트 건설기술 현황과 대형 건설사가 개발한 스마트 건설기술의 적용 사례를 다룹니다.</p>
+          </div>
+        </div>
+        <div class="card plain">
+          <div class="bd">
+            <span class="tag"><span data-l="en">PROFESSIONAL TRAINING · SAFETY MANAGEMENT COURSE FOR DESIGN AND CONSTRUCTION ENGINEERS (CONTINUING) · 3 HOURS</span><span data-l="ko">전문교육 · 설계·시공인 안전관리 전문교육과정(계속) · 3시간</span></span>
+            <h3 data-l="en">Road Pavement Construction and New Technologies</h3>
+            <h3 data-l="ko">도로포장 시공 및 신기술</h3>
+            <p data-l="en">Covers road pavement construction and new technologies for national and urban development.</p>
+            <p data-l="ko">국가와 도시 발전을 위한 도로포장 시공과 신기술을 다룹니다.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="lectures">
     <div class="wrap">
-      <h2><span data-l="en">Lectures</span><span data-l="ko">강의 자료</span></h2>
+      <h2><span data-l="en">Course Materials</span><span data-l="ko">정규 수업 자료</span></h2>
       <div class="courses">
         <a class="course" href="lectures/mooc/">
           <span class="tag"><span data-l="en">MOOC · 13 WEEKS · 2026</span><span data-l="ko">MOOC · 13주 강좌 · 2026</span></span>
