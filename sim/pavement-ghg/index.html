@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en" data-ui="en" data-title-en="Greenhouse-Gas Estimator for Asphalt Pavements | Taeyoung Yun" data-title-ko="아스팔트 포장 온실가스 배출량 추정 | 윤태영">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Greenhouse-Gas Estimator for Asphalt Pavements | Taeyoung Yun</title>
+<meta name="description" content="Screening estimate of 20-year greenhouse-gas emissions of asphalt pavements per kilometre, by layer and life-cycle module, calibrated on 18 Korean national-highway projects.">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex">
+<script>
+/* 언어: 기본 영문, ?lang=ko|en 또는 저장된 선택(같은 사이트 모든 쪽 공통) */
+(function(){var k="sdl-lang",d=document.documentElement,l="en";
+try{l=new URLSearchParams(location.search).get("lang")||localStorage.getItem(k)||"en";}catch(e){}
+if(l!=="ko")l="en";d.setAttribute("data-ui",l);d.lang=l;
+window.setLang=function(v){d.setAttribute("data-ui",v);d.lang=v;document.title=d.getAttribute("data-title-"+v)||document.title;
+try{localStorage.setItem(k,v);}catch(e){}
+document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.v===v));});
+if(window.onLang)window.onLang();};})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{--cream:#F8F5F0;--paper:#fff;--ink:#231F20;--ink2:#4A4440;--mute:#7A716A;--line:#E6E0D8;--or:#C8610C;--or-bg:#FEF0DC;
+  --sA:#4C72B0;--sAC:#55A868;--sB:#C44E52;--sC:#8172B2;--sD:#64B5CD;--sEW:#BDB6AD;
+  --f:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;--m:"JetBrains Mono",ui-monospace,monospace}
+html[data-ui="en"] [data-l="ko"],html[data-ui="ko"] [data-l="en"]{display:none!important}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--f);font-size:15.5px;line-height:1.6;word-break:keep-all;overflow-wrap:break-word}
+.wrap{max-width:1280px;margin:0 auto;padding:0 16px}
+@media (min-width:720px){.wrap{padding:0 28px}}
+header{border-bottom:1px solid var(--line);background:rgba(248,245,240,.94);position:sticky;top:0;z-index:10;backdrop-filter:blur(6px)}
+header .wrap{display:flex;align-items:center;min-height:56px;gap:12px}
+header a{color:var(--ink2);text-decoration:none;font-size:14.5px}
+header a:hover{color:var(--or)}
+.lang{margin-left:auto;display:inline-flex;border:1.4px solid var(--or);border-radius:6px;overflow:hidden;flex:none}
+.lang button{font:600 13px/1 var(--f);padding:7px 11px;border:0;background:var(--paper);color:var(--or);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--or);color:#fff}
+.top{padding:30px 0 6px}
+.tag{font-size:12.5px;font-weight:700;color:var(--or);letter-spacing:.03em}
+h1{margin:8px 0 0;font-size:clamp(23px,3.6vw,32px);line-height:1.3;letter-spacing:-.01em}
+.lead{margin:12px 0 0;max-width:900px;color:var(--ink2);font-size:15px}
+.layout{display:grid;grid-template-columns:1fr;gap:22px;margin:22px 0 40px}
+@media (min-width:1040px){.layout{grid-template-columns:330px minmax(0,1fr)}}
+aside.inp{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px 16px 18px;align-self:start}
+@media (min-width:1040px){aside.inp{position:sticky;top:68px;max-height:calc(100vh - 80px);overflow:auto}}
+aside.inp h2{font-size:16px;margin:0 0 6px}
+.preset{display:flex;gap:8px;align-items:center;margin:4px 0 6px;font-size:13.5px}
+.preset select{flex:1;min-width:0}
+select{font:14px var(--f);padding:6px 8px;border:1.3px solid var(--line);border-radius:6px;background:#fff;color:var(--ink)}
+fieldset{border:0;border-top:1px solid var(--line);margin:10px 0 0;padding:10px 0 0}
+legend{font-size:12.5px;font-weight:700;color:var(--or);letter-spacing:.03em;padding:0}
+.fld{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:2px 8px;margin:9px 0 0}
+.fld label{font-size:13.5px;font-weight:600;line-height:1.35}
+.fld .num{display:flex;align-items:center;gap:4px;font-size:12.5px;color:var(--mute)}
+.fld input[type=number]{width:78px;font:13.5px var(--m);padding:4px 6px;border:1.3px solid var(--line);border-radius:5px;text-align:right}
+.fld input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--or);margin:2px 0 0}
+.fld .hint{grid-column:1/-1;font-size:12px;color:var(--mute);line-height:1.4}
+.fld select{grid-column:1/-1}
+.derived{margin:6px 0 0;font-size:12.5px;color:var(--ink2);background:var(--cream);border-radius:5px;padding:6px 8px;font-family:var(--m)}
+main.res{min-width:0}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px 18px;margin:0 0 18px}
+.panel h2{margin:0 0 4px;font-size:clamp(18px,2.3vw,21px)}
+.panel h2 .no{color:var(--or);margin-right:6px}
+.panel .sub{margin:0 0 8px;font-size:13.5px;color:var(--mute)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px;margin-top:10px}
+.kpi{border:1px solid var(--line);border-radius:7px;padding:10px 12px;background:#fff}
+.kpi .k{font-size:12.5px;color:var(--mute);font-weight:600}
+.kpi .v{font:700 25px/1.2 var(--f);margin-top:2px}
+.kpi .v small{font-size:12.5px;font-weight:500;color:var(--mute);margin-left:3px}
+.kpi .s{font-size:12.5px;color:var(--ink2);margin-top:2px}
+.kpi.main{border-color:var(--or);background:var(--or-bg)}
+.kpi.rng .v{font-size:20px}
+.warn{margin:10px 0 0;padding:8px 12px;border-left:3px solid #B3261E;background:#FCEDEC;font-size:13.5px;border-radius:0 6px 6px 0}
+.warn ul{margin:2px 0 0;padding-left:18px}
+.ok{margin:10px 0 0;font-size:13px;color:#2E7D32}
+.two{display:grid;grid-template-columns:1fr;gap:18px}
+@media (min-width:880px){.two{grid-template-columns:1fr 1fr}}
+.chart{width:100%;min-height:40px}
+.chart svg{display:block;width:100%;height:auto;font-family:var(--f)}
+.cap{font-size:12.5px;color:var(--mute);margin:4px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12.5px;color:var(--ink2);margin:6px 0 0}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13.5px;margin:6px 0}
+.tbl{overflow-x:auto;margin-top:8px;border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;font-size:12.5px;width:100%;min-width:980px}
+th,td{padding:5px 7px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th{background:var(--cream);font-weight:600;color:var(--ink2);position:sticky;top:0}
+td:first-child,th:first-child{text-align:left}
+tr.near td{background:var(--or-bg)}
+tr.you td{background:#FFF7EC;font-weight:600}
+.steps{margin:6px 0 0;padding-left:22px;font-size:13.5px}
+.steps li{margin:7px 0}
+.steps .eq{display:block;font-family:var(--m);font-size:12.5px;line-height:1.7;color:var(--ink2);background:var(--cream);border-radius:5px;padding:5px 9px;margin-top:3px;white-space:normal;overflow-wrap:anywhere}
+.method{font-size:14px;color:var(--ink2)}
+.method h3{font-size:15px;color:var(--ink);margin:14px 0 4px}
+.method ul{margin:4px 0;padding-left:20px}
+.method li{margin:3px 0}
+.uf{min-width:0;width:100%}
+.uf td,.uf th{white-space:normal;text-align:left}
+footer{padding:20px 0 36px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a href="../../"><span data-l="en">← Home</span><span data-l="ko">← 처음으로</span></a>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-v="en" aria-pressed="true" onclick="setLang('en')">EN</button>
+      <button type="button" data-v="ko" aria-pressed="false" onclick="setLang('ko')">한글</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="top">
+    <div class="tag"><span data-l="en">SIMULATION · PAVEMENT LIFE-CYCLE ASSESSMENT</span><span data-l="ko">시뮬레이션 · 포장 전 과정 평가</span></div>
+    <h1 data-l="en">Greenhouse-gas estimator for asphalt pavements</h1>
+    <h1 data-l="ko">아스팔트 포장 온실가스 배출량 추정</h1>
+    <p class="lead" data-l="en">Enter a few design values and the page estimates whole-life greenhouse-gas emissions per kilometre over 20 years (modules A1–C3, with the module D recycling credit reported separately), broken down by layer and by life-cycle module. The unit factors are calibrated on 18 Korean national-highway projects analysed in the authors' performance-coupled pavement LCA study (manuscript in revision). The comparison and calculation sections show how your input differs from those projects and how each number is obtained. The results are screening estimates and do not replace a project-specific LCA.</p>
+    <p class="lead" data-l="ko">설계 값 몇 가지를 넣으면 1 km · 20년 기준 전 과정 온실가스(모듈 A1–C3, 모듈 D 재활용 공제는 따로 표시)를 층별 · 항목별로 추정합니다. 원단위는 저자들의 성능 연계 포장 LCA 연구(원고 수정 중)에서 분석한 국도 18개 구간에 맞춰 정했습니다. 아래 비교와 계산 과정에서 입력 조건이 18개 구간과 어떻게 다른지, 각 값이 어떻게 계산되는지 확인할 수 있습니다. 결과는 초기 검토용 추정값이며 개별 사업의 LCA를 대신하지 않습니다.</p>
+  </div>
+
+  <div class="layout">
+    <aside class="inp" id="inp" aria-label="Inputs">
+      <h2><span data-l="en">Inputs</span><span data-l="ko">입력</span></h2>
+      <div class="preset">
+        <span data-l="en">Start from</span><span data-l="ko">불러오기</span>
+        <select id="preset" aria-label="Preset"></select>
+      </div>
+      <div id="fields"></div>
+    </aside>
+
+    <main class="res">
+      <section class="panel" id="sumP">
+        <h2><span class="no">1</span><span data-l="en">Estimate</span><span data-l="ko">추정 결과</span></h2>
+        <p class="sub" data-l="en">Per kilometre of pavement kept serviceable for 20 years (t CO₂eq/km). Totals for the section length are shown under each value.</p>
+        <p class="sub" data-l="ko">20년 동안 쓸 수 있게 유지하는 포장 1 km 기준(t CO₂eq/km)입니다. 각 값 아래에 구간 연장 전체 값을 함께 적었습니다.</p>
+        <div class="kpis" id="kpis"></div>
+        <div id="warn"></div>
+      </section>
+
+      <section class="panel">
+        <h2><span class="no">2</span><span data-l="en">By module and by layer</span><span data-l="ko">항목별 · 층별 배출</span></h2>
+        <p class="sub" data-l="en">Grey ticks = mean of the 18 projects recalculated with the same model. Module D is a credit outside the A–C total.</p>
+        <p class="sub" data-l="ko">회색 눈금 = 같은 모형으로 다시 계산한 18개 구간 평균. 모듈 D는 A–C 합계 밖의 공제입니다.</p>
+        <div class="two">
+          <div><div class="chart" id="chMod"></div></div>
+          <div><div class="chart" id="chLay"></div><div class="legend" id="lgStage"></div></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2><span class="no">3</span><span data-l="en">Variability</span><span data-l="ko">변동성</span></h2>
+        <p class="sub" data-l="en">Left: 2,000 Monte Carlo runs (seed 20260713) with the inventory, fatigue-life and rutting-life scatter set in the inputs. Middle: one-at-a-time sensitivity. Right: whole-life emissions against the service-life multiplier f.</p>
+        <p class="sub" data-l="ko">왼쪽: 입력의 원단위 · 피로 수명 · 소성변형 수명 산포로 돌린 몬테카를로 2,000회(시드 20260713). 가운데: 한 번에 한 변수씩 바꾼 민감도. 오른쪽: 수명 배수 f에 따른 전 과정 배출.</p>
+        <div class="two" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+          <div><div class="chart" id="chHist"></div><p class="cap" id="capHist"></p></div>
+          <div><div class="chart" id="chTor"></div><div class="legend" id="lgTor"></div></div>
+          <div><div class="chart" id="chGf"></div><p class="cap" id="capGf"></p></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2><span class="no">4</span><span data-l="en">Comparison with the 18 projects</span><span data-l="ko">18개 구간과 비교</span></h2>
+        <p class="sub" data-l="en">Project bars use the published totals (Table 1) and stage values read from the manuscript figure; the orange-outlined bar is your input. Earthwork (hatched grey) depends on terrain and is shown separately.</p>
+        <p class="sub" data-l="ko">구간 막대는 원고 표 1의 총량과 원고 그림에서 읽은 단계별 값입니다. 주황 테두리 막대가 입력 조건입니다. 토공(회색 빗금)은 지형에 따라 정해지므로 따로 표시합니다.</p>
+        <div class="chart" id="chCmp"></div>
+        <div class="legend" id="lgCmp"></div>
+        <div class="two" style="margin-top:14px">
+          <div>
+            <div class="ctl"><span data-l="en">x-axis</span><span data-l="ko">가로축</span>
+              <select id="sx" aria-label="x-axis"></select></div>
+            <div class="chart" id="chSc"></div>
+            <p class="cap" data-l="en">Pavement-attributed emissions (A+B+C, without earthwork) of the 18 projects and your input.</p>
+            <p class="cap" data-l="ko">18개 구간과 입력 조건의 포장 배출(A+B+C, 토공 제외).</p>
+          </div>
+          <div>
+            <div class="ctl"><span data-l="en">Step from project</span><span data-l="ko">기준 구간</span>
+              <select id="sref" aria-label="Reference project"></select></div>
+            <div class="chart" id="chWalk"></div>
+            <p class="cap" id="capWalk"></p>
+          </div>
+        </div>
+        <div class="tbl" id="tbl18"></div>
+        <p class="cap" data-l="en">† read from the manuscript figures (about ±3 t). * back-calculated from published values and figures. Model = this page's calculation with the project's back-calculated quantities and published overlay count.</p>
+        <p class="cap" data-l="ko">† 원고 그림에서 읽은 값(약 ±3 t). * 원고 수치와 그림에서 역산한 값. 모형 = 이 쪽의 계산식에 구간의 역산 물량과 원고의 덧씌우기 횟수를 넣은 값.</p>
+      </section>
+
+      <section class="panel">
+        <h2><span class="no">5</span><span data-l="en">Calculation steps for your input</span><span data-l="ko">입력 조건의 계산 과정</span></h2>
+        <ol class="steps" id="steps"></ol>
+      </section>
+
+      <section class="panel method">
+        <h2><span class="no">6</span><span data-l="en">Data and method</span><span data-l="ko">자료와 방법</span></h2>
+        <div data-l="en">
+          <h3>Scope</h3>
+          <ul>
+            <li>Functional unit: 1 km of pavement kept serviceable for 20 years. Modules: production A1–A3, construction A4–A5, maintenance B2 slurry seal (4-year cycle), B3 partial repair (6-year cycle), B4 milling and overlay (count from performance), end-of-life C1–C3, recycling credit D. Climate change = EF 3.1 GWP100; background data ecoinvent 3.9.1 (cut-off).</li>
+            <li>One recycled mixture design: 30.3 % RAP, 3.7 % virgin binder (5.8 % total binder), Korean binder factor 0.494 t CO₂eq/t, binder transported 296 km, aggregate 10 km. Vehicle operation on the pavement (B6) is outside the boundary.</li>
+            <li>Earthwork is site-specific and is reported apart from the pavement. Its estimate uses the manuscript equation GHG<sub>EW</sub> = 76.7 + 5.90 · V<sub>emb</sub> (V<sub>emb</sub> in 10³ m³/km, R² = 0.90).</li>
+          </ul>
+          <h3>What comes from where</h3>
+          <ul>
+            <li>Published values used directly: carriageway width, AADT, lane-converted AADT, whole-life total, module D and net emissions of each project (Table 1); module means (Table 5); overlay counts (Table 6); rutting equations (4)–(6); the surface/base bill-of-quantities range of Eq. (7).</li>
+            <li>Read from the figures: production, pavement construction, maintenance and end-of-life values of each project (Fig. 5) and the roadway share of the paved area (Fig. 4b). Fig. 5 is drawn with the maintenance-cycle restart variant (mean B = 146.3), so one partial repair (one slurry seal for P4) was added back to match Table 1.</li>
+            <li>Back-calculated: equivalent paved width = carriageway width ÷ roadway share; bound-mixture quantity = production ÷ 34.5 kg/t; asphalt thickness = quantity ÷ (area × 2.35 t/m³); a 50 mm surface course in every project (consistent with the 646–2,181 t/km surface range); earthwork = Table 1 total − pavement value. As a check, the recovered-material quantity built from these values reproduces the published module D of all 18 projects with R² = <span class="fitD"></span>, although module D was not used in the back-calculation.</li>
+          </ul>
+          <h3>Unit factors</h3>
+          <div id="ufEn"></div>
+          <h3>Simplifications</h3>
+          <ul>
+            <li>Maintenance is divided by the service-life multiplier f, as in the manuscript's whole-life curve G(f) (649 → 604 t at f = 1.4). This treats B2 and B3 as recurring too, so it is an upper bound of the life effect.</li>
+            <li>Overlays: the crack criterion gave one overlay in 20 years for all 18 projects (strain 61–145 µε), and this page keeps that count. The rutting count is floor(20-year design-lane ESAL ÷ N15) with N15 from the Marshall stability entered (11.40 kN → 5.28 msa). The manuscript used design-specific N15 (5.3–17.3 msa), so for some high-traffic projects the automatic count here is higher than published; project presets use the published counts.</li>
+            <li>The split of pavement construction into a quantity term (mostly haul, A4) and an area term (mostly paving and compaction, A5) is a regression on the 18 projects, not a measured split. The haul-distance input scales only the quantity term.</li>
+            <li>Uncertainty follows the manuscript's assumptions in simplified form: a common normal factor on A, C and earthwork (default 11 %), log-normal fatigue life (CV 18 %) applied as 1/x to maintenance, and log-normal rutting life (CV 12 %) applied to the rutting count. For the 18-project average the manuscript reports 574–763 t (5–95 %).</li>
+          </ul>
+          <h3>Source</h3>
+          <p>Manuscript “Endogenizing service life in the life-cycle assessment of asphalt pavements: a performance-coupled analysis of maintenance-stage greenhouse-gas emissions” (KICT, in revision, 2026). The underlying design data were used under agreement with the design firm and are not public; this page uses only values published or plotted in the manuscript.</p>
+        </div>
+        <div data-l="ko">
+          <h3>범위</h3>
+          <ul>
+            <li>기능 단위: 20년 동안 쓸 수 있게 유지하는 포장 1 km. 모듈: 생산 A1–A3, 시공 A4–A5, 유지 B2 표면 처리(슬러리 실, 4년 주기) · B3 부분 보수(6년 주기) · B4 절삭 덧씌우기(성능으로 횟수 계산), 폐기 C1–C3, 재활용 공제 D. 기후변화 = EF 3.1 GWP100, 배경 자료 ecoinvent 3.9.1(cut-off).</li>
+            <li>재생 혼합물 한 배합: RAP 30.3 %, 신재 바인더 3.7 %(전체 바인더 5.8 %), 국내 바인더 배출계수 0.494 t CO₂eq/t, 바인더 운반 296 km, 골재 10 km. 포장 위 차량 주행(B6)은 범위 밖입니다.</li>
+            <li>토공은 현장마다 달라 포장과 따로 보고합니다. 추정에는 원고의 식 GHG<sub>EW</sub> = 76.7 + 5.90 · V<sub>emb</sub>(V<sub>emb</sub> 단위 10³ m³/km, R² = 0.90)을 씁니다.</li>
+          </ul>
+          <h3>자료 출처</h3>
+          <ul>
+            <li>원고 수치를 그대로 쓴 값: 구간별 차로부 폭 · AADT · 차로 환산 AADT · 전 과정 총량 · 모듈 D · 순배출(표 1), 모듈 평균(표 5), 덧씌우기 횟수(표 6), 소성변형 식 (4)–(6), 식 (7)의 표층 · 기층 물량 적용 범위.</li>
+            <li>그림에서 읽은 값: 구간별 생산 · 포장 시공 · 유지 · 폐기 값(그림 5), 포장 면적 중 차로 비율(그림 4b). 그림 5는 유지 주기 재시작 방식(B 평균 146.3)으로 그려져 있어 부분 보수 1회(P4는 표면 처리 1회)를 더해 표 1과 맞췄습니다.</li>
+            <li>역산한 값: 환산 포장 폭 = 차로부 폭 ÷ 차로 비율, 결합층 혼합물량 = 생산 배출 ÷ 34.5 kg/t, 아스팔트 두께 = 물량 ÷ (면적 × 2.35 t/m³), 표층 두께는 모든 구간 50 mm(표층 물량 646–2,181 t/km 범위와 맞음), 토공 = 표 1 총량 − 포장 값. 확인: 이 값으로 만든 회수 물량이 원고의 구간별 모듈 D를 R² = <span class="fitD"></span>로 재현합니다. 모듈 D는 역산에 쓰지 않았습니다.</li>
+          </ul>
+          <h3>원단위</h3>
+          <div id="ufKo"></div>
+          <h3>단순화한 부분</h3>
+          <ul>
+            <li>유지 배출은 원고의 전 과정 곡선 G(f)(f = 1.4에서 649 → 604 t)와 같이 수명 배수 f로 나눕니다. B2 · B3도 반복 항으로 보므로 수명 효과의 상한입니다.</li>
+            <li>덧씌우기 횟수: 균열 기준으로는 18개 구간 모두 20년 중 1회(변형률 61–145 µε)였고, 이 쪽도 1회로 둡니다. 소성변형 기준 횟수 = 내림(20년 설계 차로 ESAL ÷ N15)이며 N15는 입력한 마샬 안정도로 계산합니다(11.40 kN → 5.28 msa). 원고는 설계별 N15(5.3–17.3 msa)를 썼기 때문에 교통량이 많은 일부 구간은 여기의 자동 횟수가 원고보다 많습니다. 구간 불러오기는 원고의 횟수를 씁니다.</li>
+            <li>포장 시공을 물량 항(주로 운반, A4)과 면적 항(주로 포설 · 다짐, A5)으로 나눈 것은 18개 구간 회귀 결과이며 측정한 비율이 아닙니다. 운반 거리 입력은 물량 항에만 곱합니다.</li>
+            <li>불확도는 원고의 가정을 단순화해 씁니다. A · C · 토공에 공통 정규 배수(기본 11 %), 피로 수명은 로그정규(CV 18 %)로 유지 배출에 1/x로, 소성변형 수명은 로그정규(CV 12 %)로 소성변형 횟수에 반영합니다. 원고는 18개 구간 평균에 대해 574–763 t(5–95 %)를 보고했습니다.</li>
+          </ul>
+          <h3>출처</h3>
+          <p>원고 “Endogenizing service life in the life-cycle assessment of asphalt pavements: a performance-coupled analysis of maintenance-stage greenhouse-gas emissions”(한국건설기술연구원, 수정 중, 2026). 설계 원자료는 설계사와의 협약으로 공개하지 않으며, 이 쪽은 원고에 수치나 그림으로 실린 값만 씁니다.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<footer><div class="wrap"><span data-l="en">Taeyoung Yun · KICT · screening tool, results are estimates</span><span data-l="ko">윤태영 · 한국건설기술연구원 · 초기 검토용 도구, 결과는 추정값</span></div></footer>
+
+<script>
+"use strict";
+const DATA = {"model":{"rho_ac":2.35,"rho_sb":2.05,"ef_binder":0.494,"bind_tot":0.058,"rap_bind":0.06930693069306933,"agg":0.003630511563896903,"a2":0.0024440977639105564,"a3":0.01078176460391749,"sub":0.0004651421983089927,"alpha":0.0033745450843810127,"beta":0.0013119611601119777,"b2":0.0013129792346887569,"b3":0.0007576535911646596,"b4":0.042605194933331834,"gamma":0.009072293005934262,"delta":0.028080608488499068,"eps0":238.94633063399712,"eps1":-0.6853463866253182,"c_split":[0.34411764705882353,0.45,0.20588235294117646],"fit":{"cons":0.889,"use":0.993,"eol":0.94,"D":0.997},"fig3b":[[150.2,145.0],[161.0,133.4],[180.1,114.4],[180.1,111.4],[180.1,110.6],[200.1,100.6],[210.3,94.9],[210.3,94.6],[214.1,92.6],[212.2,89.6],[220.1,81.6],[222.2,84.4],[224.3,80.8],[238.1,77.3],[240.0,75.1],[247.0,72.1],[250.0,72.7],[266.1,61.3]]},"projects":[{"id":"P1","w":5.7,"aadt":8443,"lane":4644,"total":515,"D":-134,"net":381,"share":69.0,"weq":8.26,"qb":3875,"qs":971,"hac":200,"eps":102.1,"prod":133.8,"cons":27.3,"use":115.4,"eol":43.9,"ew":194.6,"n4":1,"rut":1,"crack":1},{"id":"P2","w":15.8,"aadt":25917,"lane":12829,"total":910,"D":-350,"net":560,"share":76.5,"weq":20.65,"qb":10154,"qs":2427,"hac":209,"eps":95.6,"prod":350.6,"cons":89.6,"use":237.7,"eol":128.3,"ew":103.8,"n4":1,"rut":0,"crack":1},{"id":"P3","w":7.1,"aadt":925,"lane":509,"total":508,"D":-144,"net":364,"share":70.4,"weq":10.09,"qb":4176,"qs":1185,"hac":176,"eps":118.2,"prod":144.2,"cons":40.3,"use":125.8,"eol":55.6,"ew":142.1,"n4":1,"rut":0,"crack":1},{"id":"P4","w":9.8,"aadt":25961,"lane":9995,"total":1094,"D":-473,"net":621,"share":53.0,"weq":18.49,"qb":10154,"qs":2173,"hac":234,"eps":78.8,"prod":350.6,"cons":83.1,"use":423.0,"eol":138.7,"ew":98.6,"n4":3,"rut":3,"crack":1},{"id":"P5","w":8.8,"aadt":4264,"lane":2111,"total":639,"D":-222,"net":417,"share":63.1,"weq":13.95,"qb":6432,"qs":1639,"hac":196,"eps":104.4,"prod":222.1,"cons":42.9,"use":176.8,"eol":71.2,"ew":126.0,"n4":1,"rut":1,"crack":1},{"id":"P6","w":6.0,"aadt":8568,"lane":4712,"total":275,"D":-97,"net":178,"share":92.3,"weq":6.5,"qb":2821,"qs":764,"hac":185,"eps":112.4,"prod":97.4,"cons":22.1,"use":84.1,"eol":32.2,"ew":39.2,"n4":1,"rut":1,"crack":1},{"id":"P7","w":7.5,"aadt":6486,"lane":3211,"total":821,"D":-217,"net":604,"share":65.1,"weq":11.52,"qb":6282,"qs":1354,"hac":232,"eps":79.9,"prod":216.9,"cons":39.0,"use":151.6,"eol":62.1,"ew":351.4,"n4":1,"rut":1,"crack":1},{"id":"P8","w":7.7,"aadt":18714,"lane":7205,"total":757,"D":-278,"net":480,"share":61.4,"weq":12.54,"qb":8048,"qs":1474,"hac":273,"eps":51.8,"prod":277.9,"cons":58.4,"use":152.4,"eol":84.2,"ew":184.1,"n4":1,"rut":1,"crack":1},{"id":"P9","w":3.9,"aadt":6876,"lane":3782,"total":352,"D":-86,"net":265,"share":73.3,"weq":5.32,"qb":2520,"qs":625,"hac":202,"eps":100.8,"prod":87.0,"cons":14.3,"use":68.9,"eol":23.1,"ew":158.7,"n4":1,"rut":0,"crack":1},{"id":"P10","w":8.6,"aadt":13100,"lane":6485,"total":659,"D":-164,"net":495,"share":83.7,"weq":10.27,"qb":4738,"qs":1207,"hac":196,"eps":104.5,"prod":163.6,"cons":41.6,"use":129.9,"eol":60.8,"ew":263.1,"n4":1,"rut":1,"crack":1},{"id":"P11","w":7.8,"aadt":1222,"lane":672,"total":530,"D":-127,"net":402,"share":81.9,"weq":9.52,"qb":3687,"qs":1119,"hac":165,"eps":126.1,"prod":127.3,"cons":46.8,"use":116.3,"eol":55.6,"ew":184.0,"n4":1,"rut":0,"crack":1},{"id":"P12","w":4.0,"aadt":7411,"lane":4076,"total":462,"D":-125,"net":337,"share":52.9,"weq":7.56,"qb":3649,"qs":888,"hac":205,"eps":98.2,"prod":126.0,"cons":33.8,"use":94.0,"eol":45.2,"ew":163.0,"n4":1,"rut":0,"crack":1},{"id":"P13","w":5.2,"aadt":4707,"lane":2589,"total":391,"D":-102,"net":289,"share":74.7,"weq":6.96,"qb":2971,"qs":818,"hac":182,"eps":114.5,"prod":102.6,"cons":22.1,"use":83.2,"eol":32.2,"ew":150.9,"n4":1,"rut":0,"crack":1},{"id":"P14","w":8.5,"aadt":4220,"lane":2321,"total":713,"D":-237,"net":475,"share":55.2,"weq":15.4,"qb":6884,"qs":1809,"hac":190,"eps":108.6,"prod":237.7,"cons":71.4,"use":196.1,"eol":93.2,"ew":114.6,"n4":1,"rut":0,"crack":1},{"id":"P15","w":6.2,"aadt":12147,"lane":6681,"total":826,"D":-118,"net":708,"share":82.5,"weq":7.52,"qb":3423,"qs":883,"hac":194,"eps":106.1,"prod":118.2,"cons":24.7,"use":96.6,"eol":38.7,"ew":547.8,"n4":1,"rut":1,"crack":1},{"id":"P16","w":8.8,"aadt":8812,"lane":4847,"total":614,"D":-245,"net":369,"share":57.7,"weq":15.25,"qb":7110,"qs":1792,"hac":198,"eps":103.0,"prod":245.5,"cons":55.8,"use":183.0,"eol":80.3,"ew":49.4,"n4":1,"rut":0,"crack":1},{"id":"P17","w":13.7,"aadt":10951,"lane":4216,"total":744,"D":-312,"net":432,"share":89.1,"weq":15.38,"qb":9027,"qs":1807,"hac":250,"eps":67.7,"prod":311.7,"cons":66.2,"use":192.1,"eol":97.1,"ew":76.9,"n4":1,"rut":1,"crack":1},{"id":"P18","w":10.9,"aadt":4504,"lane":2229,"total":843,"D":-278,"net":566,"share":78.5,"weq":13.89,"qb":8048,"qs":1632,"hac":247,"eps":69.9,"prod":277.9,"cons":46.8,"use":176.7,"eol":76.4,"ew":265.2,"n4":1,"rut":0,"crack":1}]};
+const M = DATA.model, PR = DATA.projects;
+const ko = () => document.documentElement.getAttribute("data-ui") === "ko";
+const tr = (en, k) => ko() ? k : en;
+const fmt = (x, d = 0) => (Math.abs(x) < 0.5 * Math.pow(10, -d) ? 0 : x).toLocaleString("en-US", {minimumFractionDigits: d, maximumFractionDigits: d});
+const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+const COL = {A: "#4C72B0", AC: "#55A868", B: "#C44E52", C: "#8172B2", D: "#64B5CD", EW: "#BDB6AD", you: "#C8610C", grid: "#ECE6DE", ink: "#231F20", mute: "#7A716A"};
+const SUB_REF = 330;           // 구간별 보조기층 두께는 원고에 없음 → 평균(7,806 t ÷ 2.05 ÷ 11,615 m²)
+const DL_OF = [1, 0.9, 0.7, 0.7];
+
+/* ---------------- 입력 ---------------- */
+const FIELDS = [
+  {g: ["Road section", "도로 구간"]},
+  {id: "L", en: "Section length", ko: "구간 연장", u: "km", min: 0.1, max: 50, st: 0.1, v: 1},
+  {id: "wc", en: "Carriageway width (all lanes)", ko: "차로부 폭(전체 차로)", u: "m", min: 3, max: 30, st: 0.1, v: 7.0, h: ["18 projects: 3.9–15.8 m, mean 8.1", "18개 구간: 3.9–15.8 m, 평균 8.1"]},
+  {id: "lpd", en: "Lanes per direction", ko: "방향별 차로 수", u: "", min: 1, max: 4, st: 1, v: 1, h: ["Lane distribution factor 1.0 · 0.9 · 0.7 · 0.7", "차로 분배 계수 1.0 · 0.9 · 0.7 · 0.7"]},
+  {id: "wx", en: "Shoulders and transitions (equivalent width)", ko: "길어깨 · 변이 구간 환산 폭", u: "m", min: 0, max: 10, st: 0.1, v: 3.5, h: ["18 projects: 0.5–8.7 m, mean 3.5", "18개 구간: 0.5–8.7 m, 평균 3.5"]},
+  {g: ["Layer thickness", "층 두께"]},
+  {id: "ts", en: "Surface course", ko: "표층", u: "mm", min: 30, max: 80, st: 5, v: 50, h: ["All 18 projects: 50 mm", "18개 구간 모두 50 mm"]},
+  {id: "ti", en: "Intermediate course", ko: "중간층", u: "mm", min: 0, max: 120, st: 5, v: 60},
+  {id: "tb", en: "Asphalt base course", ko: "아스팔트 기층", u: "mm", min: 0, max: 300, st: 5, v: 100, h: ["Total asphalt in the 18 projects: 150–266 mm", "18개 구간 아스팔트 합계 두께: 150–266 mm"]},
+  {id: "tsb", en: "Granular subbase", ko: "입상 보조기층", u: "mm", min: 0, max: 600, st: 10, v: 300},
+  {g: ["Traffic and durability", "교통과 내구성"]},
+  {id: "aadt", en: "AADT, both directions, design year", ko: "연평균 일교통량(양방향, 목표 연도)", u: "veh/d", min: 500, max: 40000, st: 100, v: 9600, h: ["18 projects: 925–25,961", "18개 구간: 925–25,961"]},
+  {id: "ms", en: "Marshall stability of the mixture", ko: "혼합물 마샬 안정도", u: "kN", min: 6, max: 18, st: 0.1, v: 11.4, h: ["Reference mixture 11.40 kN → N15 = 5.28 msa", "기준 혼합물 11.40 kN → N15 = 5.28 msa"]},
+  {id: "f", en: "Service-life multiplier f", ko: "수명 배수 f", u: "×", min: 0.6, max: 2, st: 0.05, v: 1, h: ["1.0 = reference mixture; 1.4 = 40 % longer life", "1.0 = 기준 혼합물, 1.4 = 수명 40 % 증가"]},
+  {id: "ovMode", en: "Overlay count", ko: "덧씌우기 횟수", sel: [["auto", "From cracking and rutting criteria", "균열 · 소성변형 기준으로 계산"], ["manual", "Enter directly", "직접 입력"]], v: "auto"},
+  {id: "ovN", en: "Overlays in 20 years", ko: "20년 중 덧씌우기", u: "", min: 0, max: 5, st: 1, v: 1, show: s => s.ovMode === "manual"},
+  {g: ["Materials and transport", "재료와 운반"]},
+  {id: "rap", en: "RAP content", ko: "재생 아스팔트(RAP) 함량", u: "%", min: 0, max: 50, st: 0.5, v: 30.3, h: ["Reference mix 30.3 %", "기준 배합 30.3 %"]},
+  {id: "ef", en: "Binder emission factor", ko: "바인더 배출계수", u: "t/t", min: 0.3, max: 1.6, st: 0.01, v: 0.494, h: ["Korea 0.494 · Eurobitume 0.530 · US GREET 1.552", "국내 0.494 · Eurobitume 0.530 · 미국 GREET 1.552"]},
+  {id: "en", en: "Mixing-plant energy", ko: "플랜트 생산 에너지", u: "%", min: 50, max: 150, st: 5, v: 100, h: ["Relative to the surveyed plants", "조사한 플랜트 대비"]},
+  {id: "haul", en: "Mixture haul distance", ko: "혼합물 운반 거리", u: "%", min: 50, max: 200, st: 5, v: 100, h: ["Relative to the 18-project average condition", "18개 구간 평균 조건 대비"]},
+  {g: ["Earthwork and recycling", "토공과 재활용"]},
+  {id: "ewMode", en: "Earthwork", ko: "토공", sel: [["none", "Not included (pavement only)", "포함 안 함(포장만)"], ["vol", "From embankment fill volume", "성토량으로 추정"], ["direct", "Enter a value", "값 직접 입력"]], v: "none"},
+  {id: "vemb", en: "Embankment fill", ko: "성토량", u: "10³ m³/km", min: 0, max: 80, st: 0.5, v: 15, h: ["18 projects: about 1–75", "18개 구간: 약 1–75"], show: s => s.ewMode === "vol"},
+  {id: "ewv", en: "Earthwork emissions", ko: "토공 배출", u: "t/km", min: 0, max: 600, st: 1, v: 180, h: ["18 projects: 39–547, mean 180", "18개 구간: 39–547, 평균 180"], show: s => s.ewMode === "direct"},
+  {id: "alloc", en: "Recycling credit (module D)", ko: "재활용 공제(모듈 D)", sel: [["full", "Full credit (manuscript base case)", "전량 공제(원고 기본)"], ["half", "50:50", "50:50"], ["cut", "Strict cut-off (D = 0)", "엄격 cut-off(D = 0)"]], v: "full"},
+  {g: ["Uncertainty", "불확도"]},
+  {id: "sinv", en: "Inventory scatter (1σ)", ko: "원단위 산포(1σ)", u: "%", min: 5, max: 20, st: 1, v: 11},
+  {id: "cvf", en: "Fatigue-life CV", ko: "피로 수명 변동계수", u: "%", min: 10, max: 30, st: 1, v: 18},
+  {id: "cvr", en: "Rutting-life CV", ko: "소성변형 수명 변동계수", u: "%", min: 6, max: 20, st: 1, v: 12},
+];
+const S = {};
+FIELDS.forEach(f => { if (f.id) S[f.id] = f.v; });
+const DEFAULT = Object.assign({}, S);
+
+function lpdOf(p) { const dl = p.lane / (p.aadt * 0.55); return dl > 0.95 ? 1 : dl > 0.8 ? 2 : 3; }
+function projState(p, base) {
+  return Object.assign({}, base || DEFAULT, {wc: p.w, wx: +(p.weq - p.w).toFixed(2), lpd: lpdOf(p), ts: 50, ti: 0, tb: p.hac - 50, tsb: SUB_REF,
+    aadt: p.aadt, ms: 11.4, f: 1, ovMode: "manual", ovN: p.n4, rap: 30.3, ef: 0.494, en: 100, haul: 100, ewMode: "direct", ewv: Math.round(p.ew)});
+}
+const PRESETS = [["custom", "Your own values", "직접 입력값"], ["avg", "18-project average", "18개 구간 평균"]].concat(PR.map(p => [p.id, "Project " + p.id, "구간 " + p.id]));
+
+function buildFields() {
+  const box = document.getElementById("fields"); let html = "", open = false;
+  FIELDS.forEach(f => {
+    if (f.g) { if (open) html += "</fieldset>"; html += `<fieldset><legend><span data-l="en">${f.g[0]}</span><span data-l="ko">${f.g[1]}</span></legend>`; open = true; return; }
+    const lab = `<label for="f_${f.id}"><span data-l="en">${f.en}</span><span data-l="ko">${f.ko}</span></label>`;
+    const hint = f.h ? `<div class="hint"><span data-l="en">${f.h[0]}</span><span data-l="ko">${f.h[1]}</span></div>` : "";
+    if (f.sel) {
+      html += `<div class="fld" id="w_${f.id}">${lab}<span></span><select id="f_${f.id}">` + f.sel.map(o => `<option value="${o[0]}" data-en="${o[1]}" data-ko="${o[2]}">${o[1]}</option>`).join("") + `</select>${hint}</div>`;
+    } else {
+      html += `<div class="fld" id="w_${f.id}">${lab}<span class="num"><input type="number" id="n_${f.id}" min="${f.min}" max="${f.max}" step="any" aria-label="${f.en}">${f.u}</span>` +
+        `<input type="range" id="f_${f.id}" min="${f.min}" max="${f.max}" step="${f.st}" aria-label="${f.en}">${hint}</div>`;
+    }
+    if (f.id === "wx") html += `<div class="derived" id="dW"></div>`;
+    if (f.id === "tsb") html += `<div class="derived" id="dH"></div>`;
+  });
+  html += "</fieldset>"; box.innerHTML = html;
+  FIELDS.forEach(f => {
+    if (!f.id) return;
+    const el = document.getElementById("f_" + f.id), nu = document.getElementById("n_" + f.id);
+    const set = v => { S[f.id] = f.sel ? v : Math.min(f.max, Math.max(f.min, +v)); document.getElementById("preset").value = "custom"; schedule(); };
+    el.addEventListener("input", () => set(el.value));
+    if (nu) nu.addEventListener("change", () => set(nu.value));
+  });
+  const ps = document.getElementById("preset");
+  ps.innerHTML = PRESETS.map(p => `<option value="${p[0]}">${p[1]}</option>`).join("");
+  ps.addEventListener("change", () => {
+    const v = ps.value;
+    if (v === "avg") Object.assign(S, DEFAULT, {wc: 8.1, wx: 3.5, lpd: 2, ts: 50, ti: 0, tb: 161, tsb: SUB_REF, aadt: 9624, ewMode: "direct", ewv: 180});
+    else if (v !== "custom") Object.assign(S, projState(PR.find(p => p.id === v), S), {L: S.L});
+    syncInputs(); ps.value = v; schedule();
+  });
+}
+function syncInputs() {
+  FIELDS.forEach(f => {
+    if (!f.id) return;
+    const el = document.getElementById("f_" + f.id), nu = document.getElementById("n_" + f.id);
+    el.value = S[f.id]; if (nu) nu.value = S[f.id];
+    if (f.show) document.getElementById("w_" + f.id).style.display = f.show(S) ? "" : "none";
+  });
+}
+function langSelects() {
+  document.querySelectorAll("select option[data-en]").forEach(o => { o.textContent = ko() ? o.dataset.ko : o.dataset.en; });
+  const ps = document.getElementById("preset");
+  [...ps.options].forEach((o, i) => { o.textContent = ko() ? PRESETS[i][2] : PRESETS[i][1]; });
+}
+
+/* ---------------- 계산 ---------------- */
+function compute(s) {
+  const A = 1000 * (s.wc + s.wx);
+  const th = {S: s.ts, I: s.ti, B: s.tb};
+  const Q = {S: A * s.ts / 1000 * M.rho_ac, I: A * s.ti / 1000 * M.rho_ac, B: A * s.tb / 1000 * M.rho_ac};
+  const Qsb = A * s.tsb / 1000 * M.rho_sb, Qb = Q.S + Q.I + Q.B, hac = s.ts + s.ti + s.tb;
+  const r = s.rap / 100, bv = Math.max(0, M.bind_tot - r * M.rap_bind), av = Math.max(0, 1 - r - bv);
+  const nL = ["S", "I", "B"].filter(k => th[k] > 0).length || 1;
+  const DL = DL_OF[s.lpd - 1];
+  const lane = s.aadt * 0.55 * DL, esalY = lane * 365 * 0.2 * 1.1 / 1e6, esal20 = esalY * 20;
+  const wtrd = Math.max(0.3, -0.668 * s.ms + 12.983);
+  const N10 = 82.43 * Math.pow(wtrd, -2.009), N20 = 461.21 * Math.pow(wtrd, -2.432), N15 = (N10 + N20) / 2;
+  const nr = Math.floor(esal20 / N15 + 1e-9);
+  const eps = M.eps0 + M.eps1 * hac;
+  const n4 = s.ovMode === "manual" ? s.ovN : Math.max(1, nr);
+  const gov = s.ovMode === "manual" ? "manual" : (nr > 1 ? "rut" : "crack");
+  const alloc = {full: 1, half: 0.5, cut: 0}[s.alloc];
+  const L = {};
+  ["S", "I", "B"].forEach(k => {
+    const q = Q[k] / 1000;          // kt → 원단위 kg/t × kt = t
+    L[k] = {A1b: Q[k] * bv * s.ef, A1a: q * av * M.agg * 1000, A2: q * M.a2 * 1000, A3: q * M.a3 * 1000 * s.en / 100,
+            A4: q * M.beta * 1000 * s.haul / 100, A5: th[k] > 0 && Qb > 0 ? M.alpha * A / nL : 0, B2: 0, B3: 0, B4: 0,
+            C: q * M.gamma * 1000, D: -q * M.delta * 1000 * alloc};
+  });
+  L.S.B2 = 4 * M.b2 * A / s.f; L.S.B3 = 3 * M.b3 * A / s.f; L.S.B4 = n4 * M.b4 * Q.S / s.f;
+  L.S.C += n4 * Q.S * M.gamma; L.S.D += -n4 * Q.S * M.delta * alloc;
+  L.SB = {A1b: 0, A1a: Qsb * M.sub, A2: 0, A3: 0, A4: 0, A5: 0, B2: 0, B3: 0, B4: 0, C: 0, D: 0};
+  const sum = key => ["S", "I", "B", "SB"].reduce((a, k) => a + L[k][key], 0);
+  const mod = {A1b: sum("A1b"), A1a: sum("A1a"), A2: sum("A2"), A3: sum("A3"), A4: sum("A4"), A5: sum("A5"), B2: sum("B2"), B3: sum("B3"), B4: sum("B4"), D: sum("D")};
+  mod.A1 = mod.A1b + mod.A1a;
+  const C = sum("C"); mod.C1 = C * M.c_split[0]; mod.C2 = C * M.c_split[1]; mod.C3 = C * M.c_split[2];
+  mod.EW = s.ewMode === "vol" ? 76.7 + 5.90 * s.vemb : s.ewMode === "direct" ? s.ewv : 0;
+  const prod = mod.A1 + mod.A2 + mod.A3, cons = mod.A4 + mod.A5, use = mod.B2 + mod.B3 + mod.B4, eol = C;
+  const pav = prod + cons + use + eol, total = pav + mod.EW;
+  return {s, A, Q, Qsb, Qb, hac, r, bv, av, nL, DL, lane, esalY, esal20, wtrd, N10, N20, N15, nr, eps, n4, gov, alloc, L, mod,
+          prod, cons, use, eol, pav, total, net: total + mod.D, Mrec: Qb + n4 * Q.S};
+}
+// 18개 구간을 같은 모형으로 다시 계산(역산 물량 + 원고 덧씌우기 횟수)
+const PRM = PR.map(p => compute(projState(p)));
+const MEAN = {}; ["A1", "A2", "A3", "A4", "A5", "B2", "B3", "B4", "C1", "C2", "C3", "D", "EW"].forEach(k => { MEAN[k] = PRM.reduce((a, r) => a + r.mod[k], 0) / PRM.length; });
+
+function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function simulate(R, N) {
+  const s = R.s, rnd = rng(20260713); let spare = null;
+  const g = () => { if (spare !== null) { const v = spare; spare = null; return v; } let u = 0, v = 0; while (u === 0) u = rnd(); v = rnd(); const m = Math.sqrt(-2 * Math.log(u)); spare = m * Math.sin(2 * Math.PI * v); return m * Math.cos(2 * Math.PI * v); };
+  const sf = Math.sqrt(Math.log(1 + Math.pow(s.cvf / 100, 2))), sr = Math.sqrt(Math.log(1 + Math.pow(s.cvr / 100, 2)));
+  const Bfix = R.mod.B2 + R.mod.B3, B4u = M.b4 * R.Q.S / s.f, base = R.prod + R.cons + R.mod.EW;
+  const out = new Float64Array(N);
+  for (let i = 0; i < N; i++) {
+    const m = Math.max(0.2, 1 + s.sinv / 100 * g()), xf = Math.exp(sf * g()), xr = Math.exp(sr * g());
+    let n4, fac = 1;
+    if (s.ovMode === "manual") { n4 = s.ovN; fac = 1 / xf; }
+    else { const nr = Math.floor(R.esal20 / (R.N15 * xr) + 1e-9); n4 = Math.max(1, nr); if (nr <= 1) fac = 1 / xf; }
+    out[i] = m * (base + M.gamma * (R.Qb + n4 * R.Q.S)) + (Bfix + n4 * B4u) * fac;
+  }
+  return out.sort();
+}
+const q = (a, p) => a[Math.min(a.length - 1, Math.max(0, Math.round(p * (a.length - 1))))];
+
+/* ---------------- 그림 도구 ---------------- */
+const W = id => Math.max(300, Math.round(document.getElementById(id).clientWidth || 600));
+const svg = (w, h, body, label) => `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-label="${esc(label)}">${body}</svg>`;
+const tx = (x, y, s, o = {}) => `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-size="${o.fs || 12}" fill="${o.c || COL.ink}" text-anchor="${o.a || "start"}"${o.w ? ` font-weight="${o.w}"` : ""}${o.f ? ` font-family="${o.f}"` : ""}>${esc(s)}</text>`;
+const rc = (x, y, w, h, c, o = "") => `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${Math.max(0, w).toFixed(1)}" height="${Math.max(0, h).toFixed(1)}" fill="${c}" ${o}/>`;
+const ln = (x1, y1, x2, y2, c, w = 1, d = "") => `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${c}" stroke-width="${w}"${d ? ` stroke-dasharray="${d}"` : ""}/>`;
+function ticks(lo, hi, n) { const span = hi - lo || 1, step0 = span / n, p = Math.pow(10, Math.floor(Math.log10(step0))), m = step0 / p; const step = (m < 1.5 ? 1 : m < 3 ? 2 : m < 7 ? 5 : 10) * p; const out = []; for (let v = Math.ceil(lo / step) * step; v <= hi + 1e-9; v += step) out.push(+v.toFixed(10)); return out; }
+const HATCH = `<defs><pattern id="hat" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#D9D3CB"/><line x1="0" y1="0" x2="0" y2="6" stroke="#8A837B" stroke-width="1.4"/></pattern></defs>`;
+
+/* 2-1 항목별 */
+function chartModules(R) {
+  const rows = [
+    ["A1", tr("A1 raw materials", "A1 원료"), COL.A], ["A2", tr("A2 transport to plant", "A2 플랜트 운반"), COL.A], ["A3", tr("A3 mixing plant", "A3 플랜트 생산"), COL.A],
+    ["A4", tr("A4 haul (quantity term)", "A4 운반(물량 항)"), COL.AC], ["A5", tr("A5 paving (area term)", "A5 포설 · 다짐(면적 항)"), COL.AC],
+    ["B2", tr("B2 slurry seal ×4", "B2 표면 처리 ×4"), COL.B], ["B3", tr("B3 partial repair ×3", "B3 부분 보수 ×3"), COL.B], ["B4", tr(`B4 milling & overlay ×${R.n4}`, `B4 절삭 덧씌우기 ×${R.n4}`), COL.B],
+    ["C1", tr("C1 deconstruction", "C1 해체"), COL.C], ["C2", tr("C2 waste transport", "C2 폐기물 운반"), COL.C], ["C3", tr("C3 waste processing", "C3 폐기물 처리"), COL.C],
+    ["EW", tr("Earthwork", "토공"), COL.EW], ["D", tr("D recycling credit", "D 재활용 공제"), COL.D]];
+  const w = W("chMod"), lab = Math.min(178, w * 0.42), rh = 22, top = 8, h = top + rows.length * rh + 40;
+  const vals = rows.map(r => R.mod[r[0]]), mx = Math.max(10, ...vals.map(Math.abs), ...rows.map(r => Math.abs(MEAN[r[0]] || 0)));
+  const mn = Math.min(0, ...vals, MEAN.D), x0 = lab + 6, xw = w - x0 - 44, sc = v => x0 + (v - mn) / (mx - mn) * xw;
+  let b = "";
+  ticks(mn, mx, 4).forEach(v => { b += ln(sc(v), top - 2, sc(v), h - 36, COL.grid) + tx(sc(v), h - 22, fmt(v), {fs: 11, c: COL.mute, a: "middle"}); });
+  b += ln(sc(0), top - 2, sc(0), h - 36, "#B9B2A9");
+  rows.forEach((r, i) => {
+    const y = top + i * rh, v = R.mod[r[0]], a = sc(Math.min(0, v)), e = sc(Math.max(0, v));
+    b += tx(lab, y + 15, r[1], {fs: 12, a: "end"});
+    b += rc(a, y + 4, e - a, rh - 8, r[2], r[0] === "EW" ? 'fill-opacity="1" style="fill:url(#hat)"' : "");
+    const mxp = MEAN[r[0]] !== undefined && r[0] !== "EW" ? sc(MEAN[r[0]]) : null;
+    if (mxp !== null) b += ln(mxp, y + 1, mxp, y + rh - 1, "#6A645D", 2);
+    b += tx(v < 0 ? sc(0) + 4 : Math.max(e, mxp || 0) + 4, y + 15, fmt(v, 1), {fs: 11.5, f: "JetBrains Mono, monospace"});
+  });
+  b += tx(w - 4, h - 4, "t CO₂eq/km", {fs: 11, c: COL.mute, a: "end"});
+  document.getElementById("chMod").innerHTML = svg(w, h, HATCH + b, tr("Emissions by module", "항목별 배출"));
+}
+/* 2-2 층별 */
+function chartLayers(R) {
+  const lays = [["S", tr("Surface", "표층")], ["I", tr("Intermediate", "중간층")], ["B", tr("Base", "기층")], ["SB", tr("Subbase", "보조기층")]];
+  const st = [["A", k => R.L[k].A1b + R.L[k].A1a + R.L[k].A2 + R.L[k].A3, COL.A], ["AC", k => R.L[k].A4 + R.L[k].A5, COL.AC], ["B", k => R.L[k].B2 + R.L[k].B3 + R.L[k].B4, COL.B], ["C", k => R.L[k].C, COL.C]];
+  const w = W("chLay"), lab = 86, rh = 40, top = 8, h = top + lays.length * rh + 26;
+  const tot = lays.map(l => st.reduce((a, s) => a + s[1](l[0]), 0)), mx = Math.max(10, ...tot) * 1.05;
+  const x0 = lab + 6, xw = w - x0 - 92, sc = v => x0 + v / mx * xw;
+  let b = "";
+  ticks(0, mx, 4).forEach(v => { b += ln(sc(v), top - 2, sc(v), h - 22, COL.grid) + tx(sc(v), h - 8, fmt(v), {fs: 11, c: COL.mute, a: "middle"}); });
+  lays.forEach((l, i) => {
+    const y = top + i * rh; let x = x0;
+    b += tx(lab, y + 18, l[1], {fs: 12.5, a: "end", w: 600});
+    const th = l[0] === "SB" ? R.s.tsb : R.s[{S: "ts", I: "ti", B: "tb"}[l[0]]];
+    b += tx(lab, y + 32, th + " mm", {fs: 11, a: "end", c: COL.mute});
+    st.forEach(s => { const v = s[1](l[0]), wd = v / mx * xw; b += rc(x, y + 6, wd, rh - 14, s[2]); x += wd; });
+    b += tx(x + 5, y + 19, fmt(tot[i], 1), {fs: 11.5, f: "JetBrains Mono, monospace"});
+    b += tx(x + 5, y + 32, "D " + fmt(R.L[l[0]].D, 1), {fs: 10.5, c: COL.mute, f: "JetBrains Mono, monospace"});
+  });
+  b += tx(w - 4, h - 8, "t CO₂eq/km", {fs: 11, c: COL.mute, a: "end"});
+  document.getElementById("chLay").innerHTML = svg(w, h, b, tr("Emissions by layer", "층별 배출"));
+  document.getElementById("lgStage").innerHTML = [[COL.A, "A1–A3 production", "A1–A3 생산"], [COL.AC, "A4–A5 construction", "A4–A5 시공"], [COL.B, "B maintenance", "B 유지"], [COL.C, "C end-of-life", "C 폐기"], [COL.D, "D credit", "D 공제"]]
+    .map(c => `<span><i style="background:${c[0]}"></i>${tr(c[1], c[2])}</span>`).join("");
+}
+/* 3-1 분포 */
+function chartHist(R, sims) {
+  const w = W("chHist"), h = 230, l = 40, r = 10, top = 22, bot = 36;
+  const lo = q(sims, 0.002), hi = q(sims, 0.998), nb = 30, bw = (hi - lo) / nb || 1, cnt = new Array(nb).fill(0);
+  sims.forEach(v => { const i = Math.min(nb - 1, Math.max(0, Math.floor((v - lo) / bw))); cnt[i]++; });
+  const cm = Math.max(...cnt), sx = v => l + (v - lo) / (hi - lo || 1) * (w - l - r), sy = c => h - bot - c / cm * (h - bot - top);
+  let b = "";
+  ticks(lo, hi, 4).forEach(v => { b += ln(sx(v), top, sx(v), h - bot, COL.grid) + tx(sx(v), h - bot + 15, fmt(v), {fs: 11, c: COL.mute, a: "middle"}); });
+  cnt.forEach((c, i) => { b += rc(sx(lo + i * bw) + 0.5, sy(c), (w - l - r) / nb - 1, h - bot - sy(c), "#9DB3D6"); });
+  const p5 = q(sims, 0.05), p50 = q(sims, 0.5), p95 = q(sims, 0.95);
+  b += rc(sx(p5), top, sx(p95) - sx(p5), h - bot - top, COL.you, 'fill-opacity="0.08"');
+  [[p5, "5 %", "#6A645D", "4 3"], [p95, "95 %", "#6A645D", "4 3"], [p50, tr("median", "중앙"), COL.ink, ""], [R.total, tr("point", "점추정"), COL.you, ""]].forEach((m, i) => {
+    b += ln(sx(m[0]), top - 4, sx(m[0]), h - bot, m[2], 1.6, m[3]);
+    b += tx(sx(m[0]) + (i === 3 ? 4 : -3), i === 3 ? top + 10 : top - 8, m[1], {fs: 11, c: m[2], a: i === 3 ? "start" : "end", w: i === 3 ? 700 : null});
+  });
+  b += tx(w - r, h - 6, tr("A+B+C (+ earthwork), t CO₂eq/km", "A+B+C(+토공), t CO₂eq/km"), {fs: 11, c: COL.mute, a: "end"});
+  document.getElementById("chHist").innerHTML = svg(w, h, b, tr("Monte Carlo distribution", "몬테카를로 분포"));
+  const half = (p95 - p5) / 2 / p50 * 100;
+  document.getElementById("capHist").textContent = tr(`Median ${fmt(p50)} · 5–95 % ${fmt(p5)}–${fmt(p95)} t/km (about ±${fmt(half, 1)} % of the median).`,
+    `중앙값 ${fmt(p50)} · 5–95 % ${fmt(p5)}–${fmt(p95)} t/km(중앙값 대비 약 ±${fmt(half, 1)} %).`);
+  return {p5, p50, p95};
+}
+/* 3-2 민감도 */
+function tornadoRows(s) {
+  const base = compute(s).total, c = (o) => compute(Object.assign({}, s, o)).total;
+  const rows = [
+    [tr("Service life f ±25 %", "수명 배수 f ±25 %"), c({f: s.f * 0.75}), c({f: s.f * 1.25})],
+    [tr("Haul distance ±30 %", "운반 거리 ±30 %"), c({haul: s.haul * 0.7}), c({haul: s.haul * 1.3})],
+    [tr("Binder factor ±20 %", "바인더 배출계수 ±20 %"), c({ef: s.ef * 0.8}), c({ef: s.ef * 1.2})],
+    [tr("Plant energy ±20 %", "플랜트 에너지 ±20 %"), c({en: s.en * 0.8}), c({en: s.en * 1.2})],
+    [tr("RAP ±10 %p", "RAP ±10 %p"), c({rap: Math.max(0, s.rap - 10)}), c({rap: Math.min(50, s.rap + 10)})],
+    [tr("Base course ±20 mm", "기층 ±20 mm"), c({tb: Math.max(0, s.tb - 20)}), c({tb: s.tb + 20})],
+    [tr("Paved width ±1 m", "포장 폭 ±1 m"), c({wc: Math.max(1, s.wc - 1)}), c({wc: s.wc + 1})],
+    [tr("Traffic ±30 %", "교통량 ±30 %"), c({aadt: s.aadt * 0.7}), c({aadt: s.aadt * 1.3})],
+    [tr("Marshall stability ±20 %", "마샬 안정도 ±20 %"), c({ms: s.ms * 0.8}), c({ms: Math.min(18, s.ms * 1.2)})]];
+  return {base, rows: rows.sort((a, b) => Math.abs(b[2] - b[1]) - Math.abs(a[2] - a[1]))};
+}
+function chartTornado(s) {
+  const T = tornadoRows(s), w = W("chTor"), lab = Math.min(150, w * 0.42), rh = 21, top = 18, h = top + T.rows.length * rh + 24;
+  const ext = Math.max(5, ...T.rows.map(r => Math.max(Math.abs(r[1] - T.base), Math.abs(r[2] - T.base)))) * 1.15;
+  const x0 = lab + 8, xw = w - x0 - 8, sc = d => x0 + xw / 2 + d / ext * xw / 2;
+  let b = ln(sc(0), top - 6, sc(0), h - 20, "#6A645D");
+  b += tx(sc(0), top - 8, tr(`base ${fmt(T.base)}`, `기준 ${fmt(T.base)}`), {fs: 11, a: "middle", c: COL.mute});
+  T.rows.forEach((r, i) => {
+    const y = top + i * rh;
+    b += tx(lab, y + 14, r[0], {fs: 11.5, a: "end"});
+    [[r[1], "#9DB3D6"], [r[2], "#E8A87C"]].forEach(([v, cl]) => { const d = v - T.base, a = sc(Math.min(0, d)), e = sc(Math.max(0, d)); b += rc(a, y + 4, e - a, rh - 8, cl); });
+    const d1 = r[1] - T.base, d2 = r[2] - T.base, mxd = Math.max(Math.abs(d1), Math.abs(d2));
+    b += tx(sc(mxd) + 3 > w - 30 ? w - 2 : sc(mxd) + 3, y + 14, `±${fmt(Math.abs(d2 - d1) / 2)}`, {fs: 10.5, c: COL.mute, a: sc(mxd) + 3 > w - 30 ? "end" : "start", f: "JetBrains Mono, monospace"});
+  });
+  ticks(-ext, ext, 4).forEach(v => { b += tx(sc(v), h - 6, (v > 0 ? "+" : "") + fmt(v), {fs: 10.5, c: COL.mute, a: "middle"}); });
+  document.getElementById("chTor").innerHTML = svg(w, h, b, tr("Sensitivity", "민감도"));
+  document.getElementById("lgTor").innerHTML = `<span><i style="background:#9DB3D6"></i>${tr("lower setting", "낮은 쪽 설정")}</span><span><i style="background:#E8A87C"></i>${tr("higher setting", "높은 쪽 설정")}</span>`;
+}
+/* 3-3 G(f) */
+function chartGf(s) {
+  const fs = []; for (let f = 0.6; f <= 2.0001; f += 0.05) fs.push(+f.toFixed(2));
+  const ys = fs.map(f => compute(Object.assign({}, s, {f})).total);
+  const w = W("chGf"), h = 230, l = 46, r = 12, top = 16, bot = 36;
+  const ref = [[0.8, 688], [1.0, 649], [1.4, 604]];
+  const lo = Math.min(...ys, ...(s.ewMode === "none" ? [] : ref.map(x => x[1]))) * 0.97, hi = Math.max(...ys, ...(s.ewMode === "none" ? [] : ref.map(x => x[1]))) * 1.02;
+  const sx = f => l + (f - 0.6) / 1.4 * (w - l - r), sy = v => h - bot - (v - lo) / (hi - lo || 1) * (h - bot - top);
+  let b = "";
+  ticks(lo, hi, 4).forEach(v => { b += ln(l, sy(v), w - r, sy(v), COL.grid) + tx(l - 4, sy(v) + 4, fmt(v), {fs: 11, c: COL.mute, a: "end"}); });
+  [0.6, 1.0, 1.4, 1.8].forEach(f => { b += tx(sx(f), h - bot + 15, f.toFixed(1), {fs: 11, c: COL.mute, a: "middle"}); });
+  b += `<polyline fill="none" stroke="${COL.B}" stroke-width="2" points="${fs.map((f, i) => sx(f).toFixed(1) + "," + sy(ys[i]).toFixed(1)).join(" ")}"/>`;
+  if (s.ewMode !== "none") ref.forEach(p => { b += `<circle cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="3.5" fill="none" stroke="#6A645D" stroke-width="1.4"/>`; });
+  const cur = compute(s).total;
+  b += `<circle cx="${sx(s.f).toFixed(1)}" cy="${sy(cur).toFixed(1)}" r="5" fill="${COL.you}"/>`;
+  b += tx(w - r, h - 6, tr("service-life multiplier f", "수명 배수 f"), {fs: 11, c: COL.mute, a: "end"});
+  document.getElementById("chGf").innerHTML = svg(w, h, b, tr("Whole-life emissions against service life", "수명에 따른 전 과정 배출"));
+  const R1 = compute(Object.assign({}, s, {f: 1})), A15 = R1.prod + R1.cons;
+  const dstar = f => R1.use * (1 - 1 / f) / A15 * 100;
+  document.getElementById("capGf").textContent = tr(
+    `With f = 1.4 the mixture may carry up to ${fmt(dstar(1.4), 1)} % more production and construction emissions (A1–A5, pavement) and still lower the whole-life total; at f = 1.2, ${fmt(dstar(1.2), 1)} %.` + (s.ewMode !== "none" ? " Open circles: manuscript 18-project average (Fig. 11)." : ""),
+    `f = 1.4이면 생산 · 시공 배출(A1–A5, 포장)이 최대 ${fmt(dstar(1.4), 1)} % 늘어도 전 과정 배출이 줄어듭니다. f = 1.2이면 ${fmt(dstar(1.2), 1)} %.` + (s.ewMode !== "none" ? " 빈 원: 원고 18개 구간 평균(그림 11)." : ""));
+}
+/* 4-1 18개 구간 막대 */
+function chartCompare(R) {
+  const items = PR.map(p => ({id: p.id, prod: p.prod, cons: p.cons, use: p.use, eol: p.eol, ew: p.ew, D: p.D}))
+    .concat([{id: tr("Input", "입력"), you: true, prod: R.prod, cons: R.cons, use: R.use, eol: R.eol, ew: R.mod.EW, D: R.mod.D}]);
+  items.sort((a, b) => (b.prod + b.cons + b.use + b.eol + b.ew) - (a.prod + a.cons + a.use + a.eol + a.ew));
+  const w = W("chCmp"), rot = (w - 50) / 19 < 34, h = rot ? 318 : 300, l = 44, r = 6, top = 12, bot = rot ? 44 : 26;
+  const mx = Math.max(...items.map(i => i.prod + i.cons + i.use + i.eol + i.ew)) * 1.05, mn = Math.min(...items.map(i => i.D)) * 1.05;
+  const sy = v => top + (mx - v) / (mx - mn) * (h - top - bot), bw = (w - l - r) / items.length;
+  let b = HATCH;
+  ticks(mn, mx, 6).forEach(v => { b += ln(l, sy(v), w - r, sy(v), COL.grid) + tx(l - 4, sy(v) + 4, fmt(v), {fs: 10.5, c: COL.mute, a: "end"}); });
+  items.forEach((it, i) => {
+    const x = l + i * bw + bw * 0.14, ww = bw * 0.72; let y = 0;
+    [["prod", COL.A], ["cons", COL.AC], ["use", COL.B], ["eol", COL.C], ["ew", "url(#hat)"]].forEach(([k, c]) => { const v = it[k]; b += rc(x, sy(y + v), ww, sy(y) - sy(y + v), c); y += v; });
+    b += rc(x, sy(0), ww, sy(it.D) - sy(0), COL.D);
+    if (it.you) b += rc(x - 2, sy(y) - 2, ww + 4, sy(it.D) - sy(y) + 4, "none", `stroke="${COL.you}" stroke-width="2.5"`);
+    if (rot) b += `<text transform="translate(${(x + ww / 2 + 3).toFixed(1)},${(h - bot + 8).toFixed(1)}) rotate(-60)" font-size="10" text-anchor="end" fill="${it.you ? COL.you : COL.ink}"${it.you ? ' font-weight="700"' : ""}>${esc(it.id)}</text>`;
+    else b += tx(x + ww / 2, h - 8, it.id, {fs: 11, a: "middle", c: it.you ? COL.you : COL.ink, w: it.you ? 700 : null});
+  });
+  b += ln(l, sy(0), w - r, sy(0), "#6A645D");
+  document.getElementById("chCmp").innerHTML = svg(w, h, b, tr("18 projects and your input", "18개 구간과 입력 조건"));
+  document.getElementById("lgCmp").innerHTML = [[COL.A, "A1–A3 production", "A1–A3 생산"], [COL.AC, "A4–A5 pavement construction", "A4–A5 포장 시공"], [COL.B, "B maintenance", "B 유지"], [COL.C, "C end-of-life", "C 폐기"], ["repeating-linear-gradient(45deg,#D9D3CB 0 3px,#8A837B 3px 4.5px)", "Earthwork", "토공"], [COL.D, "D credit", "D 공제"]]
+    .map(c => `<span><i style="background:${c[0]}"></i>${tr(c[1], c[2])}</span>`).join("") + " · t CO₂eq/km";
+}
+/* 4-2 산점도 */
+const SX = [["weq", "Equivalent paved width (m)", "환산 포장 폭(m)", p => p.weq, R => R.A / 1000], ["hac", "Total asphalt thickness (mm)", "아스팔트 합계 두께(mm)", p => p.hac, R => R.hac], ["lane", "Design-lane AADT (veh/day/lane)", "설계 차로 교통량(대/일/차로)", p => p.lane, R => R.lane]];
+function chartScatter(R) {
+  const k = document.getElementById("sx").value || "weq", ax = SX.find(a => a[0] === k);
+  const pts = PR.map(p => [ax[3](p), p.prod + p.cons + p.use + p.eol, p.id]), you = [ax[4](R), R.pav];
+  const xs = pts.map(p => p[0]).concat(you[0]), ys = pts.map(p => p[1]).concat(you[1]);
+  const xl = Math.min(...xs), xh = Math.max(...xs), yl = 0, yh = Math.max(...ys) * 1.08, pad = (xh - xl) * 0.06 || 1;
+  const w = W("chSc"), h = 260, l = 46, r = 10, top = 10, bot = 36;
+  const sx = v => l + (v - xl + pad) / (xh - xl + 2 * pad) * (w - l - r), sy = v => h - bot - (v - yl) / (yh - yl) * (h - top - bot);
+  let b = "";
+  ticks(yl, yh, 4).forEach(v => { b += ln(l, sy(v), w - r, sy(v), COL.grid) + tx(l - 4, sy(v) + 4, fmt(v), {fs: 10.5, c: COL.mute, a: "end"}); });
+  ticks(xl - pad, xh + pad, 5).forEach(v => { b += tx(sx(v), h - bot + 14, fmt(v), {fs: 10.5, c: COL.mute, a: "middle"}); });
+  pts.forEach(p => { b += `<circle cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="4.5" fill="${COL.A}" fill-opacity=".8"/>` + tx(sx(p[0]) + 6, sy(p[1]) + 4, p[2], {fs: 10, c: COL.mute}); });
+  b += `<circle cx="${sx(you[0]).toFixed(1)}" cy="${sy(you[1]).toFixed(1)}" r="7" fill="${COL.you}"/>` + tx(sx(you[0]) + 9, sy(you[1]) - 6, tr("Input", "입력"), {fs: 11.5, c: COL.you, w: 700});
+  b += tx(w - r, h - 6, tr(ax[1], ax[2]), {fs: 11, c: COL.mute, a: "end"});
+  b += tx(l + 2, top + 10, "A+B+C, t/km", {fs: 10.5, c: COL.mute});
+  document.getElementById("chSc").innerHTML = svg(w, h, b, tr("Scatter", "산점도"));
+}
+/* 4-3 기준 구간에서 입력까지 단계별 차이 */
+function nearest(R) {
+  const sd = k => { const v = PR.map(p => p[k]); const m = v.reduce((a, b) => a + b, 0) / v.length; return Math.sqrt(v.reduce((a, b) => a + (b - m) ** 2, 0) / v.length); };
+  const sw = sd("weq"), sh = sd("hac"), sl = (() => { const v = PR.map(p => Math.log(p.lane)); const m = v.reduce((a, b) => a + b, 0) / v.length; return Math.sqrt(v.reduce((a, b) => a + (b - m) ** 2, 0) / v.length); })();
+  return PR.map(p => [p.id, Math.hypot((p.weq - R.A / 1000) / sw, (p.hac - R.hac) / sh, (Math.log(p.lane) - Math.log(R.lane)) / sl)]).sort((a, b) => a[1] - b[1]);
+}
+function chartWalk(R) {
+  const id = document.getElementById("sref").value, p = PR.find(x => x.id === id), s0 = projState(p, S);
+  const groups = [
+    [tr("Paved width", "포장 폭"), ["wc", "wx"]], [tr("Layer thickness", "층 두께"), ["ts", "ti", "tb", "tsb"]],
+    [tr("Traffic · overlays", "교통 · 덧씌우기"), ["aadt", "lpd", "ms", "ovMode", "ovN"]], [tr("Service life f", "수명 배수 f"), ["f"]],
+    [tr("Materials", "재료"), ["rap", "ef", "en"]], [tr("Haul", "운반"), ["haul"]], [tr("Earthwork", "토공"), ["ewMode", "vemb", "ewv"]]];
+  const steps = [[p.id + tr(" (model)", "(모형)"), compute(s0).total, "start"]]; let cur = Object.assign({}, s0);
+  groups.forEach(g => { const prev = compute(cur).total; g[1].forEach(k => { cur[k] = S[k]; }); steps.push([g[0], compute(cur).total - prev, "d"]); });
+  steps.push([tr("Input", "입력"), compute(S).total, "end"]);
+  const w = W("chWalk"), lab = Math.min(128, w * 0.36), rh = 23, top = 6, h = top + steps.length * rh + 22;
+  let run = 0; const spans = steps.map(st => { if (st[2] === "start") { run = st[1]; return [0, st[1]]; } if (st[2] === "end") return [0, st[1]]; const a = run; run += st[1]; return [a, run]; });
+  const mx = Math.max(...spans.map(s => Math.max(s[0], s[1]))) * 1.12, mn = Math.min(0, ...spans.map(s => Math.min(s[0], s[1])));
+  const x0 = lab + 6, xw = w - x0 - 8, sc = v => x0 + (v - mn) / (mx - mn) * xw;
+  let b = "";
+  steps.forEach((st, i) => {
+    const y = top + i * rh, [a, e] = spans[i], c = st[2] === "d" ? (st[1] >= 0 ? "#E8A87C" : "#9DB3D6") : (st[2] === "end" ? COL.you : "#8A837B");
+    b += tx(lab, y + 15, st[0], {fs: 11.5, a: "end", w: st[2] === "d" ? null : 600});
+    b += rc(sc(Math.min(a, e)), y + 4, Math.max(1.5, Math.abs(sc(e) - sc(a))), rh - 8, c);
+    const label = st[2] === "d" ? (st[1] >= 0 ? "+" : "") + fmt(st[1]) : fmt(st[1]);
+    b += tx(sc(Math.max(a, e)) + 4, y + 15, label, {fs: 11, f: "JetBrains Mono, monospace", c: COL.ink});
+  });
+  document.getElementById("chWalk").innerHTML = svg(w, h, b, tr("Step-by-step difference", "단계별 차이"));
+  const m0 = compute(s0).total;
+  document.getElementById("capWalk").textContent = tr(
+    `Starting from ${p.id} as recalculated by this model (${fmt(m0)} t/km; published total ${fmt(p.total)} t/km, difference ${fmt((m0 - p.total) / p.total * 100, 1)} %), each step replaces one group of ${p.id}'s inputs with yours. Totals include earthwork when it is set.`,
+    `${p.id}를 이 모형으로 다시 계산한 값(${fmt(m0)} t/km, 원고 총량 ${fmt(p.total)} t/km, 차이 ${fmt((m0 - p.total) / p.total * 100, 1)} %)에서 시작해 입력 묶음을 하나씩 입력 조건으로 바꿉니다. 토공을 설정하면 합계에 포함됩니다.`);
+}
+/* 4-4 표 */
+function table18(R, near) {
+  const nset = new Set(near.slice(0, 3).map(n => n[0]));
+  const head = tr(["Project", "Width m", "Roadway %†", "W_eq m*", "AADT", "Lane AADT", "AC mm*", "εt µε*", "Q_AC t*", "Overlays rut/crack/used", "A1–A3†", "A4–A5†", "B†", "C†", "Earthwork*", "Total", "D", "Net", "Model", "Diff %"],
+    ["구간", "폭 m", "차로 비율 %†", "환산 폭 m*", "AADT", "차로 AADT", "아스팔트 mm*", "εt µε*", "혼합물 t*", "덧씌우기 소성/균열/채택", "A1–A3†", "A4–A5†", "B†", "C†", "토공*", "총량", "D", "순배출", "모형", "차이 %"]);
+  let h = "<table><thead><tr>" + head.map(x => `<th>${x}</th>`).join("") + "</tr></thead><tbody>";
+  PR.forEach((p, i) => {
+    const m = PRM[i].total;
+    h += `<tr class="${nset.has(p.id) ? "near" : ""}"><td>${p.id}</td><td>${fmt(p.w, 1)}</td><td>${fmt(p.share, 1)}</td><td>${fmt(p.weq, 1)}</td><td>${fmt(p.aadt)}</td><td>${fmt(p.lane)}</td><td>${fmt(p.hac)}</td><td>${fmt(p.eps)}</td><td>${fmt(p.qb)}</td>` +
+      `<td>${p.rut} / ${p.crack} / ${p.n4}</td><td>${fmt(p.prod)}</td><td>${fmt(p.cons)}</td><td>${fmt(p.use)}</td><td>${fmt(p.eol)}</td><td>${fmt(p.ew)}</td><td>${fmt(p.total)}</td><td>${fmt(p.D)}</td><td>${fmt(p.net)}</td><td>${fmt(m)}</td><td>${fmt((m - p.total) / p.total * 100, 1)}</td></tr>`;
+  });
+  h += `<tr class="you"><td>${tr("Input", "입력")}</td><td>${fmt(R.s.wc, 1)}</td><td>${fmt(R.s.wc / (R.s.wc + R.s.wx) * 100, 1)}</td><td>${fmt(R.A / 1000, 1)}</td><td>${fmt(R.s.aadt)}</td><td>${fmt(R.lane)}</td><td>${fmt(R.hac)}</td><td>${fmt(R.eps)}</td><td>${fmt(R.Qb)}</td>` +
+    `<td>${R.nr} / 1 / ${R.n4}</td><td>${fmt(R.prod)}</td><td>${fmt(R.cons)}</td><td>${fmt(R.use)}</td><td>${fmt(R.eol)}</td><td>${fmt(R.mod.EW)}</td><td>${fmt(R.total)}</td><td>${fmt(R.mod.D)}</td><td>${fmt(R.net)}</td><td>—</td><td>—</td></tr>`;
+  document.getElementById("tbl18").innerHTML = h + "</tbody></table>";
+}
+/* 5 계산 과정 */
+function steps(R) {
+  const s = R.s, k = v => fmt(v, 0), k1 = v => fmt(v, 1);
+  const lay = [["S", tr("surface", "표층"), s.ts], ["I", tr("intermediate", "중간층"), s.ti], ["B", tr("base", "기층"), s.tb]];
+  const L = [
+    [tr("Equivalent paved area", "환산 포장 면적"), `A = 1,000 m × (${k1(s.wc)} + ${k1(s.wx)}) m = ${k(R.A)} m²/km`],
+    [tr("Mixture quantities (2.35 t/m³; subbase 2.05 t/m³)", "혼합물량(2.35 t/m³, 보조기층 2.05 t/m³)"),
+      lay.map(l => `${l[1]} ${k(R.A)} × ${(l[2] / 1000).toFixed(3)} × 2.35 = ${k(R.Q[l[0]])} t`).join(" · ") + ` → Q_AC = ${k(R.Qb)} t · ${tr("subbase", "보조기층")} ${k(R.Qsb)} t`],
+    [tr("A1 binder: virgin binder share = 5.8 % − RAP × 6.93 %", "A1 바인더: 신재 바인더 비율 = 5.8 % − RAP × 6.93 %"),
+      `${fmt(R.bv * 100, 2)} % → ${k(R.Qb)} t × ${R.bv.toFixed(4)} × ${s.ef.toFixed(3)} t/t = ${k1(R.mod.A1b)} t`],
+    [tr("A1 aggregate and other inputs", "A1 골재 등"), `${k(R.Qb)} t × ${R.av.toFixed(3)} × ${fmt(M.agg * 1000, 2)} kg/t + ${k(R.Qsb)} t × ${fmt(M.sub * 1000, 3)} kg/t = ${k1(R.mod.A1a)} t`],
+    [tr("A2 transport to plant · A3 mixing plant", "A2 플랜트 운반 · A3 플랜트 생산"),
+      `A2 = ${k(R.Qb)} × ${fmt(M.a2 * 1000, 2)} kg/t = ${k1(R.mod.A2)} t · A3 = ${k(R.Qb)} × ${fmt(M.a3 * 1000, 2)} kg/t × ${s.en} % = ${k1(R.mod.A3)} t`],
+    [tr("A4 haul (quantity term) · A5 paving (area term)", "A4 운반(물량 항) · A5 포설 · 다짐(면적 항)"),
+      `A4 = ${k(R.Qb)} × ${fmt(M.beta * 1000, 2)} kg/t × ${s.haul} % = ${k1(R.mod.A4)} t · A5 = ${k(R.A)} m² × ${fmt(M.alpha * 1000, 2)} kg/m² = ${k1(R.mod.A5)} t`],
+    [tr("Design-lane traffic, Eq. (6) with heavy-vehicle ratio 0.2", "설계 차로 교통, 식 (6) · 중차량 비율 0.2"),
+      `${fmt(s.aadt)} × 0.55 × D_L ${R.DL} = ${k(R.lane)} ${tr("veh/day/lane", "대/일/차로")} → ESAL = ${k(R.lane)} × 365 × 0.2 × 1.1 = ${fmt(R.esalY, 3)} msa/yr → 20 yr ${fmt(R.esal20, 2)} msa`],
+    [tr("Rutting, Eqs. (4)–(5)", "소성변형, 식 (4)–(5)"),
+      `WTRD = −0.668 × ${fmt(s.ms, 2)} + 12.983 = ${fmt(R.wtrd, 2)} mm · N10 = 82.43 × ${fmt(R.wtrd, 2)}^−2.009 = ${fmt(R.N10, 2)} · N20 = 461.21 × ${fmt(R.wtrd, 2)}^−2.432 = ${fmt(R.N20, 2)} → N15 = ${fmt(R.N15, 2)} msa → ${tr("rutting overlays", "소성변형 덧씌우기")} = ⌊${fmt(R.esal20, 2)} / ${fmt(R.N15, 2)}⌋ = ${R.nr}`],
+    [tr("Fatigue: strain from asphalt thickness (manuscript Fig. 3b, r = −0.98)", "피로: 아스팔트 두께로 변형률 계산(원고 그림 3b, r = −0.98)"),
+      `ε_t = ${fmt(M.eps0, 1)} − ${fmt(-M.eps1, 3)} × ${R.hac} mm = ${fmt(R.eps, 1)} µε → ${tr("crack criterion: 1 overlay (all 18 projects, 61–145 µε)", "균열 기준 1회(18개 구간 모두, 61–145 µε)")} → ${tr("used", "채택")} n = ${R.n4}${s.ovMode === "manual" ? tr(" (entered)", "(직접 입력)") : ""}`],
+    [tr("Maintenance, divided by f", "유지, 수명 배수 f로 나눔"),
+      `B2 = 4 × ${fmt(M.b2 * 1000, 3)} kg/m² × ${k(R.A)} / ${s.f} = ${k1(R.mod.B2)} · B3 = 3 × ${fmt(M.b3 * 1000, 3)} × ${k(R.A)} / ${s.f} = ${k1(R.mod.B3)} · B4 = ${R.n4} × ${fmt(M.b4 * 1000, 2)} kg/t × ${k(R.Q.S)} t / ${s.f} = ${k1(R.mod.B4)} t`],
+    [tr("End-of-life and recycling credit", "폐기와 재활용 공제"),
+      `${tr("recovered", "회수")} = ${k(R.Qb)} + ${R.n4} × ${k(R.Q.S)} = ${k(R.Mrec)} t → C = ${k(R.Mrec)} × ${fmt(M.gamma * 1000, 2)} kg/t = ${k1(R.eol)} t (C1 34 %, C2 45 %, C3 21 %) · D = −${k(R.Mrec)} × ${fmt(M.delta * 1000, 2)} kg/t × ${R.alloc} = ${k1(R.mod.D)} t`],
+    [tr("Earthwork", "토공"), s.ewMode === "vol" ? `76.7 + 5.90 × ${fmt(s.vemb, 1)} = ${k1(R.mod.EW)} t` : s.ewMode === "direct" ? `${tr("entered", "직접 입력")} ${k1(R.mod.EW)} t` : tr("not included", "포함 안 함")],
+    [tr("Total", "합계"), `A ${k1(R.prod + R.cons)} + B ${k1(R.use)} + C ${k1(R.eol)} + ${tr("earthwork", "토공")} ${k1(R.mod.EW)} = ${k1(R.total)} t/km · ${tr("net", "순배출")} ${k1(R.net)} t/km · × ${fmt(s.L, 1)} km = ${k(R.total * s.L)} t`]];
+  document.getElementById("steps").innerHTML = L.map(x => `<li>${esc(x[0])}<span class="eq">${x[1].split(" · ").map(esc).join("<br>")}</span></li>`).join("");
+}
+/* 1 요약 */
+function kpis(R, mc) {
+  const s = R.s, Lk = s.L;
+  const card = (cls, k, v, sub) => `<div class="kpi ${cls}"><div class="k">${k}</div><div class="v">${v}</div><div class="s">${sub}</div></div>`;
+  const per = v => `${fmt(v)}<small>t/km</small>`;
+  const sec = v => tr(`${fmt(v * Lk)} t for ${fmt(Lk, 1)} km`, `${fmt(Lk, 1)} km 전체 ${fmt(v * Lk)} t`);
+  const govT = {crack: tr("crack criterion", "균열 기준"), rut: tr("rutting criterion", "소성변형 기준"), manual: tr("entered", "직접 입력")}[R.gov];
+  let h = card("main", tr("Whole life A+B+C" + (s.ewMode !== "none" ? " + earthwork" : ""), "전 과정 A+B+C" + (s.ewMode !== "none" ? " + 토공" : "")), per(R.total), sec(R.total));
+  h += card("", tr("Net after credit D", "공제(D) 반영 순배출"), per(R.net), sec(R.net));
+  h += card("rng", tr("5–95 % range", "5–95 % 범위"), `${fmt(mc.p5)}–${fmt(mc.p95)}<small>t/km</small>`, tr(`median ${fmt(mc.p50)}`, `중앙값 ${fmt(mc.p50)}`));
+  h += card("", tr("Overlays in 20 years", "20년 중 덧씌우기"), `${R.n4}<small>${tr("times", "회")}</small>`, govT + (R.s.f !== 1 ? ` · f = ${fmt(R.s.f, 2)}` : ""));
+  h += card("", tr("Production intensity A1–A3", "생산 원단위 A1–A3"), `${fmt(R.Qb > 0 ? (R.prod - R.Qsb * M.sub) / R.Qb * 1000 : 0, 1)}<small>kg/t</small>`, tr("manuscript 33.9 · Colas DK 36.2 · NAPA 51.4", "원고 33.9 · Colas DK 36.2 · NAPA 51.4"));
+  document.getElementById("kpis").innerHTML = h;
+  const w = [];
+  const qbase = R.Q.I + R.Q.B;
+  if (R.Q.S < 646 || R.Q.S > 2181) w.push(tr(`Surface quantity ${fmt(R.Q.S)} t/km is outside the 18-project range 646–2,181.`, `표층 물량 ${fmt(R.Q.S)} t/km가 18개 구간 범위 646–2,181 밖입니다.`));
+  if (qbase < 1875 || qbase > 8272) w.push(tr(`Base + intermediate quantity ${fmt(qbase)} t/km is outside 1,875–8,272.`, `기층 + 중간층 물량 ${fmt(qbase)} t/km가 1,875–8,272 밖입니다.`));
+  if (R.eps < 61 || R.eps > 145) w.push(tr(`Estimated strain ${fmt(R.eps)} µε is outside 61–145 µε; the crack-based overlay count is an extrapolation.`, `추정 변형률 ${fmt(R.eps)} µε가 61–145 µε 밖이라 균열 기준 횟수는 외삽입니다.`));
+  if (R.lane < 509 || R.lane > 12829) w.push(tr(`Design-lane traffic ${fmt(R.lane)} is outside 509–12,829 veh/day/lane.`, `설계 차로 교통량 ${fmt(R.lane)}이 509–12,829 대/일/차로 밖입니다.`));
+  if (R.gov === "rut") w.push(tr(`Rutting governs (${R.nr} overlays). The manuscript used design-specific N15 (5.3–17.3 msa); a higher Marshall stability reduces this count.`, `소성변형이 지배합니다(${R.nr}회). 원고는 설계별 N15(5.3–17.3 msa)를 썼으며, 마샬 안정도를 높이면 횟수가 줄어듭니다.`));
+  document.getElementById("warn").innerHTML = w.length ? `<div class="warn"><b>${tr("Outside the calibration data", "보정 자료 범위 밖")}</b><ul>${w.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : `<p class="ok">${tr("All inputs are within the range of the 18 projects.", "모든 입력이 18개 구간 범위 안에 있습니다.")}</p>`;
+  document.getElementById("dW").textContent = tr(`Paved width ${fmt(s.wc + s.wx, 1)} m · roadway share ${fmt(s.wc / (s.wc + s.wx) * 100)} %`, `환산 포장 폭 ${fmt(s.wc + s.wx, 1)} m · 차로 비율 ${fmt(s.wc / (s.wc + s.wx) * 100)} %`);
+  document.getElementById("dH").textContent = tr(`Asphalt total ${R.hac} mm · strain ${fmt(R.eps)} µε`, `아스팔트 합계 ${R.hac} mm · 변형률 ${fmt(R.eps)} µε`);
+}
+function unitTable() {
+  const rows = [
+    ["A1 binder", "A1 바인더", `virgin binder × ${M.ef_binder} t/t`, `신재 바인더 × ${M.ef_binder} t/t`, "Table 2", "표 2"],
+    ["A1 aggregate etc.", "A1 골재 등", `${fmt(M.agg * 1000, 2)} kg/t virgin aggregate · subbase ${fmt(M.sub * 1000, 3)} kg/t`, `신재 골재 ${fmt(M.agg * 1000, 2)} kg/t · 보조기층 ${fmt(M.sub * 1000, 3)} kg/t`, "Table 3, 5 means", "표 3 · 5 평균"],
+    ["A2 · A3", "A2 · A3", `${fmt(M.a2 * 1000, 2)} · ${fmt(M.a3 * 1000, 2)} kg/t mixture`, `혼합물 ${fmt(M.a2 * 1000, 2)} · ${fmt(M.a3 * 1000, 2)} kg/t`, "Table 5 means (sum 33.9 kg/t)", "표 5 평균(합 33.9 kg/t)"],
+    ["A4 · A5", "A4 · A5", `${fmt(M.beta * 1000, 2)} kg/t · ${fmt(M.alpha * 1000, 2)} kg/m²`, `${fmt(M.beta * 1000, 2)} kg/t · ${fmt(M.alpha * 1000, 2)} kg/m²`, `18-project fit, R² ${M.fit.cons}`, `18개 구간 적합, R² ${M.fit.cons}`],
+    ["B2 · B3", "B2 · B3", `${fmt(M.b2 * 1000, 3)} · ${fmt(M.b3 * 1000, 3)} kg/m² per event`, `회당 ${fmt(M.b2 * 1000, 3)} · ${fmt(M.b3 * 1000, 3)} kg/m²`, "Table 5 means", "표 5 평균"],
+    ["B4", "B4", `${fmt(M.b4 * 1000, 2)} kg/t surface course per overlay`, `덧씌우기 1회당 표층 ${fmt(M.b4 * 1000, 2)} kg/t`, `18-project fit, R² ${M.fit.use} (B total)`, `18개 구간 적합, R² ${M.fit.use}(B 합)`],
+    ["C1–C3", "C1–C3", `${fmt(M.gamma * 1000, 2)} kg/t recovered`, `회수 물량 ${fmt(M.gamma * 1000, 2)} kg/t`, `18-project fit, R² ${M.fit.eol}`, `18개 구간 적합, R² ${M.fit.eol}`],
+    ["D", "D", `−${fmt(M.delta * 1000, 2)} kg/t recovered`, `회수 물량 −${fmt(M.delta * 1000, 2)} kg/t`, `Table 1 fit, R² ${M.fit.D}`, `표 1 적합, R² ${M.fit.D}`]];
+  const mk = (i, hd) => `<div class="tbl"><table class="uf"><thead><tr>${hd.map(x => `<th>${x}</th>`).join("")}</tr></thead><tbody>` + rows.map(r => `<tr><td>${r[i]}</td><td>${r[2 + i]}</td><td>${r[4 + i]}</td></tr>`).join("") + "</tbody></table></div>";
+  document.getElementById("ufEn").innerHTML = mk(0, ["Item", "Unit factor", "Basis"]);
+  document.getElementById("ufKo").innerHTML = mk(1, ["항목", "원단위", "근거"]);
+  document.querySelectorAll(".fitD").forEach(e => { e.textContent = M.fit.D; });
+}
+
+/* ---------------- 그리기 ---------------- */
+let pend = 0;
+function schedule() { cancelAnimationFrame(pend); pend = requestAnimationFrame(render); }
+function render() {
+  syncInputs();
+  const R = compute(S), sims = simulate(R, 2000);
+  const mc = chartHist(R, sims);
+  kpis(R, mc); chartModules(R); chartLayers(R); chartTornado(S); chartGf(S); chartCompare(R);
+  const near = nearest(R), sref = document.getElementById("sref");
+  if (!sref.dataset.user) sref.value = near[0][0];
+  chartScatter(R); chartWalk(R); table18(R, near); steps(R);
+}
+function init() {
+  buildFields(); unitTable();
+  const sx = document.getElementById("sx"); sx.innerHTML = SX.map(a => `<option value="${a[0]}" data-en="${a[1]}" data-ko="${a[2]}">${a[1]}</option>`).join("");
+  sx.addEventListener("change", schedule);
+  const sref = document.getElementById("sref"); sref.innerHTML = PR.map(p => `<option value="${p.id}">${p.id}</option>`).join("");
+  sref.addEventListener("change", () => { sref.dataset.user = "1"; schedule(); });
+  langSelects(); render();
+  let rt = 0; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(render, 150); });
+}
+init();
+window.onLang = () => { langSelects(); render(); };
+setLang(document.documentElement.getAttribute("data-ui"));
+</script>
+</body>
+</html>
